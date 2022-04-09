@@ -1,17 +1,18 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "@innocenzi/eslint-config": "^0.9.0",
-        "autoprefixer": "^10.4.2",
-        "eslint": "^8.10.0",
-        "postcss": "^8.4.7",
-        "tailwindcss": "^3.0.23",
-        "typescript": "^4.5.5",
-        "vite": "^2.8.5",
-        "vite-plugin-laravel": "^0.2.0-beta.7"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@innocenzi/eslint-config": "^0.9.2",
+    "autoprefixer": "^10.4.4",
+    "eslint": "^8.13.0",
+    "postcss": "^8.4.12",
+    "sleightful": "link:/Users/enzoinnocenzi/Code/projects/sleightful/sleightful/packages/sleightful",
+    "tailwindcss": "^3.0.23",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.1",
+    "vite-plugin-laravel": "^0.2.0-beta.10"
+  }
 }
