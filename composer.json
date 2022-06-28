@@ -2,14 +2,14 @@
 	"repositories": [
 		{
 			"type": "path",
-			"url": "/Users/enzoinnocenzi/Code/projects/sleightful/laravel"
+			"url": "/Users/enzoinnocenzi/Code/projects/monolikit/monolikit"
 		}
 	],
-	"name": "sleightful/demo",
+	"name": "monolikit/demo",
 	"type": "project",
-	"description": "A demo application for the Sleightful project.",
+	"description": "A demo application for the Monolikit project.",
 	"keywords": [
-		"sleightful",
+		"monolikit",
 		"demo"
 	],
 	"license": "MIT",
@@ -20,7 +20,7 @@
 		"laravel/framework": "^9.2",
 		"laravel/sanctum": "^2.14.1",
 		"laravel/tinker": "^2.7",
-		"sleightful/laravel": "@dev"
+		"monolikit/laravel": "@dev"
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.9.1",

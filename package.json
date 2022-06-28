@@ -9,7 +9,7 @@
     "autoprefixer": "^10.4.4",
     "eslint": "^8.13.0",
     "postcss": "^8.4.12",
-    "sleightful": "link:/Users/enzoinnocenzi/Code/projects/sleightful/sleightful/packages/sleightful",
+    "monolikit": "link:/Users/enzoinnocenzi/Code/projects/monolikit/monolikit/packages/monolikit",
     "tailwindcss": "^3.0.23",
     "typescript": "^4.6.3",
     "vite": "^2.9.1",
