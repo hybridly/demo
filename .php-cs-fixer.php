@@ -14,10 +14,14 @@ $finder = Symfony\Component\Finder\Finder::create()
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PSR2' => true,
+        '@PSR12' => true,
+        '@PhpCsFixer:risky' => true,
+        'comment_to_phpdoc' => false,
+        'is_null' => false,
         'ternary_operator_spaces' => true,
         'array_syntax' => ['syntax' => 'short'],
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
+        'no_trailing_whitespace_in_string' => false,
         'no_unused_imports' => true,
         'no_useless_else' => true,
         'no_useless_return' => true,
