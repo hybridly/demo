@@ -8,6 +8,7 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "lib": [
             "esnext",
             "dom"
@@ -22,7 +23,15 @@
             ]
         }
     },
+    "vueCompilerOptions": {
+        "experimentalSuppressInvalidJsxElementTypeErrors": true
+    },
     "include": [
         "resources/**/*"
+    ],
+    "exclude": [
+        "public/**/*",
+        "node_modules",
+        "vendor"
     ]
 }
