@@ -13,17 +13,13 @@ return [
     'configs' => [
         'default' => [
             'entrypoints' => [
-                'ssr' => 'resources/scripts/ssr.ts',
-                'paths' => [
-                    'resources/css/tailwind.css',
-                    'resources/scripts/main.ts',
-                    'resources/js/app.js',
-                ],
+                'ssr' => 'resources/application/ssr.ts',
+                'paths' => 'resources/application/main.ts',
                 'ignore' => '/\\.(d\\.ts|json)$/',
             ],
             'dev_server' => [
                 'enabled' => true,
-                'url' => env('DEV_SERVER_URL', 'http://localhost:3000'),
+                'url' => env('DEV_SERVER_URL', 'https://localhost:3000'),
                 'ping_before_using_manifest' => true,
                 'ping_url' => null,
                 'ping_timeout' => 1,
@@ -59,7 +55,7 @@ return [
     'commands' => [
         'artisan' => [
             'vite:tsconfig',
-            // 'typescript:generate'
+            'typescript:transform',
         ],
         'shell' => [
             //
