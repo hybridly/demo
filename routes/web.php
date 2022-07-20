@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ChirpController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [ChirpController::class, 'index'])->name('index');
+
+Route::middleware('auth')->group(function () {
+    auth()->login(User::first());
+    Route::post('/', [ChirpController::class, 'store'])->name('store');
 });
