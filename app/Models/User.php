@@ -2,44 +2,68 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
+/**
+ * @mixin IdeHelperUser
+ */
 class User extends Authenticatable
 {
-    use HasApiTokens;
     use HasFactory;
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    public const PROFILE_PICTURE_PATH = 'profiles/';
+
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+
+    public function chirps(): HasMany
+    {
+        return $this->hasMany(Chirp::class, foreignKey: 'author_id');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Attributes
+    |--------------------------------------------------------------------------
+    */
+
+    public function displayName(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($display_name) => $display_name ?: $this->username,
+        );
+    }
+
+    public function profilePictureUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->profile_picture_path
+                ? Storage::url(self::PROFILE_PICTURE_PATH . $this->profile_picture_path)
+                : null,
+        );
+    }
 }
