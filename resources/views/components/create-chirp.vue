@@ -11,9 +11,9 @@ const chirp = useVModel(props, 'modelValue', emit)
 const { textarea } = useTextareaAutosize({ watch: chirp })
 const characters = useProperty('security.characters')
 const characterCount = computed(() => chirp.value.length)
-const charactersLeft = computed(() => characters.value.maximum - characterCount.value)
+const charactersLeft = computed(() => characters.value - characterCount.value)
 const limitLevel = computed(() => {
-	const percentageLeft = (Number(charactersLeft.value) / Number(characters.value.maximum)) * 100
+	const percentageLeft = (Number(charactersLeft.value) / Number(characters.value)) * 100
 
 	if (percentageLeft > 20) {
 		return
@@ -30,7 +30,7 @@ const limitLevel = computed(() => {
 	return 'orange'
 })
 
-const canSubmit = computed(() => characterCount.value >= characters.value.minimum && limitLevel.value !== 'reached')
+const canSubmit = computed(() => characterCount.value >= 1 && limitLevel.value !== 'reached')
 
 function submit() {
 	if (!canSubmit.value) {

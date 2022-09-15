@@ -11,10 +11,11 @@ const canLoad = computed(() => props.chirps.meta?.next_page_url)
 const chirps = ref<App.Data.ChirpData[]>([...props.chirps.data])
 const createChirpForm = useForm<App.Data.CreateChirpData>({
 	method: 'POST',
+	url: route('chirp.store'),
 	fields: {
 		body: '',
 	},
-	events: {
+	hooks: {
 		success: () => chirps.value.unshift(props.chirps.data[0]),
 	},
 })
@@ -29,7 +30,7 @@ function loadMoreChirps() {
 		preserveScroll: true,
 		preserveUrl: true,
 		only: ['chirps'],
-		events: {
+		hooks: {
 			success: () => chirps.value.push(...props.chirps.data),
 		},
 	})

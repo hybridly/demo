@@ -19,5 +19,5 @@ Route::get('/', [ChirpController::class, 'index'])->name('index');
 
 Route::middleware('auth')->group(function () {
     auth()->login(User::first());
-    Route::post('/', [ChirpController::class, 'store'])->name('store');
+    Route::post('/', [ChirpController::class, 'store'])->name('chirp.store');
 });

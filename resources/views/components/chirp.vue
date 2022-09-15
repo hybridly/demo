@@ -7,9 +7,9 @@ const dynamicCreatedAt = useTimeAgo(props.chirp.created_at)
 </script>
 
 <template>
-	<base-card as="article" class="flex gap-6 p-8">
+	<base-card as="article" class="flex gap-6 border border-gray-100 p-8 transition hover:shadow-blue-100">
 		<!-- Profile picture -->
-		<avatar :user="chirp.author!" />
+		<avatar :user="chirp.author" />
 
 		<div class="w-full">
 			<!-- Header -->
