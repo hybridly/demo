@@ -2,24 +2,22 @@
 
 namespace App\Http\Middleware;
 
-use App\Data\UserData;
-use Illuminate\Http\Request;
+use App\Data\Hybridly\SharedData;
 use Hybridly\Http\Middleware;
+use Spatie\LaravelData\Lazy;
 
 class HandleHybridlyRequests extends Middleware
 {
-    protected array $persistent = ['user'];
-
     /**
      * Defines the properties that are shared to all requests.
      */
-    public function share(Request $request): array
+    public function share(): SharedData
     {
-        return [
+        return SharedData::from([
             'security' => [
-                'user' => UserData::optional(auth()->user()),
+                'user' => Lazy::create(fn () => auth()->user())->defaultIncluded(),
                 'characters' => config('chirp.characters'),
             ],
-        ];
+        ]);
     }
 }

@@ -1,11 +1,4 @@
-interface GlobalHybridlyProperties {
-	security: {
-		user: App.Data.UserData
-		characters: {
-			minimum: number
-			maximum: number
-		}
-	}
+interface GlobalHybridlyProperties extends App.Data.Hybridly.SharedData {
 	flash: {
 		success?: string
 		error?: string
