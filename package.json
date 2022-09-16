@@ -35,6 +35,7 @@
     "vue": "^3.2.39"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "hybridly": "link:/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/hybridly"
   }
 }
