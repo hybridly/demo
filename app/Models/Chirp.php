@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\ChirpBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,30 @@ class Chirp extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public $with = ['author'];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Builder
+    |--------------------------------------------------------------------------
+    */
+
+    public static function query(): ChirpBuilder
+    {
+        return parent::query();
+    }
+
+    public function newEloquentBuilder($query)
+    {
+        return new ChirpBuilder($query);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
 
     public function author(): BelongsTo
     {
