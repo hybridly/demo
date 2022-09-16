@@ -7,9 +7,12 @@ use App\Actions\DeleteChirp;
 use App\Data\ChirpData;
 use App\Data\CreateChirpData;
 use App\Models\Chirp;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class ChirpController extends Controller
+class ChirpController
 {
+    use AuthorizesRequests;
+
     public function index()
     {
         $chirps = Chirp::query()

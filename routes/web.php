@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\Like\LikeChirpController;
+use App\Http\Controllers\Like\UnlikeChirpController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ChirpController::class, 'index'])->name('index');
-
 Route::middleware('auth')->group(function () {
-    Route::post('/', [ChirpController::class, 'store'])->name('chirp.store');
+    Route::get('/', [ChirpController::class, 'index'])->name('index');
+    Route::post('/chirps', [ChirpController::class, 'store'])->name('chirp.store');
+    Route::post('/chirps/{chirp}/likes', LikeChirpController::class)->name('chirp.like');
+    Route::delete('/chirps/{chirp}/likes', UnlikeChirpController::class)->name('chirp.unlike');
 });

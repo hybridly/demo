@@ -15,28 +15,18 @@ class ChirpPolicy
         return true;
     }
 
-    public function comment(?User $user, Chirp $chirp)
-    {
-        return !!$user;
-    }
-
-    public function update(User $user, Chirp $chirp)
-    {
-        return false;
-    }
-
     public function delete(User $user, Chirp $chirp)
     {
         return $chirp->author()->is($user);
     }
 
-    public function restore(User $user, Chirp $chirp)
+    public function like(User $user, Chirp $chirp): bool
     {
-        return $chirp->author()->is($user);
+        return !$user->hasLiked($chirp);
     }
 
-    public function forceDelete(User $user, Chirp $chirp)
+    public function unlike(User $user, Chirp $chirp): bool
     {
-        return false;
+        return $user->hasLiked($chirp);
     }
 }

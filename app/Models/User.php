@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -45,6 +46,11 @@ class User extends Authenticatable
         return $this->hasMany(Chirp::class, foreignKey: 'author_id');
     }
 
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Attributes
@@ -65,5 +71,26 @@ class User extends Authenticatable
                 ? Storage::url(self::PROFILE_PICTURE_PATH . $this->profile_picture_path)
                 : null,
         );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Likes
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Checks if the user has liked the given chirp.
+     */
+    public function hasLiked(Chirp $chirp): bool
+    {
+        if (!$chirp->exists) {
+            return false;
+        }
+
+        return $chirp
+            ->likes()
+            ->whereHas('user', fn (Builder $q) => $q->where('id', $this->id))
+            ->exists();
     }
 }

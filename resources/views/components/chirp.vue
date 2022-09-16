@@ -1,9 +1,33 @@
 <script setup lang="ts">
+import axios from 'axios'
+import { can } from 'monolikit'
+
 const props = defineProps<{
 	chirp: App.Data.ChirpData
 }>()
 
 const dynamicCreatedAt = useTimeAgo(props.chirp.created_at)
+const authorization = reactive<App.Data.ChirpData['authorization']>({
+	comment: props.chirp.authorization.comment,
+	like: props.chirp.authorization.like,
+	unlike: props.chirp.authorization.unlike,
+})
+
+// In the context of infinite scrolling, it is not convenient to use
+// monolikit, because we would lose the scroll position and loaded
+// pagination. This is a good opportunity to simply use AJAX.
+async function toggleLike() {
+	const [method, url] = authorization.like
+		? ['post', route('chirp.like', { chirp: props.chirp })]
+		: ['delete', route('chirp.unlike', { chirp: props.chirp })]
+
+	await axios.request({ url, method }).then(({ status }) => {
+		if (status === 204) {
+			authorization.like = !authorization.like
+			authorization.unlike = !authorization.unlike
+		}
+	})
+}
 </script>
 
 <template>
@@ -33,18 +57,40 @@ const dynamicCreatedAt = useTimeAgo(props.chirp.created_at)
 
 			<!-- Actions -->
 			<div class="mt-6 flex items-center gap-x-10 text-sm text-gray-600">
-				<base-button class="group hover:text-emerald-500">
-					<i-ant-design-comment-outlined class="-m-3 h-9 w-9 rounded-full p-1.5 transition group-hover:bg-emerald-50" />
-					<span class="ml-5 transition">Comment</span>
-				</base-button>
-				<base-button class="group hover:text-blue-500">
-					<i-ant-design-retweet-outlined class="-m-3 h-9 w-9 rounded-full p-1.5 transition group-hover:bg-blue-50" />
-					<span class="ml-5 transition">Re-chirp</span>
-				</base-button>
-				<base-button class="group hover:text-pink-500">
-					<i-ant-design-heart-outlined class="-m-3 h-9 w-9 rounded-full p-1.5 transition group-hover:bg-pink-50" />
-					<span class="ml-5 transition">Like</span>
-				</base-button>
+				<!-- Comment -->
+				<chirp-button color="emerald">
+					<template #icon>
+						<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
+					</template>
+					<template #text>
+						<span class="ml-5 transition">Comment</span>
+					</template>
+				</chirp-button>
+
+				<!-- Re-chirp -->
+				<chirp-button color="blue">
+					<template #icon>
+						<i-ant-design-retweet-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
+					</template>
+					<template #text>
+						<span class="ml-5 transition">Re-chirp</span>
+					</template>
+				</chirp-button>
+
+				<!-- Like/unlike -->
+				<chirp-button
+					color="pink"
+					:class="{ 'text-pink-500': can({ authorization }, 'unlike') }"
+					@click="toggleLike"
+				>
+					<template #icon>
+						<i-ant-design-heart-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
+					</template>
+					<template #text>
+						<span v-if="can({ authorization }, 'like')" class="ml-5 transition">Like</span>
+						<span v-if="can({ authorization }, 'unlike')" class="ml-5 transition">Unlike</span>
+					</template>
+				</chirp-button>
 			</div>
 		</div>
 	</base-card>
