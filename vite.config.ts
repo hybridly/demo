@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
-import laravel, { findPhpPath, callArtisan } from 'vite-plugin-laravel'
+import laravel from 'vite-plugin-laravel'
 import hybridly from 'hybridly/vite'
 import hybridlyImports from 'hybridly/auto-imports'
 import hybridlyResolver from 'hybridly/resolver'
@@ -10,21 +10,18 @@ import vue from '@vitejs/plugin-vue'
 import autoimport from 'unplugin-auto-import/vite'
 import components from 'unplugin-vue-components/vite'
 import icons from 'unplugin-icons/vite'
+import run from 'vite-plugin-run'
 
 export default defineConfig({
 	plugins: [
 		laravel({
 			postcss: [tailwindcss(), autoprefixer()],
-			watch: {
-				input: [
-					{
-						condition: (file) => ['Data.php'].some((kw) => file.includes(kw)),
-						handle: () => {
-							callArtisan(findPhpPath(), 'typescript:transform')
-						},
-					},
-				],
-			},
+		}),
+		run({
+			name: 'generate typescript',
+			startup: true,
+			condition: (file) => ['Data.php', 'Enums'].some((kw) => file.includes(kw)),
+			run: ['php', 'artisan', 'typescript:transform'],
 		}),
 		hybridly(),
 		vue(),

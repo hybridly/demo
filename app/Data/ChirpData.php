@@ -7,7 +7,7 @@ use Hybridly\Support\Data\DataResource;
 
 final class ChirpData extends DataResource
 {
-    public static array $authorizations = ['create', 'comment', 'delete'];
+    public static array $authorizations = ['comment'];
 
     public function __construct(
         public readonly string $id,
