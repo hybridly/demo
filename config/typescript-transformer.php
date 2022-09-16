@@ -17,6 +17,7 @@ return [
      */
 
     'collectors' => [
+        Monolikit\Support\TypeScriptTransformer\DataResourceTypeScriptCollector::class,
         Spatie\LaravelData\Support\TypeScriptTransformer\DataTypeScriptCollector::class,
     ],
 
