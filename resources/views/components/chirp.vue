@@ -7,6 +7,7 @@ const props = defineProps<{
 }>()
 
 const dynamicCreatedAt = useTimeAgo(props.chirp.created_at)
+const likes = ref(props.chirp.likes_count)
 const authorization = reactive<App.Data.ChirpData['authorization']>({
 	comment: props.chirp.authorization.comment,
 	like: props.chirp.authorization.like,
@@ -18,8 +19,8 @@ const authorization = reactive<App.Data.ChirpData['authorization']>({
 // pagination. This is a good opportunity to simply use AJAX.
 async function toggleLike() {
 	const [method, url] = authorization.like
-		? ['post', route('chirp.like', { chirp: props.chirp })]
-		: ['delete', route('chirp.unlike', { chirp: props.chirp })]
+		? ['post', route('chirp.like', { chirp: props.chirp }), likes.value++]
+		: ['delete', route('chirp.unlike', { chirp: props.chirp }), likes.value--]
 
 	await axios.request({ url, method }).then(({ status }) => {
 		if (status === 204) {
@@ -27,6 +28,10 @@ async function toggleLike() {
 			authorization.unlike = !authorization.unlike
 		}
 	})
+}
+
+function comment() {
+	router.get(route('chirp.show', { chirp: props.chirp }))
 }
 </script>
 
@@ -59,7 +64,7 @@ async function toggleLike() {
 			<!-- Actions -->
 			<div class="mt-6 flex items-center gap-x-10 text-sm text-gray-600">
 				<!-- Comment -->
-				<chirp-button color="emerald">
+				<chirp-button color="emerald" @click="comment">
 					<template #icon>
 						<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
 					</template>
@@ -88,8 +93,11 @@ async function toggleLike() {
 						<i-ant-design-heart-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
 					</template>
 					<template #text>
-						<span v-if="can({ authorization }, 'like')" class="ml-5 transition">Like</span>
-						<span v-if="can({ authorization }, 'unlike')" class="ml-5 transition">Unlike</span>
+						<span class="ml-5 transition">
+							<template v-if="can({ authorization }, 'like')">Like</template>
+							<template v-if="can({ authorization }, 'unlike')">Unlike</template>
+							<template v-if="likes > 0"> ({{ likes }})</template>
+						</span>
 					</template>
 				</chirp-button>
 			</div>

@@ -12,6 +12,7 @@ final class ChirpData extends DataResource
     public function __construct(
         public readonly string $id,
         public readonly string $body,
+        public readonly int $likes_count,
         public readonly UserData $author,
         public readonly Carbon $created_at,
     ) {

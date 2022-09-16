@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::get('/', [ChirpController::class, 'index'])->name('index');
     Route::post('/chirps', [ChirpController::class, 'store'])->name('chirp.store');
+    Route::get('/chirp/{chirp}', [ChirpController::class, 'show'])->name('chirp.show');
     Route::post('/chirps/{chirp}/likes', LikeChirpController::class)->name('chirp.like');
     Route::delete('/chirps/{chirp}/likes', UnlikeChirpController::class)->name('chirp.unlike');
 });
