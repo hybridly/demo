@@ -15,6 +15,11 @@ class ChirpPolicy
         return true;
     }
 
+    public function comment(?User $user, Chirp $chirp)
+    {
+        return !!$user;
+    }
+
     public function update(User $user, Chirp $chirp)
     {
         return false;
