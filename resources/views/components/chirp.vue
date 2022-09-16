@@ -39,9 +39,10 @@ async function toggleLike() {
 			<!-- Header -->
 			<div class="mb-4 flex items-center justify-between">
 				<!-- Username -->
-				<span class="inline-flex items-center space-x-5">
+				<span class="inline-flex items-center">
 					<span class="font-medium leading-none text-gray-900" v-text="chirp.author?.display_name" />
-					<span class="mb-0.5 text-sm font-medium tracking-wide text-gray-500" v-text="'@' + chirp.author?.username" />
+					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 text-blue-400" />
+					<span class="mb-0.5 ml-5 text-sm font-medium tracking-wide text-gray-500" v-text="'@' + chirp.author?.username" />
 				</span>
 
 				<!-- Date posted -->
