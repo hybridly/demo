@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ modelValue: string }>()
+const props = defineProps<{ modelValue: string; error?: string }>()
 const emit = defineEmits<{
 	(e: 'update:modelValue', body: string): void
 	(e: 'submit'): void
@@ -55,13 +55,19 @@ function submit() {
 			<!-- Actions -->
 			<div class="flex items-end justify-between">
 				<!-- Attachment, stats, emoji... -->
-				<div class="flex gap-x-5 px-3 text-gray-400">
+				<div class="flex min-w-0 items-center gap-x-5 px-3 text-gray-400">
 					<base-button class="transition hover:text-gray-500">
 						<i-ic-outline-image class="h-5 w-5" />
 					</base-button>
 					<base-button class="transition hover:text-gray-500">
 						<i-ic-round-insert-chart-outlined class="h-5 w-5" />
 					</base-button>
+					<span
+						v-if="error"
+						class="truncate text-xs font-medium text-red-500"
+						:title="error"
+						v-text="error"
+					/>
 				</div>
 
 				<!-- Submit -->
