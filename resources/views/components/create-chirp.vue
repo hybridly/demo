@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// https://dribbble.com/shots/14889681-Twitter-Redesign-Concept
-
 const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits<{
 	(e: 'update:modelValue', body: string): void
@@ -82,7 +80,7 @@ function submit() {
 					<base-button
 						type="submit"
 						variant="primary"
-						size="md"
+						size="sm"
 						:disabled="!canSubmit"
 					>
 						Chirp
