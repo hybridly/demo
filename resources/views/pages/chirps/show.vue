@@ -1,7 +1,11 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
 	chirp: App.Data.ChirpData
 }>()
+
+useHead({
+	title: `${props.chirp.author.display_name} on Blue Bird: ${props.chirp.body}`,
+})
 </script>
 
 <template layout>
