@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useAutoAnimate } from '@formkit/auto-animate/vue'
+
 useHead({
 	title: 'Recent chirps',
 })
@@ -7,7 +9,8 @@ const props = defineProps<{
 	chirps: Paginator<App.Data.ChirpData>
 }>()
 
-const canLoad = computed(() => props.chirps.meta?.next_page_url)
+const [list, enableChirpAnimations] = useAutoAnimate()
+const canLoad = computed(() => !!props.chirps.meta?.next_page_url)
 const chirps = ref<App.Data.ChirpData[]>([...props.chirps.data])
 const createChirpForm = useForm<App.Data.CreateChirpData>({
 	method: 'POST',
@@ -31,7 +34,9 @@ function loadMoreChirps() {
 		preserveUrl: true,
 		only: ['chirps'],
 		hooks: {
+			before: () => enableChirpAnimations(false),
 			success: () => chirps.value.push(...props.chirps.data),
+			after: () => enableChirpAnimations(true),
 		},
 	})
 }
@@ -39,6 +44,7 @@ function loadMoreChirps() {
 useInfiniteScroll(window, loadMoreChirps, {
 	offset: { bottom: 300 },
 })
+
 </script>
 
 <template layout>
@@ -49,7 +55,7 @@ useInfiniteScroll(window, loadMoreChirps, {
 			Recent chirps
 		</h1>
 
-		<div class="flex flex-1 flex-col gap-8">
+		<div ref="list" class="flex flex-1 flex-col gap-8">
 			<chirp
 				v-for="chirp in chirps"
 				:key="chirp.id"
