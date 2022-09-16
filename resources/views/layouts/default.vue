@@ -1,5 +1,7 @@
 <script setup lang="ts">
-//
+useHead({
+	titleTemplate: (title) => `${title} - Blue Bird`,
+})
 </script>
 
 <template>
