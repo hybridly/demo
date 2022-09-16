@@ -24,6 +24,13 @@ class ChirpController
         ]);
     }
 
+    public function show(Chirp $chirp)
+    {
+        return monolikit('chirps.show', [
+            'chirp' => ChirpData::from($chirp),
+        ]);
+    }
+
     public function store(CreateChirpData $data)
     {
         $this->authorize('create', Chirp::class);

@@ -18,6 +18,7 @@ class Chirp extends Model
     use SoftDeletes;
 
     public $with = ['author'];
+    public $withCount = ['likes'];
 
     /*
     |--------------------------------------------------------------------------

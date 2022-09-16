@@ -6,6 +6,7 @@ specifiers:
   '@iconify-json/fa6-solid': ^1.1.7
   '@iconify-json/fluent': ^1.1.16
   '@iconify-json/gg': ^1.1.2
+  '@iconify-json/heroicons-solid': ^1.1.2
   '@iconify-json/ic': ^1.1.9
   '@iconify-json/icon-park-outline': ^1.1.6
   '@iconify-json/ion': ^1.1.3
@@ -42,6 +43,7 @@ devDependencies:
   '@iconify-json/fa6-solid': 1.1.7
   '@iconify-json/fluent': 1.1.16
   '@iconify-json/gg': 1.1.2
+  '@iconify-json/heroicons-solid': 1.1.2
   '@iconify-json/ic': 1.1.9
   '@iconify-json/icon-park-outline': 1.1.6
   '@iconify-json/ion': 1.1.3
@@ -190,6 +192,12 @@ packages:
 
   /@iconify-json/gg/1.1.2:
     resolution: {integrity: sha512-JHTw0OeMSiGEDcQcNIUtVdkzUCQ/o+TeNsKpr2SGyzJ6etl1LK1aBhXfTrdpgB84iaMp/+FYFpD1+ju4HkoE7Q==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/heroicons-solid/1.1.2:
+    resolution: {integrity: sha512-hSh732CWFsi34qRfx3JO3UNFf7sg7xkzOUG9j9u1w+gcAOLVUWzpyums/H1KycuLphsHuuWZ9fpNq3HwMXCsuQ==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true
