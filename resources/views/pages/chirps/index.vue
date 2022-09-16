@@ -49,7 +49,11 @@ useInfiniteScroll(window, loadMoreChirps, {
 
 <template layout>
 	<section>
-		<create-chirp v-model="createChirpForm.fields.body" @submit="createChirpForm.submit()" />
+		<create-chirp
+			v-model="createChirpForm.fields.body"
+			:error="createChirpForm.errors.body"
+			@submit="createChirpForm.submit()"
+		/>
 
 		<h1 class="mt-16 mb-8 ml-8 text-lg font-semibold text-gray-700">
 			Recent chirps

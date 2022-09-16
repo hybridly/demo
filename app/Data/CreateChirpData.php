@@ -13,4 +13,11 @@ final class CreateChirpData extends Data
         public readonly string $body,
     ) {
     }
+
+    public static function rules(): array
+    {
+        return [
+            'body' => 'max:' . config('chirp.characters'),
+        ];
+    }
 }
