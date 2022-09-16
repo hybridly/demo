@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Actions\CreateChirp;
 use App\Actions\DeleteChirp;
-use App\Actions\GetChirps;
 use App\Data\ChirpData;
 use App\Data\CreateChirpData;
 use App\Models\Chirp;
 
 class ChirpController extends Controller
 {
-    public function index(GetChirps $chirps)
+    public function index()
     {
+        $chirps = Chirp::query()
+            ->forHomePage()
+            ->paginate();
+
         return monolikit('chirps.index', [
-            'chirps' => ChirpData::collection($chirps->run()),
+            'chirps' => ChirpData::collection($chirps),
         ]);
     }
 
