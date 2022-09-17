@@ -154,14 +154,14 @@ function onAttachmentSelected(event: Event) {
 						<!-- Preview -->
 						<img
 							:src="attachment.preview"
-							class="absolute inset-0 object-contain object-center"
+							class="absolute inset-0 h-full w-full object-cover object-center"
 							:alt="attachment.alt"
 							:title="attachment.alt"
 							@error="removeAttachment(i)"
 						/>
 						<!-- Remove -->
 						<base-button
-							class="absolute top-2 left-2 h-8 w-8 rounded-full text-blue-600 transition hover:bg-blue-50/50"
+							class="absolute top-2 left-2 h-8 w-8 rounded-full bg-white text-blue-600 transition hover:bg-blue-50"
 							title="Remove attachment"
 							@click.prevent="removeAttachment(i)"
 						>
