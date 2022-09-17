@@ -14,7 +14,8 @@
             "dom"
         ],
         "types": [
-            "vite/client"
+            "vite/client",
+            "unplugin-icons/types/vue"
         ],
         "baseUrl": ".",
         "paths": {
