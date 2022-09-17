@@ -38,7 +38,11 @@ async function toggleLike() {
 	})
 }
 
-function showChirp(mode: 'normal' | 'new-tab') {
+function showChirp(mode: 'normal' | 'new-tab', e: MouseEvent) {
+	if ((e?.target as HTMLElement)?.tagName === 'IMG') {
+		return
+	}
+
 	if (!canShowChirp.value) {
 		return
 	}
@@ -73,8 +77,8 @@ function deleteChirp() {
 			'hover:shadow-zinc-300': canShowChirp,
 			'shadow-blue-50': !canShowChirp
 		}"
-		@click="showChirp('normal')"
-		@click.middle="showChirp('new-tab')"
+		@click="(e) => showChirp('normal', e)"
+		@click.middle="(e) => showChirp('new-tab', e)"
 	>
 		<!-- Profile picture -->
 		<avatar :user="chirp.author" />
@@ -106,14 +110,16 @@ function deleteChirp() {
 				class="mb-6 grid grid-cols-3 gap-4"
 			>
 				<template v-for="(attachment, i) in chirp.attachments" :key="i">
-					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50">
+					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50 transition hover:border-blue-100 hover:shadow-md hover:shadow-blue-100">
 						<!-- Preview -->
-						<img
-							:src="attachment.url"
-							class="absolute inset-0 h-full w-full object-cover object-center"
-							:alt="attachment.alt"
-							:title="attachment.alt"
-						/>
+						<a :href="attachment.url" target="_blank" @click.capture.stop>
+							<img
+								:src="attachment.url"
+								class="absolute inset-0 h-full w-full object-cover object-center"
+								:alt="attachment.alt"
+								:title="attachment.alt"
+							/>
+						</a>
 					</div>
 				</template>
 			</div>
