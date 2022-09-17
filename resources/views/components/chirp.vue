@@ -7,6 +7,7 @@ const $props = defineProps<{
 	as: 'list-item' | 'comment'
 }>()
 
+const canShowChirp = computed(() => $props.as === 'list-item')
 const dynamicCreatedAt = useTimeAgo($props.chirp.created_at)
 const likes = ref($props.chirp.likes_count)
 const authorization = reactive<App.Data.ChirpData['authorization']>({
@@ -31,16 +32,16 @@ async function toggleLike() {
 	})
 }
 
-function showChirp() {
-	router.get(route('chirp.show', { chirp: $props.chirp }))
-}
-
-function showChirpInNewTab(e: MouseEvent) {
-	if ($props.as === 'comment') {
+function showChirp(mode: 'normal' | 'new-tab') {
+	if (!canShowChirp.value) {
 		return
 	}
 
-	window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
+	if (mode === 'normal') {
+		router.get(route('chirp.show', { chirp: $props.chirp }))
+	} else {
+		window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
+	}
 }
 </script>
 
@@ -49,12 +50,12 @@ function showChirpInNewTab(e: MouseEvent) {
 		as="article"
 		class="flex gap-6 border border-gray-100 p-8 transition"
 		:class="{
-			'cursor-pointer': as === 'list-item',
-			'hover:shadow-zinc-300': as === 'list-item',
-			'shadow-blue-50': as === 'comment',
+			'cursor-pointer': canShowChirp,
+			'hover:shadow-zinc-300': canShowChirp,
+			'shadow-blue-50': !canShowChirp
 		}"
-		@click="showChirp"
-		@click.middle="showChirpInNewTab"
+		@click="showChirp('normal')"
+		@click.middle="showChirp('new-tab')"
 	>
 		<!-- Profile picture -->
 		<avatar :user="chirp.author" />

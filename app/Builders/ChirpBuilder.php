@@ -13,6 +13,19 @@ class ChirpBuilder extends Builder
         return $this->isMain()->orderByDesc('created_at');
     }
 
+    /**
+     * Displays chirps which author is the current logged in user first.
+     * Also sorts by creation date.
+     */
+    public function sortedForComments(): static
+    {
+        return $this
+            ->orderByDesc('created_at')
+            ->orderByRaw('CASE WHEN author_id = ? THEN 0 ELSE 1 END', [
+                auth()->user()->id,
+            ]);
+    }
+
     public function withLikesAndComments(): static
     {
         return $this->withCount('likes')->withCount('comments');

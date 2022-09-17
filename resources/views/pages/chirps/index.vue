@@ -17,6 +17,7 @@ const createChirpForm = useForm<App.Data.CreateChirpData>({
 	url: route('chirp.store'),
 	fields: {
 		body: '',
+		parent_id: null,
 	},
 	hooks: {
 		success: () => chirps.value.unshift(props.chirps.data[0]),
@@ -51,7 +52,7 @@ useInfiniteScroll(window, loadMoreChirps, {
 	<section>
 		<create-chirp
 			v-model="createChirpForm.fields.body"
-			:error="createChirpForm.errors.body"
+			:errors="createChirpForm.errors"
 			@submit="createChirpForm.submit()"
 		/>
 

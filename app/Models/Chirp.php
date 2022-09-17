@@ -71,6 +71,7 @@ class Chirp extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(static::class, foreignKey: 'parent_id')
-            ->withoutGlobalScope('withCounts');
+            ->withoutGlobalScope('withCounts')
+            ->sortedForComments();
     }
 }
