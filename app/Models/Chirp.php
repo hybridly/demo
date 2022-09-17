@@ -18,7 +18,7 @@ class Chirp extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public $with = ['author'];
+    public $with = ['author', 'attachments'];
 
     /*
     |--------------------------------------------------------------------------
@@ -73,5 +73,10 @@ class Chirp extends Model
         return $this->hasMany(static::class, foreignKey: 'parent_id')
             ->withoutGlobalScope('withCounts')
             ->sortedForComments();
+    }
+
+    public function attachments(): HasMany
+    {
+        return $this->hasMany(Attachment::class);
     }
 }

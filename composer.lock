@@ -1983,7 +1983,7 @@
             "dist": {
                 "type": "path",
                 "url": "/Users/enzoinnocenzi/Code/projects/hybridly/hybridly",
-                "reference": "afda4eb0079b48b4ac98453edfd7e63b97d9e78e"
+                "reference": "9d481ff7dc515eb38cdb2b8fa89914de178867b5"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
