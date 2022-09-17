@@ -8,6 +8,7 @@ use App\Data\ChirpData;
 use App\Data\CreateChirpData;
 use App\Models\Chirp;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class ChirpController
 {
@@ -24,10 +25,16 @@ class ChirpController
         ]);
     }
 
-    public function show(Chirp $chirp)
+    public function show(Chirp $chirp, Request $request)
     {
+        $comments = $chirp->comments()->withLikesAndComments()->paginate();
+
         return hybridly('chirps.show', [
             'chirp' => ChirpData::from($chirp),
+            'comments' => ChirpData::collection($comments),
+            'previous' => $chirp->parent_id
+                ? url()->route('chirp.show', $chirp->parent_id)
+                : url()->route('index'),
         ]);
     }
 

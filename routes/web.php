@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/', [ChirpController::class, 'index'])->name('index');
     Route::post('/chirps', [ChirpController::class, 'store'])->name('chirp.store');
     Route::get('/chirp/{chirp}', [ChirpController::class, 'show'])->name('chirp.show');

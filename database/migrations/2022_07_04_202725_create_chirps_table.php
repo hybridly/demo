@@ -11,6 +11,7 @@ return new class () extends Migration {
             $table->id();
             $table->text('body'); // We'll enforce the character limit at the app level
             $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('parent_id')->nullable()->constrained('chirps');
             $table->timestamps();
             $table->softDeletes();
         });
