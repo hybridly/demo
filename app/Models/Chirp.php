@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Builders\ChirpBuilder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,11 +19,10 @@ class Chirp extends Model
     use SoftDeletes;
 
     public $with = ['author'];
-    public $withCount = ['likes'];
 
     /*
     |--------------------------------------------------------------------------
-    | Builder
+    | Configuration
     |--------------------------------------------------------------------------
     */
 
@@ -34,6 +34,17 @@ class Chirp extends Model
     public function newEloquentBuilder($query)
     {
         return new ChirpBuilder($query);
+    }
+
+    protected static function booted()
+    {
+        // https://github.com/laravel/framework/issues/32964
+        static::addGlobalScope('withCounts', function (Builder $builder) {
+            $builder->withCount([
+                'likes',
+                'comments',
+            ]);
+        });
     }
 
     /*
@@ -50,5 +61,16 @@ class Chirp extends Model
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(static::class, foreignKey: 'parent_id');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(static::class, foreignKey: 'parent_id')
+            ->withoutGlobalScope('withCounts');
     }
 }

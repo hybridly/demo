@@ -2,16 +2,17 @@
 import axios from 'axios'
 import { can } from 'monolikit'
 
-const props = defineProps<{
+const $props = defineProps<{
 	chirp: App.Data.ChirpData
+	as: 'list-item' | 'comment'
 }>()
 
-const dynamicCreatedAt = useTimeAgo(props.chirp.created_at)
-const likes = ref(props.chirp.likes_count)
+const dynamicCreatedAt = useTimeAgo($props.chirp.created_at)
+const likes = ref($props.chirp.likes_count)
 const authorization = reactive<App.Data.ChirpData['authorization']>({
-	comment: props.chirp.authorization.comment,
-	like: props.chirp.authorization.like,
-	unlike: props.chirp.authorization.unlike,
+	comment: $props.chirp.authorization.comment,
+	like: $props.chirp.authorization.like,
+	unlike: $props.chirp.authorization.unlike,
 })
 
 // In the context of infinite scrolling, it is not convenient to use
@@ -19,8 +20,8 @@ const authorization = reactive<App.Data.ChirpData['authorization']>({
 // pagination. This is a good opportunity to simply use AJAX.
 async function toggleLike() {
 	const [method, url] = authorization.like
-		? ['post', route('chirp.like', { chirp: props.chirp }), likes.value++]
-		: ['delete', route('chirp.unlike', { chirp: props.chirp }), likes.value--]
+		? ['post', route('chirp.like', { chirp: $props.chirp }), likes.value++]
+		: ['delete', route('chirp.unlike', { chirp: $props.chirp }), likes.value--]
 
 	await axios.request({ url, method }).then(({ status }) => {
 		if (status === 204) {
@@ -30,13 +31,31 @@ async function toggleLike() {
 	})
 }
 
-function comment() {
-	router.get(route('chirp.show', { chirp: props.chirp }))
+function showChirp() {
+	router.get(route('chirp.show', { chirp: $props.chirp }))
+}
+
+function showChirpInNewTab(e: MouseEvent) {
+	if ($props.as === 'comment') {
+		return
+	}
+
+	window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
 }
 </script>
 
 <template>
-	<base-card as="article" class="flex gap-6 border border-gray-100 p-8 transition hover:shadow-blue-100">
+	<base-card
+		as="article"
+		class="flex gap-6 border border-gray-100 p-8 transition"
+		:class="{
+			'cursor-pointer': as === 'list-item',
+			'hover:shadow-zinc-300': as === 'list-item',
+			'shadow-blue-50': as === 'comment',
+		}"
+		@click="showChirp"
+		@click.middle="showChirpInNewTab"
+	>
 		<!-- Profile picture -->
 		<avatar :user="chirp.author" />
 
@@ -64,30 +83,33 @@ function comment() {
 			<!-- Actions -->
 			<div class="mt-6 flex items-center gap-x-10 text-sm text-gray-600">
 				<!-- Comment -->
-				<chirp-button color="emerald" @click="comment">
+				<chirp-button color="emerald">
 					<template #icon>
 						<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
 					</template>
 					<template #text>
-						<span class="ml-5 transition">Comment</span>
+						<span class="ml-5 transition">
+							Comment
+							<template v-if="chirp.comments_count > 0">({{ chirp.comments_count }})</template>
+						</span>
 					</template>
 				</chirp-button>
 
 				<!-- Re-chirp -->
-				<chirp-button color="blue">
+				<!-- <chirp-button color="blue">
 					<template #icon>
 						<i-ant-design-retweet-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
 					</template>
 					<template #text>
 						<span class="ml-5 transition">Re-chirp</span>
 					</template>
-				</chirp-button>
+				</chirp-button> -->
 
 				<!-- Like/unlike -->
 				<chirp-button
 					color="pink"
 					:class="{ 'text-pink-500': can({ authorization }, 'unlike') }"
-					@click="toggleLike"
+					@click.stop="toggleLike"
 				>
 					<template #icon>
 						<i-ant-design-heart-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />

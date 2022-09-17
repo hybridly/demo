@@ -16,9 +16,17 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('bluebird'),
         ]);
 
-        User::factory()
-            ->count(100)
-            ->has(Chirp::factory()->count(rand(10, 50)))
-            ->create();
+        $users = User::factory()->count(100)->create();
+        foreach ($users as $user) {
+            $chirps = Chirp::factory()->count(random_int(5, 10))->create();
+
+            foreach ($chirps as $chirp) {
+                Chirp::factory()
+                    ->fromUser($user)
+                    ->withParent($chirp)
+                    ->count(random_int(2, 4))
+                    ->create();
+            }
+        }
     }
 }

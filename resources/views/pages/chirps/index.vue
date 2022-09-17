@@ -64,6 +64,7 @@ useInfiniteScroll(window, loadMoreChirps, {
 				v-for="chirp in chirps"
 				:key="chirp.id"
 				:chirp="chirp"
+				as="list-item"
 			/>
 		</div>
 
