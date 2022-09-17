@@ -1,12 +1,21 @@
 <script setup lang="ts">
-const props = defineProps<{
+const $props = defineProps<{
 	chirp: App.Data.ChirpData
 	comments: Paginator<App.Data.ChirpData>
 	previous: string
 }>()
 
 useHead({
-	title: `${props.chirp.author.display_name} on Blue Bird: ${props.chirp.body}`,
+	title: `${$props.chirp.author.display_name} on Blue Bird: ${$props.chirp.body}`,
+})
+
+const createChirpForm = useForm<App.Data.CreateChirpData>({
+	method: 'POST',
+	url: route('chirp.store'),
+	fields: {
+		body: '',
+		parent_id: $props.chirp.id,
+	},
 })
 </script>
 
@@ -30,7 +39,15 @@ useHead({
 			</template>
 		</h1>
 
-		<div ref="list" class="flex flex-1 flex-col gap-6">
+		<create-chirp
+			v-model="createChirpForm.fields.body"
+			:errors="createChirpForm.errors"
+			class="mb-6"
+			placeholder="Chirp your reply"
+			@submit="createChirpForm.submit()"
+		/>
+
+		<div ref="list" v-auto-animate class="flex flex-1 flex-col gap-6 will-change-contents">
 			<chirp
 				v-for="comment in comments.data"
 				:key="comment.id"

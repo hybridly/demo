@@ -1,11 +1,17 @@
 <script setup lang="ts">
-const props = defineProps<{ modelValue: string; error?: string }>()
+const $props = defineProps<{
+	modelValue: string
+	errors?: Record<string, string>
+	placeholder?: string
+}>()
+
 const emit = defineEmits<{
 	(e: 'update:modelValue', body: string): void
 	(e: 'submit'): void
 }>()
-const chirp = useVModel(props, 'modelValue', emit)
 
+const chirp = useVModel($props, 'modelValue', emit)
+const error = computed(() => Object.values($props.errors ?? {}).at(0))
 const { textarea } = useTextareaAutosize({ watch: chirp })
 const characters = useProperty('security.characters')
 const characterCount = computed(() => chirp.value.length)
@@ -49,7 +55,7 @@ function submit() {
 				:row="1"
 				:max="200"
 				class="mb-2 w-full resize-none border-none font-medium placeholder:text-gray-400 focus:ring-0"
-				placeholder="What's on your mind?"
+				:placeholder="placeholder ?? `What's on your mind?`"
 			/>
 
 			<!-- Actions -->

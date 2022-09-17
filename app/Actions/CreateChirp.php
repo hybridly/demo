@@ -18,6 +18,7 @@ class CreateChirp
         return Chirp::create([
             'body' => $data->body,
             'author_id' => auth()->user()->id,
+            'parent_id' => $data->parent_id,
         ]);
     }
 }
