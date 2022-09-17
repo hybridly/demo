@@ -18,7 +18,11 @@ useHead({
 		</RouterLink>
 
 		<div class="mb-24">
-			<chirp :chirp="chirp" as="comment" />
+			<chirp
+				:chirp="chirp"
+				:previous="previous"
+				as="comment"
+			/>
 		</div>
 
 		<h1 class="mt-16 mb-8 ml-8 text-lg font-semibold text-gray-700">

@@ -5,6 +5,11 @@ import { can } from 'hybridly'
 const $props = defineProps<{
 	chirp: App.Data.ChirpData
 	as: 'list-item' | 'comment'
+	previous?: string
+}>()
+
+const $emit = defineEmits<{
+	(e: 'destroy'): void
 }>()
 
 const canShowChirp = computed(() => $props.as === 'list-item')
@@ -14,6 +19,7 @@ const authorization = reactive<App.Data.ChirpData['authorization']>({
 	comment: $props.chirp.authorization.comment,
 	like: $props.chirp.authorization.like,
 	unlike: $props.chirp.authorization.unlike,
+	delete: $props.chirp.authorization.delete,
 })
 
 // In the context of infinite scrolling, it is not convenient to use
@@ -42,6 +48,19 @@ function showChirp(mode: 'normal' | 'new-tab') {
 	} else {
 		window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
 	}
+}
+
+function deleteChirp() {
+	router.delete(route('chirp.destroy', { chirp: $props.chirp }), {
+		data: {
+			redirect_to: $props.previous,
+		},
+		preserveState: false,
+		preserveScroll: true,
+		hooks: {
+			success: () => $emit('destroy'),
+		},
+	})
 }
 </script>
 
@@ -139,6 +158,17 @@ function showChirp(mode: 'normal' | 'new-tab') {
 							<template v-if="can({ authorization }, 'unlike')">Unlike</template>
 							<template v-if="likes > 0"> ({{ likes }})</template>
 						</span>
+					</template>
+				</chirp-button>
+
+				<!-- Delete -->
+				<chirp-button
+					v-if="can({ authorization }, 'delete')"
+					color="blue"
+					@click.stop="deleteChirp"
+				>
+					<template #icon>
+						<i-ant-design:delete-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
 					</template>
 				</chirp-button>
 			</div>

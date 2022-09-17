@@ -17,7 +17,7 @@ class ChirpPolicy
 
     public function delete(User $user, Chirp $chirp)
     {
-        return $chirp->author()->is($user);
+        return $chirp->author->is($user);
     }
 
     public function like(User $user, Chirp $chirp): bool

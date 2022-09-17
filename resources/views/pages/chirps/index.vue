@@ -38,6 +38,10 @@ useInfiniteScroll(window, loadMoreChirps, {
 function updateChirps() {
 	chirps.value.unshift(props.chirps.data[0])
 }
+
+function onDestroy(chirp: App.Data.ChirpData) {
+	chirps.value.splice(chirps.value.indexOf(chirp), 1)
+}
 </script>
 
 <template layout>
@@ -54,6 +58,7 @@ function updateChirps() {
 				:key="chirp.id"
 				:chirp="chirp"
 				as="list-item"
+				@destroy="onDestroy(chirp)"
 			/>
 		</div>
 
