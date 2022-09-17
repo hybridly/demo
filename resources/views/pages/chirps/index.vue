@@ -12,17 +12,6 @@ const props = defineProps<{
 const [list, enableChirpAnimations] = useAutoAnimate()
 const canLoad = computed(() => !!props.chirps.meta?.next_page_url)
 const chirps = ref<App.Data.ChirpData[]>([...props.chirps.data])
-const createChirpForm = useForm<App.Data.CreateChirpData>({
-	method: 'POST',
-	url: route('chirp.store'),
-	fields: {
-		body: '',
-		parent_id: null,
-	},
-	hooks: {
-		success: () => chirps.value.unshift(props.chirps.data[0]),
-	},
-})
 
 function loadMoreChirps() {
 	if (!canLoad.value) {
@@ -46,15 +35,14 @@ useInfiniteScroll(window, loadMoreChirps, {
 	offset: { bottom: 300 },
 })
 
+function updateChirps() {
+	chirps.value.unshift(props.chirps.data[0])
+}
 </script>
 
 <template layout>
 	<section>
-		<create-chirp
-			v-model="createChirpForm.fields.body"
-			:errors="createChirpForm.errors"
-			@submit="createChirpForm.submit()"
-		/>
+		<create-chirp @success="updateChirps" />
 
 		<h1 class="mt-16 mb-8 ml-8 text-lg font-semibold text-gray-700">
 			Recent chirps
