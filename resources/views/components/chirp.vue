@@ -110,7 +110,7 @@ function deleteChirp() {
 						<!-- Preview -->
 						<img
 							:src="attachment.url"
-							class="absolute inset-0 object-contain object-center"
+							class="absolute inset-0 h-full w-full object-cover object-center"
 							:alt="attachment.alt"
 							:title="attachment.alt"
 						/>
