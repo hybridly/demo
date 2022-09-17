@@ -1,20 +1,30 @@
 <script setup lang="ts">
 const $props = defineProps<{
-	modelValue: string
-	errors?: Record<string, string>
 	placeholder?: string
+	replyTo?: string
 }>()
 
-const emit = defineEmits<{
-	(e: 'update:modelValue', body: string): void
-	(e: 'submit'): void
+const $emit = defineEmits<{
+	(e: 'success'): void
 }>()
 
-const chirp = useVModel($props, 'modelValue', emit)
-const error = computed(() => Object.values($props.errors ?? {}).at(0))
-const { textarea } = useTextareaAutosize({ watch: chirp })
+const createChirpForm = useForm<App.Data.CreateChirpData>({
+	method: 'POST',
+	url: route('chirp.store'),
+	reset: true,
+	fields: {
+		body: '',
+		parent_id: $props.replyTo ?? null,
+	},
+	hooks: {
+		success: () => $emit('success'),
+	},
+})
+
+const error = computed(() => Object.values(createChirpForm.errors ?? {}).at(0))
+const { textarea, triggerResize } = useTextareaAutosize({ watch: () => createChirpForm.fields })
 const characters = useProperty('security.characters')
-const characterCount = computed(() => chirp.value.length)
+const characterCount = computed(() => createChirpForm.fields.body.length)
 const charactersLeft = computed(() => characters.value - characterCount.value)
 const limitLevel = computed(() => {
 	const percentageLeft = (Number(charactersLeft.value) / Number(characters.value)) * 100
@@ -41,8 +51,12 @@ function submit() {
 		return
 	}
 
-	emit('submit')
-	emit('update:modelValue', '')
+	createChirpForm.submit()
+}
+
+function addNewLine() {
+	createChirpForm.fields.body += '\n'
+	nextTick(triggerResize)
 }
 </script>
 
@@ -51,11 +65,13 @@ function submit() {
 		<form @submit.prevent="submit">
 			<textarea
 				ref="textarea"
-				v-model="chirp"
+				v-model="createChirpForm.fields.body"
 				:row="1"
 				:max="200"
 				class="mb-2 w-full resize-none border-none font-medium placeholder:text-gray-400 focus:ring-0"
 				:placeholder="placeholder ?? `What's on your mind?`"
+				@keydown.enter.prevent.exact="submit"
+				@keydown.shift.enter.stop.prevent="addNewLine"
 			/>
 
 			<!-- Actions -->
