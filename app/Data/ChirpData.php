@@ -4,6 +4,8 @@ namespace App\Data;
 
 use Carbon\Carbon;
 use Monolikit\Support\Data\DataResource;
+use Spatie\LaravelData\Attributes\DataCollectionOf;
+use Spatie\LaravelData\DataCollection;
 
 final class ChirpData extends DataResource
 {
@@ -11,7 +13,9 @@ final class ChirpData extends DataResource
 
     public function __construct(
         public readonly string $id,
-        public readonly string $body,
+        public readonly ?string $body,
+        #[DataCollectionOf(AttachmentData::class)]
+        public readonly DataCollection $attachments,
         public readonly int $likes_count,
         public readonly int $comments_count,
         public readonly UserData $author,

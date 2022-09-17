@@ -79,10 +79,28 @@ function showChirp(mode: 'normal' | 'new-tab') {
 			</div>
 
 			<!-- Body -->
-			<p class="mt" v-text="chirp.body" />
+			<p class="mb-4" v-text="chirp.body" />
+
+			<!-- Attachments -->
+			<div
+				v-if="chirp.attachments.length > 0"
+				class="mb-6 grid grid-cols-3 gap-4"
+			>
+				<template v-for="(attachment, i) in chirp.attachments" :key="i">
+					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50">
+						<!-- Preview -->
+						<img
+							:src="attachment.url"
+							class="absolute inset-0 object-contain object-center"
+							:alt="attachment.alt"
+							:title="attachment.alt"
+						/>
+					</div>
+				</template>
+			</div>
 
 			<!-- Actions -->
-			<div class="mt-6 flex items-center gap-x-10 text-sm text-gray-600">
+			<div class="flex items-center gap-x-10 text-sm text-gray-600">
 				<!-- Comment -->
 				<chirp-button color="emerald">
 					<template #icon>

@@ -22,7 +22,7 @@ class ChirpBuilder extends Builder
         return $this
             ->orderByDesc('created_at')
             ->orderByRaw('CASE WHEN author_id = ? THEN 0 ELSE 1 END', [
-                auth()->user()->id,
+                auth()->user()?->id ?? 'NULL',
             ]);
     }
 
