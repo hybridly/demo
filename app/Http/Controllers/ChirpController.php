@@ -47,12 +47,14 @@ class ChirpController
         return back();
     }
 
-    public function destroy(Chirp $chirp)
+    public function destroy(Chirp $chirp, Request $request)
     {
         $this->authorize('delete', $chirp);
 
         DeleteChirp::run($chirp);
 
-        return back();
+        return $request->filled('redirect_to')
+            ? redirect($request->input('redirect_to'))
+            : back();
     }
 }

@@ -22,4 +22,5 @@ Route::middleware([])->group(function () {
     Route::get('/chirp/{chirp}', [ChirpController::class, 'show'])->name('chirp.show');
     Route::post('/chirps/{chirp}/likes', LikeChirpController::class)->name('chirp.like');
     Route::delete('/chirps/{chirp}/likes', UnlikeChirpController::class)->name('chirp.unlike');
+    Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chirp.destroy');
 });
