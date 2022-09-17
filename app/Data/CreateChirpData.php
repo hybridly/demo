@@ -21,14 +21,13 @@ final class CreateChirpData extends Data
 
     public static function rules(): array
     {
-        // dd(request()->files);
-
         return [
             'body' => [
                 'required_without:attachments',
                 'max:' . config('chirp.characters'),
             ],
             'parent_id' => ['nullable', 'exists:chirps,id'],
+            'attachments' => ['max:3'],
         ];
     }
 
@@ -39,6 +38,7 @@ final class CreateChirpData extends Data
             'body.required_without' => "If there is not attachment nor text, what's the content? Huh?",
             'parent_id.exists' => 'The chirp you are commenting on does not exists.',
             'attachments.*.file' => 'Attachments must be images.',
+            'attachments.max' => 'You can only add :max attachments at once.',
         ];
     }
 }

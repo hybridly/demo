@@ -107,9 +107,7 @@ function removeAttachment(index: number) {
 }
 
 function onAttachmentSelected(event: Event) {
-	const file = (event.target as HTMLInputElement)!.files?.item(0)
-
-	if (file) {
+	for (const file of Array.from((event.target as HTMLInputElement)?.files ?? []).slice(0, 3)) {
 		createChirpForm.fields.attachments.push({
 			file,
 			alt: file.name,
@@ -128,6 +126,7 @@ function onAttachmentSelected(event: Event) {
 				type="file"
 				accept="image/*"
 				class="hidden"
+				multiple
 				@change="onAttachmentSelected"
 			/>
 
