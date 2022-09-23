@@ -2,14 +2,31 @@
 
 use App\Models\User;
 
+/*
+
+---------------------------------------------------------------------------
+:: Index
+---------------------------------------------------------------------------
+
+*/
 test('login page can be rendered')
     ->get('/login')
     ->assertOk()
     ->assertSee('login');
 
 it('cannot view login page when authenticated', function () {
-    actingAs(user())->get('/login')->assertRedirect('/');
+    actingAs(user())
+        ->get('/login')
+        ->assertRedirect('/');
 });
+
+/*
+
+---------------------------------------------------------------------------
+:: Login
+---------------------------------------------------------------------------
+
+*/
 
 it('cannot login with incorrect credentials', function () {
     $user = User::factory()->create([
@@ -47,6 +64,31 @@ it('can login', function () {
     using($this)
         ->assertAuthenticatedAs($user);
 });
+
+/*
+
+---------------------------------------------------------------------------
+:: Logout
+---------------------------------------------------------------------------
+
+*/
+
+it('can logout', function () {
+    actingAs(user())
+        ->post('/logout')
+        ->assertRedirect('/login');
+
+    using($this)
+        ->assertGuest();
+});
+
+/*
+
+---------------------------------------------------------------------------
+:: Quick login
+---------------------------------------------------------------------------
+
+*/
 
 it('can quick login via secret link', function () {
     $user = User::factory()->create();

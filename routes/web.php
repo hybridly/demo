@@ -44,8 +44,8 @@ Route::group([
     Route::post('/login', [LoginController::class, 'login'])->name('login');
 });
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 if (!app()->isproduction()) {
-    Route::get('/dev/login/{id?}', [LoginController::class, 'dev_login']);
+    Route::get('/dev/login/{id?}', [LoginController::class, 'quick_login']);
 }

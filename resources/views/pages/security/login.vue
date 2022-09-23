@@ -3,8 +3,6 @@ useHead({
 	title: 'Login',
 })
 
-const properties = useProperties()
-
 const login = useForm({
 	method: 'POST',
 	url: route('login'),

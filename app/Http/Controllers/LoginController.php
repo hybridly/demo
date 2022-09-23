@@ -42,7 +42,7 @@ class LoginController
         return redirect('/login');
     }
 
-    public function dev_login($id = null)
+    public function quick_login($id = null)
     {
         if (auth()->check()) {
             auth()->logout();
