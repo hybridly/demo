@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Chirp;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +12,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->create([
             'email' => 'admin@bluebird.test',
-            'password' => Hash::make('bluebird'),
+            'password' => bcrypt('bluebird'),
         ]);
 
         $users = User::factory()->count(100)->create();
