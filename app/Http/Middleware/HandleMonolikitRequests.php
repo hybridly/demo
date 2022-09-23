@@ -15,7 +15,7 @@ class HandleMonolikitRequests extends Middleware
     {
         return SharedData::from([
             'security' => [
-                'user' => UserData::from(auth()->user()),
+                'user' => UserData::optional(auth()->user()),
                 'characters' => config('chirp.characters'),
             ],
         ]);
