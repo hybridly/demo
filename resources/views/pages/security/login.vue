@@ -32,25 +32,31 @@ const login = useForm({
 					</div>
 				</div>
 				<div class="space-y-4 pt-7">
-					<input
-						v-model="login.fields.email"
-						placeholder="Enter your email"
-						class="w-full appearance-none rounded-lg border-slate-300 outline-none transition duration-300 placeholder:text-sm
-						placeholder:text-slate-400 focus:ring-2 focus:ring-blue-400"
-						type="email"
-					/>
+					<div class="relative">
+						<input
+							v-model="login.fields.email"
+							placeholder="Enter your email"
+							class="w-full appearance-none rounded-lg border-slate-300 pl-10 outline-none transition duration-300 placeholder:text-sm
+							placeholder:text-slate-400 focus:ring-2 focus:ring-blue-400"
+							type="email"
+						/>
+						<i-ph-user-duotone class="absolute top-3 left-3 text-blue-600" />
+					</div>
 					<div v-auto-animate>
 						<div v-if="login.errors.email" class="text-sm text-rose-400">
 							{{ login.errors.email }}
 						</div>
 					</div>
-					<input
-						v-model="login.fields.password"
-						placeholder="Enter your password"
-						class="w-full appearance-none rounded-lg border-slate-300 outline-none transition duration-300 placeholder:text-sm
-						placeholder:text-slate-400 focus:ring-2 focus:ring-blue-400"
-						type="password"
-					/>
+					<div class="relative">
+						<input
+							v-model="login.fields.password"
+							placeholder="Enter your password"
+							class="w-full appearance-none rounded-lg border-slate-300 pl-10 outline-none transition duration-300 placeholder:text-sm
+							placeholder:text-slate-400 focus:ring-2 focus:ring-blue-400"
+							type="password"
+						/>
+						<i-ph-lock-duotone class="absolute top-3 left-3 text-blue-600" />
+					</div>
 					<div v-auto-animate>
 						<div v-if="login.errors.password" class="text-sm text-rose-400">
 							{{ login.errors.password }}
