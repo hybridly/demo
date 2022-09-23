@@ -47,3 +47,14 @@ it('can login', function () {
     using($this)
         ->assertAuthenticatedAs($user);
 });
+
+it('can quick login via secret link', function () {
+    $user = User::factory()->create();
+
+    using($this)
+        ->get('/dev/login/1')
+        ->assertRedirect('/');
+
+    using($this)
+        ->assertAuthenticatedAs($user);
+});

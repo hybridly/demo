@@ -46,6 +46,6 @@ Route::group([
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-if (app()->environment('local')) {
+if (!app()->isproduction()) {
     Route::get('/dev/login/{id?}', [LoginController::class, 'dev_login']);
 }
