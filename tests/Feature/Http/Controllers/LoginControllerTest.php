@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 test('login page can be rendered')
     ->get('/login')
     ->assertOk()
@@ -9,9 +11,39 @@ it('cannot view login page when authenticated', function () {
     actingAs(user())->get('/login')->assertRedirect('/');
 });
 
-it('can login', function () {
+it('cannot login with incorrect credentials', function () {
+    $user = User::factory()->create([
+        'password' => bcrypt('secret'),
+    ]);
+
     using($this)
         ->from('/login')
-        ->post('login')
-        ->assertRedirect('/');
+        ->post('login', [
+            'email' => $user->email,
+            'password' => 'some-secret',
+        ])
+        ->assertRedirect('/login')
+        ->assertSessionHasErrors('email');
+
+    expect(session()->hasOldInput('email'))->toBeTrue();
+    expect(session()->hasOldInput('password'))->toBeFalse();
+
+    using($this)
+        ->assertGuest();
+});
+
+it('can login', function () {
+    $user = User::factory()->create([
+        'password' => bcrypt($password = 'secret'),
+    ]);
+
+    using($this)
+        ->from('/login')
+        ->post('login', [
+            'email' => $user->email,
+            'password' => $password,
+        ])->assertRedirect('/');
+
+    using($this)
+        ->assertAuthenticatedAs($user);
 });

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class LoginController
 {
     public function index()
@@ -9,11 +11,22 @@ class LoginController
         return monolikit('security.login');
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        auth()->loginUsingId(1);
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-        return redirect('/');
+        if (auth()->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect('/');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function logout()
