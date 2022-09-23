@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase;
+use Illuminate\Support\Collection;
 use Tests\CreatesApplication;
 
 /*
@@ -20,39 +21,31 @@ uses(TestCase::class, CreatesApplication::class, LazilyRefreshDatabase::class)
     ->in('Feature', 'Unit');
 
 /*
-
----------------------------------------------------------------------------
-:: Helpers
----------------------------------------------------------------------------
-
+|--------------------------------------------------------------------------
+| Helpers
+|--------------------------------------------------------------------------
 */
 
 /**
- * A helper to create user
- *
- * @return User
+ * Returns the current test case.
  */
-function user(User $user = null): User
+function this(): TestCase
 {
-    return $user ?? User::factory()->create();
+    return test()->target;
 }
 
 /**
- * A helper to wrap $this and provide IDE autocompletion.
- *
- * @return TestCase
+ * Creates a new user.
  */
-function using($test): TestCase
+function user(array $attributes = [], ?int $count = null): User|Collection
 {
-    return $test;
+    return User::factory($count)->create($attributes);
 }
 
 /**
- * Set the currently logged in user for the application.
- *
- * @return TestCase
+ * Acts as a new user or the given one.
  */
-function actingAs(\Illuminate\Foundation\Auth\User $user, string $driver = null): TestCase
+function actingAsUser(?User $user = null, array $attributes = []): TestCase
 {
-    return test()->actingAs($user, $driver);
+    return test()->actingAs($user ??= user($attributes));
 }
