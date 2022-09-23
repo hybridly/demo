@@ -71,6 +71,12 @@ const login = useForm({
 					</button>
 				</div>
 			</form>
+			<div class="pt-7 text-sm">
+				<span class="text-slate-400">Wanna login quickly?</span>
+				<RouterLink href="/dev/login/1" class="font-bold text-blue-500 transition duration-300 hover:text-blue-400">
+					Click here.
+				</RouterLink>
+			</div>
 		</div>
 	</section>
 </template>

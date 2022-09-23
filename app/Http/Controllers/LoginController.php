@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class LoginController
@@ -38,5 +40,20 @@ class LoginController
         request()->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function dev_login($id = null)
+    {
+        if (auth()->check()) {
+            auth()->logout();
+        }
+
+        $has_any_users = User::count() === 0;
+
+        abort_if($has_any_users, 404, 'There are no users in the database');
+
+        auth()->login(User::find($id) ?? User::first());
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }
