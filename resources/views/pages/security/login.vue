@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { route } from 'monolikit/vue'
+
 useHead({
-	title: 'Login',
+	title: 'Sign in to Blue Bird',
 })
 
 const login = useForm({
@@ -18,19 +20,22 @@ const login = useForm({
 		<div class="grid w-full max-w-md place-items-center">
 			<logo class="h-12 w-12 text-blue-500" />
 			<form
-				class="mt-5 w-full rounded-xl bg-white p-8 shadow shadow-slate-200"
+				class="mt-5 w-full bg-white p-8 shadow shadow-slate-200 md:rounded-xl"
 				@submit.prevent="login.submit()"
 			>
+				<!-- Greeting -->
 				<div class="text-center">
 					<div class="text-xl font-semibold text-blue-800">
 						Welcome back!
 					</div>
-					<div class="pt-1 text-sm text-slate-400">
+					<p class="pt-1 text-sm text-slate-400">
 						Enter your credentials to access the app.
-					</div>
+					</p>
 				</div>
-				<div class="space-y-4 pt-7">
-					<div class="relative">
+
+				<!-- Inputs -->
+				<div class="mt-6">
+					<div class="relative mt-4">
 						<input
 							v-model="login.fields.email"
 							placeholder="Enter your email"
@@ -40,12 +45,7 @@ const login = useForm({
 						/>
 						<i-ph-user-duotone class="absolute top-3 left-3 text-blue-600" />
 					</div>
-					<div v-auto-animate>
-						<div v-if="login.errors.email" class="text-sm text-rose-400">
-							{{ login.errors.email }}
-						</div>
-					</div>
-					<div class="relative">
+					<div class="relative mt-2">
 						<input
 							v-model="login.fields.password"
 							placeholder="Enter your password"
@@ -55,23 +55,35 @@ const login = useForm({
 						/>
 						<i-ph-lock-duotone class="absolute top-3 left-3 text-blue-600" />
 					</div>
+
+					<!-- Validation -->
 					<div v-auto-animate>
-						<div v-if="login.errors.password" class="text-sm text-rose-400">
-							{{ login.errors.password }}
-						</div>
+						<span
+							v-if="login.errors.email"
+							class="block pt-4 text-center text-sm text-rose-400"
+							v-text="login.errors.email"
+						/>
 					</div>
-					<button
+
+					<!-- Login button -->
+					<base-button
+						size="md"
+						variant="primary"
 						:disabled="login.processing"
-						class="w-full rounded-lg bg-blue-500 py-3 text-white
-						transition duration-500 hover:bg-blue-600 disabled:opacity-50"
+						class="mx-auto mt-6 w-32"
 					>
-						Sign In
-					</button>
+						Sign in
+					</base-button>
 				</div>
 			</form>
-			<div class="pt-7 text-sm">
+
+			<!-- Bypass login -->
+			<div class="mt-7 text-sm">
 				<span class="text-slate-400">Wanna login quickly?</span>
-				<RouterLink href="/dev/login/1" class="font-bold text-blue-500 transition duration-300 hover:text-blue-400">
+				<RouterLink
+					:href="route('login.bypass')"
+					class="font-bold text-blue-500 transition duration-300 hover:text-blue-400"
+				>
 					Click here.
 				</RouterLink>
 			</div>
