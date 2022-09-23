@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { route } from 'hybridly/vue'
+import BaseButton from '@/views/components/base/button.vue'
+
 useHead({
 	titleTemplate: (title) => `${title} - Blue Bird`,
 })
@@ -27,6 +30,9 @@ useHead({
 					<base-button class="hover:text-white">
 						<i-fa6-solid-user class="h-6 w-7" />
 					</base-button>
+					<RouterLink :href="route('logout')" method="POST" :as="BaseButton">
+						<i-material-symbols-logout-rounded class="text-2xl" />
+					</RouterLink>
 				</menu>
 			</div>
 		</aside>

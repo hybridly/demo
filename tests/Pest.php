@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase;
+use Illuminate\Support\Collection;
 use Tests\CreatesApplication;
 
 /*
@@ -17,3 +19,33 @@ use Tests\CreatesApplication;
 
 uses(TestCase::class, CreatesApplication::class, LazilyRefreshDatabase::class)
     ->in('Feature', 'Unit');
+
+/*
+|--------------------------------------------------------------------------
+| Helpers
+|--------------------------------------------------------------------------
+*/
+
+/**
+ * Returns the current test case.
+ */
+function this(): TestCase
+{
+    return test()->target;
+}
+
+/**
+ * Creates a new user.
+ */
+function user(array $attributes = [], ?int $count = null): User|Collection
+{
+    return User::factory($count)->create($attributes);
+}
+
+/**
+ * Acts as a new user or the given one.
+ */
+function actingAsUser(?User $user = null, array $attributes = []): TestCase
+{
+    return test()->actingAs($user ??= user($attributes));
+}
