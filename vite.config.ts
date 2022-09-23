@@ -19,9 +19,8 @@ export default defineConfig({
 		}),
 		run({
 			name: 'generate typescript',
-			startup: true,
-			condition: (file) => ['Data.php', 'Enums'].some((kw) => file.includes(kw)),
 			run: ['php', 'artisan', 'typescript:transform'],
+			condition: (file) => ['Data.php', 'Enums'].some((kw) => file.includes(kw)),
 		}),
 		monolikit(),
 		vue(),
