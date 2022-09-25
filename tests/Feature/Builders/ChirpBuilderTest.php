@@ -1,56 +1,82 @@
 <?php
 
+use App\Actions\LikeChirp;
 use App\Models\Chirp;
 use Illuminate\Database\Eloquent\Collection;
+use Pest\Expectation;
 
-it('has a forHomePage function', function () {
-    $chirp = Chirp::factory()->create();
+use function Pest\Laravel\assertDatabaseCount;
 
-    Chirp::factory()
-        ->withParent($chirp)
-        ->create();
+test('the forHomePage method returns main tweets sorted by creation date', function () {
+    Chirp::factory()->withComment()->create(['created_at' => now()->subMinutes(2), 'body' => 'first']);
+    Chirp::factory()->withComment()->create(['created_at' => now()->subMinutes(1), 'body' => 'second']);
 
-    /**
-     * For now we only check whether the forHomePage() exists,
-     * and it only returns main chirps.
-     */
     expect(Chirp::forHomePage()->get())
-        ->toBeInstanceOf(Collection::class)
-        ->toHaveCount(1);
+        ->toHaveCount(2)
+        ->sequence(
+            fn (Expectation $chirp) => $chirp->body->toBe('second'),
+            fn (Expectation $chirp) => $chirp->body->toBe('first'),
+        );
 });
 
-it('has a sortedForComments function', function () {
-    Chirp::factory()->create();
+test('the sortedForComments method returns tweets sorted by creation date', function () {
+    $main = Chirp::factory()->create();
 
-    expect(Chirp::sortedForComments()->get())
-        ->toBeInstanceOf(Collection::class)
-        ->toHaveCount(1);
+    Chirp::factory()->withParent($main)->create(['created_at' => now()->subMinutes(2), 'body' => 'first']);
+    Chirp::factory()->withParent($main)->create(['created_at' => now()->subMinutes(1), 'body' => 'second']);
+
+    expect($main->comments()->sortedForComments()->get())
+        ->toHaveCount(2)
+        ->sequence(
+            fn (Expectation $chirp) => $chirp->body->toBe('second'),
+            fn (Expectation $chirp) => $chirp->body->toBe('first'),
+        );
 });
 
-it('has a withLikesAndComments function', function () {
-    Chirp::factory()->create();
+test('the sortedForComments method displays comments from current user first', function () {
+    actingAsUser($user = user());
 
-    expect(Chirp::withLikesAndComments()->get())
-        ->toBeInstanceOf(Collection::class)
-        ->toHaveCount(1);
+    $main = Chirp::factory()->create();
+
+    Chirp::factory()->fromUser($user)->withParent($main)->create(['created_at' => now()->subMinutes(3), 'body' => 'first, from current user']);
+    Chirp::factory()->withParent($main)->create(['created_at' => now()->subMinutes(2), 'body' => 'second']);
+    Chirp::factory()->withParent($main)->create(['created_at' => now()->subMinutes(1), 'body' => 'third']);
+
+    expect($main->comments()->sortedForComments()->get())
+        ->toHaveCount(3)
+        ->sequence(
+            fn (Expectation $chirp) => $chirp
+                ->body->toBe('first, from current user')
+                ->author_id->toBe($user->id),
+            fn (Expectation $chirp) => $chirp->body->toBe('third'),
+            fn (Expectation $chirp) => $chirp->body->toBe('second'),
+        );
 });
 
-it('has a isMain function', function () {
-    $chirp = Chirp::factory()->create();
+test('the withLikeAndCommentCounts method returns chirps with likes and comments count', function () {
+    Chirp::factory()->withComment()->withLike()->create();
 
-    Chirp::factory()
-        ->withParent($chirp)
-        ->create();
+    expect(Chirp::withLikeAndCommentCounts()->first())
+        ->comments_count->toBe(1)
+        ->likes_count->toBe(1);
+});
+
+test('the isMain method returns only tweets without parents', function () {
+    Chirp::factory()->withComment(4)->create();
 
     expect(Chirp::isMain()->get())
         ->toBeInstanceOf(Collection::class)
         ->toHaveCount(1);
+
+    assertDatabaseCount('chirps', 5);
 });
 
-it('has a isLikedBy function', function () {
-    Chirp::factory()->create();
+test('the isLikedBy methods returns only chirps liked by the given user', function () {
+    $chirp = Chirp::factory()->create();
+    $users = user(count: 2);
 
-    expect(Chirp::isLikedBy(user())->get())
-        ->toBeInstanceOf(Collection::class)
-        ->toHaveCount(0);
+    LikeChirp::run($users->get(1), $chirp);
+
+    expect(Chirp::isLikedBy($users->get(0))->get())->toHaveCount(0);
+    expect(Chirp::isLikedBy($users->get(1))->get())->toHaveCount(1);
 });
