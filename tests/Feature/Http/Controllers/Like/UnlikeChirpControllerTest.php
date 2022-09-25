@@ -1,26 +1,39 @@
 <?php
 
-use App\Http\Controllers\Like\UnlikeChirpController;
 use App\Models\Chirp;
-use App\Models\Like;
 
 use function Pest\Laravel\delete;
 
 use Symfony\Component\HttpFoundation\Response;
 
-it('can delete a like', function () {
+test('users can unlike a chirp they liked beforehand', function () {
     actingAsUser($user = user());
 
     $chirp = Chirp::factory()
-        ->fromUser($user)
-        ->has(Like::factory()->byUser($user)->count(1))
+        ->withLike($user)
         ->create();
 
-    expect(Like::count())->toBe(1);
+    expect($chirp->fresh()->likes)
+        ->count()->toBe(1)
+        ->first()->user_id->toBe($user->id);
 
-    delete(action(UnlikeChirpController::class, $chirp))
-        ->assertStatus(Response::HTTP_NO_CONTENT);
+    delete("/chirps/{$chirp->id}/likes")->assertStatus(Response::HTTP_NO_CONTENT);
 
-    expect(Like::count())->toBe(0);
-    expect($chirp->likes->count())->toBe(0);
+    expect($chirp->likes)->count()->toBe(0);
+});
+
+test('guests cannot unlike a chirp they did not like beforehand', function () {
+    actingAsUser($user = user());
+
+    $chirp = Chirp::factory()
+        ->withLike()
+        ->create();
+
+    expect($chirp->fresh()->likes)
+        ->count()->toBe(1)
+        ->first()->user_id->not->toBe($user->id);
+
+    delete("/chirps/{$chirp->id}/likes")->assertStatus(Response::HTTP_FORBIDDEN);
+
+    expect($chirp->likes)->count()->toBe(1);
 });
