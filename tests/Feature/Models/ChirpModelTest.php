@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Collection;
 
 it('has a author relationship', function () {
     $chirp = Chirp::factory()
-        ->fromUser(user())
+        ->fromUser($user = user())
         ->create();
 
-    expect($chirp->author)->toBeInstanceOf(User::class);
+    expect($chirp->author)
+        ->toBeInstanceOf(User::class);
+
+    expect($chirp->author->id)->toBe($user->id);
 });
 
 it('has a likes relationship', function () {
@@ -30,10 +33,11 @@ it('has a likes relationship', function () {
 it('has a parent relationship', function () {
     $chirp = Chirp::factory()
         ->fromUser(user())
-        ->withParent(Chirp::factory()->create())
+        ->withParent($parent_chirp = Chirp::factory()->create())
         ->create();
 
     expect($chirp->parent)->toBeInstanceOf(Chirp::class);
+    expect($chirp->parent->id)->toBe($parent_chirp->id);
 });
 
 it('has a comments relationship', function () {
