@@ -25,4 +25,11 @@ class LikeFactory extends Factory
             'user_id' => $user->id,
         ]);
     }
+
+    public function forChirp(Chirp $chirp)
+    {
+        return $this->state([
+            'chirp_id' => $chirp->id,
+        ]);
+    }
 }

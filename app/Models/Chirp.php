@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Builders\ChirpBuilder;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,11 +38,8 @@ class Chirp extends Model
     protected static function booted()
     {
         // https://github.com/laravel/framework/issues/32964
-        static::addGlobalScope('withCounts', function (Builder $builder) {
-            $builder->withCount([
-                'likes',
-                'comments',
-            ]);
+        static::addGlobalScope('withCounts', function (ChirpBuilder $builder) {
+            $builder->withLikeAndCommentCounts();
         });
     }
 

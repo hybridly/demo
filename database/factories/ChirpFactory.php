@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Chirp;
+use App\Models\Like;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -31,5 +32,22 @@ class ChirpFactory extends Factory
         return $this->state([
             'parent_id' => $chirp->id,
         ]);
+    }
+
+    public function withComment(int $count = 1)
+    {
+        return $this->afterCreating(function (Chirp $chirp) use ($count) {
+            Chirp::factory(count: $count)->withParent($chirp)->create();
+        });
+    }
+
+    public function withLike(?User $user = null, int $count = 1)
+    {
+        return $this->afterCreating(function (Chirp $chirp) use ($user, $count) {
+            Like::factory(count: $count)
+                ->forChirp($chirp)
+                ->byUser($user ?? User::factory()->create())
+                ->create();
+        });
     }
 }
