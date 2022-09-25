@@ -1,28 +1,39 @@
 <?php
 
-use App\Http\Controllers\Like\LikeChirpController;
 use App\Models\Chirp;
-use App\Models\Like;
 
 use function Pest\Laravel\post;
 
 use Symfony\Component\HttpFoundation\Response;
 
-it('can store a like', function () {
+test('a user can like a chirp they did not like beforehand', function () {
+    actingAsUser($user = user());
+
+    $chirp = Chirp::factory()->create();
+
+    post("/chirps/{$chirp->id}/likes")->assertStatus(Response::HTTP_NO_CONTENT);
+
+    expect($chirp->likes)
+        ->count()->toBe(1)
+        ->first()->user_id->toBe($user->id);
+});
+
+test('a user cannot like a chirp they already liked', function () {
     actingAsUser($user = user());
 
     $chirp = Chirp::factory()
-        ->fromUser($user)
+        ->withLike($user)
         ->create();
 
-    post(action(LikeChirpController::class, $chirp))
-        ->assertStatus(Response::HTTP_NO_CONTENT);
+    post("/chirps/{$chirp->id}/likes")->assertStatus(Response::HTTP_FORBIDDEN);
 
-    expect(Like::count())->toBe(1);
-    expect(Like::first())
-        ->user->id->toBe($user->id)
-        ->chirp->id->toBe($chirp->id);
-    expect($chirp->likes)
-        ->count()->toBe(1)
-        ->contains(Like::first());
+    expect($chirp->likes)->count()->toBe(1);
+});
+
+test('guests cannot like a chirp', function () {
+    $chirp = Chirp::factory()->create();
+
+    post("/chirps/{$chirp->id}/likes")->assertRedirect(route('login'));
+
+    expect($chirp->likes)->count()->toBe(0);
 });
