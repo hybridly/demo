@@ -5,21 +5,20 @@ use App\Models\Like;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
-it('has a author relationship', function () {
+it('has an author relationship', function () {
     $chirp = Chirp::factory()
         ->fromUser($user = user())
         ->create();
 
     expect($chirp->author)
-        ->toBeInstanceOf(User::class);
-
-    expect($chirp->author->id)->toBe($user->id);
+        ->toBeInstanceOf(User::class)
+        ->id->toBe($user->id);
 });
 
 it('has a likes relationship', function () {
     $chirp = Chirp::factory()
         ->fromUser($user = user())
-        ->has(Like::factory()->byUser($user)->count(1))
+        ->withLike($user)
         ->create();
 
     expect($chirp->likes)
@@ -33,31 +32,29 @@ it('has a likes relationship', function () {
 it('has a parent relationship', function () {
     $chirp = Chirp::factory()
         ->fromUser(user())
-        ->withParent($parent_chirp = Chirp::factory()->create())
+        ->withParent($parent = Chirp::factory()->create())
         ->create();
 
     expect($chirp->parent)->toBeInstanceOf(Chirp::class);
-    expect($chirp->parent->id)->toBe($parent_chirp->id);
+    expect($chirp->parent->id)->toBe($parent->id);
 });
 
 it('has a comments relationship', function () {
     $chirp = Chirp::factory()
         ->fromUser(user())
-        ->withParent($parent_chirp = Chirp::factory()->create())
+        ->withParent($parent = Chirp::factory()->create())
         ->create();
 
-    expect($parent_chirp->comments)
+    expect($parent->comments)
         ->toBeInstanceOf(Collection::class)
         ->toHaveCount(1)
         ->contains($chirp)->tobeTrue();
 
-    expect($chirp->parent->id)->toBe($parent_chirp->id);
+    expect($chirp->parent->id)->toBe($parent->id);
 });
 
-it('has a attachments relationship', function () {
-    $chirp = Chirp::factory()
-        ->fromUser(user())
-        ->create();
+it('has an attachments relationship', function () {
+    $chirp = Chirp::factory()->create();
 
     expect($chirp->attachments)
         ->toBeInstanceOf(Collection::class)
@@ -75,14 +72,16 @@ test('comment and like counts are always loaded with a chirp', function () {
         ->likes_count->toBe(1);
 });
 
-test('chirps without parents can be queried', function () {
+test('likes and comments count is loaded when querying only main chirps', function () {
     Chirp::factory()
         ->state(['body' => 'uwu'])
+        ->has(Like::factory()->count(1))
         ->has(Chirp::factory()->count(2), 'comments')
         ->create();
 
     expect(Chirp::query()->isMain()->get())
         ->toHaveCount(1)
         ->first()->body->toBe('uwu')
+        ->first()->likes_count->toBe(1)
         ->first()->comments_count->toBe(2);
 });
