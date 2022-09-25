@@ -49,24 +49,3 @@ function actingAsUser(?User $user = null, array $attributes = []): TestCase
 {
     return test()->actingAs($user ??= user($attributes));
 }
-
-/**
- * Checks if status code is either 200, 301 or 302.
- */
-expect()->extend('isSuccessfulOrRedirect', function () {
-    return expect($this->value->status())->toBeIn([200, 301, 302]);
-});
-
-/**
- * Checks if forbidden response is returned.
- */
-expect()->extend('isForbidden', function () {
-    return expect($this->value->isForbidden())->toBeTrue();
-});
-
-/**
- * Checks if user is redirected to login page.
- */
-expect()->extend('isRedirectedToLogin', function () {
-    return $this->assertRedirect(route('login'));
-});
