@@ -2,7 +2,6 @@
 
 use App\Models\Chirp;
 use App\Models\Like;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 it('has a chirps relationship', function () {
@@ -28,7 +27,7 @@ it('has a likes relationship', function () {
         ->contains(Like::first())->tobeTrue();
 });
 
-it('has a hasLiked function to check if user has liked the given chirp', function () {
+test('the hasLiked method returns whether the user has liked the given chirp', function () {
     $chirp = Chirp::factory()
         ->fromUser($user = user())
         ->has(Like::factory()->byUser($user)->count(1))
@@ -41,21 +40,12 @@ it('has a hasLiked function to check if user has liked the given chirp', functio
         ->toBeFalse();
 });
 
-it('has a displayName attribute', function () {
-    $user = User::factory()->create([
-        'display_name' => 'John',
-    ]);
-    expect($user->refresh())
-        ->display_name->toBe('John');
-
-    $user = User::factory()->create([
-        'display_name' => null,
-    ]);
-    expect($user->refresh())
-        ->display_name->toBe($user->username);
+test('the `display_name` attributes falls back to the username if not defined', function () {
+    expect(user(['display_name' => 'John']))->display_name->toBe('John');
+    expect($user = user(['display_name' => null]))->display_name->toBe($user->username);
 });
 
-it('has a profilePictureUrl attribute', function () {
-    expect(user())
-        ->profile_picture_path->toBeNull();
+test('the `profile_picture_url` is generated when `profile_picture_path` is defined', function () {
+    expect(user(['profile_picture_path' => null]))->profile_picture_url->toBeNull();
+    expect(user(['profile_picture_path' => 'yay.png']))->profile_picture_url->not->toBeNull();
 });
