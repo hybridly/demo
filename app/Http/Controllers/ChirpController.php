@@ -16,6 +16,8 @@ class ChirpController
 
     public function index()
     {
+        $this->authorize('viewAny', Chirp::class);
+
         $chirps = Chirp::query()
             ->forHomePage()
             ->paginate();
@@ -25,8 +27,10 @@ class ChirpController
         ]);
     }
 
-    public function show(Chirp $chirp, Request $request)
+    public function show(Chirp $chirp)
     {
+        $this->authorize('view', $chirp);
+
         $comments = $chirp->comments()->withLikeAndCommentCounts()->paginate();
 
         return monolikit('chirps.show', [
