@@ -20,10 +20,10 @@ class ChirpBuilder extends Builder
     public function sortedForComments(): static
     {
         return $this
-            ->orderByDesc('created_at')
             ->orderByRaw('CASE WHEN author_id = ? THEN 0 ELSE 1 END', [
                 auth()->user()?->id ?? 'NULL',
-            ]);
+            ])
+            ->orderByDesc('created_at');
     }
 
     public function withLikesAndComments(): static
