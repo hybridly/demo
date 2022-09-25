@@ -26,7 +26,7 @@ class ChirpBuilder extends Builder
             ->orderByDesc('created_at');
     }
 
-    public function withLikesAndComments(): static
+    public function withLikeAndCommentCounts(): static
     {
         return $this->withCount('likes')->withCount('comments');
     }

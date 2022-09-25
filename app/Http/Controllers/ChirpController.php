@@ -27,7 +27,7 @@ class ChirpController
 
     public function show(Chirp $chirp, Request $request)
     {
-        $comments = $chirp->comments()->withLikesAndComments()->paginate();
+        $comments = $chirp->comments()->withLikeAndCommentCounts()->paginate();
 
         return monolikit('chirps.show', [
             'chirp' => ChirpData::from($chirp),
