@@ -110,7 +110,7 @@ function deleteChirp() {
 				class="mb-6 grid grid-cols-3 gap-4"
 			>
 				<template v-for="(attachment, i) in chirp.attachments" :key="i">
-					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50 transition hover:border-blue-100 hover:shadow-md hover:shadow-blue-100">
+					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50 transition hover:shadow-lg hover:shadow-slate-200">
 						<!-- Preview -->
 						<a :href="attachment.url" target="_blank" @click.capture.stop>
 							<img
