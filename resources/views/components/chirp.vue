@@ -88,14 +88,14 @@ function deleteChirp() {
 			<div class="mb-4 flex items-center justify-between">
 				<!-- Username -->
 				<span class="inline-flex items-center">
-					<span class="font-medium leading-none text-gray-900" v-text="chirp.author?.display_name" />
+					<span class="font-medium leading-none text-slate-800" v-text="chirp.author?.display_name" />
 					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 text-blue-400" />
-					<span class="mb-0.5 ml-5 text-sm font-medium tracking-wide text-gray-500" v-text="'@' + chirp.author?.username" />
+					<span class="mb-0.5 ml-5 text-xs font-medium tracking-wide text-slate-500" v-text="'@' + chirp.author?.username" />
 				</span>
 
 				<!-- Date posted -->
 				<span
-					class="mb-0.5 text-xs font-medium tracking-wide text-gray-500"
+					class="mb-0.5 text-xs font-medium tracking-wide text-slate-500"
 					:title="chirp.created_at"
 					v-text="dynamicCreatedAt"
 				/>
