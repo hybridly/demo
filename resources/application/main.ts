@@ -4,6 +4,7 @@ import { createHead } from '@vueuse/head'
 import { autoAnimatePlugin as autoAnimate } from '@formkit/auto-animate/vue'
 import 'virtual:monolikit/router'
 import './tailwind.css'
+import './fonts'
 
 initializeMonolikit({
 	cleanup: !import.meta.env.DEV,
