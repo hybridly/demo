@@ -18,7 +18,7 @@ const login = useForm({
 <template>
 	<section class="grid h-full place-items-center bg-gray-50">
 		<div class="grid w-full max-w-md place-items-center">
-			<logo class="h-12 w-12 text-blue-500" />
+			<i-bluebird-logo class="h-12 w-12 text-blue-500" />
 			<form
 				class="mt-5 w-full bg-white p-8 shadow shadow-slate-200 md:rounded-xl"
 				@submit.prevent="login.submit()"

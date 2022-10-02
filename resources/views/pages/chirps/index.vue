@@ -50,7 +50,7 @@ function onDestroy(chirp: App.Data.ChirpData) {
 
 		<h1 class="sticky top-0 left-0 z-10 mt-7 flex items-center gap-5 bg-gray-50 py-5 pl-3 backdrop-blur-xl">
 			<div class="pl-2 text-blue-500 transition hover:text-blue-600 sm:hidden">
-				<logo class="h-9 w-9" />
+				<i-bluebird-logo class="h-9 w-9" />
 			</div>
 			<div class="text-xl font-semibold text-gray-700 sm:text-2xl">
 				Recent chirps

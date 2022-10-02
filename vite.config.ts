@@ -6,6 +6,7 @@ import hybridly from 'hybridly/vite'
 import hybridlyImports from 'hybridly/auto-imports'
 import hybridlyResolver from 'hybridly/resolver'
 import iconsResolver from 'unplugin-icons/resolver'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import vue from '@vitejs/plugin-vue'
 import autoimport from 'unplugin-auto-import/vite'
 import components from 'unplugin-vue-components/vite'
@@ -26,6 +27,9 @@ export default defineConfig({
 		vue(),
 		icons({
 			autoInstall: true,
+			customCollections: {
+				bluebird: FileSystemIconLoader('./resources/icons'),
+			},
 		}),
 		autoimport({
 			dts: 'resources/types/auto-imports.d.ts',
@@ -44,7 +48,9 @@ export default defineConfig({
 				hybridlyResolver({
 					linkName: 'RouterLink',
 				}),
-				iconsResolver(),
+				iconsResolver({
+					customCollections: ['bluebird'],
+				}),
 			],
 			directoryAsNamespace: true,
 			dts: 'resources/types/components.d.ts',
