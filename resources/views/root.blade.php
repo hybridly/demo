@@ -12,7 +12,7 @@
 			<link rel="manifest" href="/site.webmanifest">
 			@vite
 	</head>
-	<body class="h-full bg-slate-50 antialiased">
+	<body class="h-full bg-gray-50 antialiased">
 			@monolikit(class: 'h-full')
 	</body>
 </html>
