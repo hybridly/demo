@@ -31,7 +31,7 @@ useHead({
 						<i-fa6-solid-user class="h-6 w-7" />
 					</base-button>
 					<RouterLink :href="route('logout')" method="POST" :as="BaseButton">
-						<i-material-symbols-logout-rounded class="text-2xl" />
+						<i-material-symbols-logout-rounded class="scale-[-1] text-2xl" />
 					</RouterLink>
 				</menu>
 			</div>

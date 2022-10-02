@@ -45,14 +45,14 @@ function onDestroy(chirp: App.Data.ChirpData) {
 </script>
 
 <template layout>
-	<section>
+	<section class="relative">
 		<create-chirp @success="updateChirps" />
 
-		<h1 class="pt-16 pb-8 pl-1 text-2xl font-semibold text-gray-700">
+		<h1 class="sticky top-0 left-0 z-10 mt-7 bg-slate-50/50 py-5 pl-3 text-2xl font-semibold text-gray-700 backdrop-blur-xl">
 			Recent chirps
 		</h1>
 
-		<div ref="list" class="flex flex-1 flex-col gap-8">
+		<div ref="list" class="flex flex-1 flex-col gap-8 pt-3">
 			<chirp
 				v-for="chirp in chirps"
 				:key="chirp.id"
