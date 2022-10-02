@@ -16,7 +16,7 @@ const login = useForm({
 </script>
 
 <template>
-	<section class="grid h-full place-items-center bg-[#f2f5ff]">
+	<section class="grid h-full place-items-center bg-gray-50">
 		<div class="grid w-full max-w-md place-items-center">
 			<logo class="h-12 w-12 text-blue-500" />
 			<form
@@ -45,7 +45,7 @@ const login = useForm({
 						/>
 						<i-ph-user-duotone class="absolute top-3 left-3 text-blue-600" />
 					</div>
-					<div class="relative mt-2">
+					<div class="relative mt-4">
 						<input
 							v-model="login.fields.password"
 							placeholder="Enter your password"
