@@ -35,7 +35,7 @@ useHead({
 							<div class="grid h-12 w-12 place-items-center">
 								<i-material-symbols-logout-rounded class="mr-1.5 scale-[-1] text-2xl" />
 							</div>
-							<div class="hidden text-xs uppercase tracking-wide sm:block">
+							<div class="hidden text-xs font-semibold uppercase tracking-wide sm:block">
 								Logout
 							</div>
 						</div>
