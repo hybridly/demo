@@ -48,8 +48,13 @@ function onDestroy(chirp: App.Data.ChirpData) {
 	<section class="relative">
 		<create-chirp @success="updateChirps" />
 
-		<h1 class="sticky top-0 left-0 z-10 mt-7 bg-slate-50/50 py-5 pl-3 text-2xl font-semibold text-gray-700 backdrop-blur-xl">
-			Recent chirps
+		<h1 class="sticky top-0 left-0 z-10 mt-7 flex items-center gap-5 bg-slate-50/50 py-5 pl-3 backdrop-blur-xl">
+			<div class="pl-2 text-blue-500 transition hover:text-blue-600 sm:hidden">
+				<logo class="h-9 w-9" />
+			</div>
+			<div class="text-xl font-semibold text-gray-700 sm:text-2xl">
+				Recent chirps
+			</div>
 		</h1>
 
 		<div ref="list" class="flex flex-1 flex-col gap-8 pt-3">

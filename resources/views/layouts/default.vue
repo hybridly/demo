@@ -9,12 +9,12 @@ useHead({
 
 <template>
 	<main class="relative flex items-start justify-center gap-10 p-5">
-		<aside class="sticky top-5 left-0 flex flex-col items-center">
-			<div class="grid place-items-center py-5 text-blue-50">
-				<RouterLink href="/" class="text-blue-500 transition hover:text-blue-600">
+		<aside class="fixed bottom-0 left-0 z-20 w-full items-center sm:sticky sm:top-5 sm:bottom-auto sm:flex sm:w-auto sm:flex-col">
+			<div class="grid place-items-center text-blue-50 sm:py-5">
+				<RouterLink href="/" class="hidden text-blue-500 transition hover:text-blue-600 sm:block">
 					<logo class="h-12 w-12" />
 				</RouterLink>
-				<menu class="mt-16 grid w-full gap-8 rounded-3xl bg-blue-500 p-8">
+				<menu class="flex w-full justify-between gap-5 overflow-hidden bg-blue-500 p-5 sm:mt-16 sm:grid sm:gap-8 sm:rounded-3xl sm:p-8">
 					<base-button class="h-12 w-12 rounded-xl bg-white/25 text-white">
 						<i-fluent-home-16-filled class="h-6 w-7" />
 					</base-button>
@@ -31,9 +31,11 @@ useHead({
 						<i-fa6-solid-user class="text-lg" />
 					</base-button>
 					<RouterLink :href="route('logout')" method="POST" :as="BaseButton">
-						<div class="grid place-items-center space-y-2 pt-5 transition duration-300 hover:text-white">
-							<i-material-symbols-logout-rounded class="scale-[-1] text-2xl" />
-							<div class="text-xs uppercase tracking-wide">
+						<div class="grid place-items-center transition duration-300 hover:text-white sm:pt-5">
+							<div class="grid h-12 w-12 place-items-center">
+								<i-material-symbols-logout-rounded class="mr-1.5 scale-[-1] text-2xl" />
+							</div>
+							<div class="hidden text-xs uppercase tracking-wide sm:block">
 								Logout
 							</div>
 						</div>

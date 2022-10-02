@@ -85,12 +85,12 @@ function deleteChirp() {
 
 		<div class="w-full">
 			<!-- Header -->
-			<div class="mb-4 flex items-center justify-between">
+			<div class="mb-4 flex flex-wrap items-center justify-between gap-5 border-b border-slate-100 pb-2 md:border-none md:pb-0">
 				<!-- Username -->
-				<span class="inline-flex items-center">
+				<span class="inline-flex items-center gap-2">
 					<span class="font-medium leading-none text-slate-800" v-text="chirp.author?.display_name" />
-					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 text-blue-400" />
-					<span class="mb-0.5 ml-5 text-xs font-medium tracking-wide text-slate-500" v-text="'@' + chirp.author?.username" />
+					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 shrink-0 text-blue-400" />
+					<span class="mb-0.5 ml-3 text-xs font-medium tracking-wide text-slate-500" v-text="'@' + chirp.author?.username" />
 				</span>
 
 				<!-- Date posted -->
