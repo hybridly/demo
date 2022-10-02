@@ -38,8 +38,19 @@ useHead({
 		</aside>
 
 		<!-- Main content -->
-		<section class="max-w-2xl">
-			<slot />
+		<section class="max-w-2xl flex-1">
+			<transition
+				mode="out-in"
+				enter-active-class="duration-200 transition"
+				enter-from-class="-translate-x-1 opacity-0"
+				enter-to-class="opacity-100"
+
+				leave-active-class="duration-200 transition"
+				leave-from-class="opacity-100"
+				leave-to-class="translate-x-0 opacity-0"
+			>
+				<slot />
+			</transition>
 		</section>
 	</main>
 </template>

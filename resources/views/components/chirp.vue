@@ -74,7 +74,7 @@ function deleteChirp() {
 		class="flex gap-6 border border-gray-100 p-8 transition"
 		:class="{
 			'cursor-pointer': canShowChirp,
-			'hover:shadow-zinc-300': canShowChirp,
+			'hover:shadow-slate-300': canShowChirp,
 			'shadow-blue-50': !canShowChirp
 		}"
 		@click="(e) => showChirp('normal', e)"
