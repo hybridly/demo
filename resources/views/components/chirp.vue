@@ -74,7 +74,7 @@ function deleteChirp() {
 		class="flex gap-6 border border-gray-100 p-8 transition"
 		:class="{
 			'cursor-pointer': canShowChirp,
-			'hover:shadow-zinc-300': canShowChirp,
+			'hover:shadow-slate-300': canShowChirp,
 			'shadow-blue-50': !canShowChirp
 		}"
 		@click="(e) => showChirp('normal', e)"
@@ -85,17 +85,17 @@ function deleteChirp() {
 
 		<div class="w-full">
 			<!-- Header -->
-			<div class="mb-4 flex items-center justify-between">
+			<div class="mb-4 flex flex-wrap items-center justify-between gap-5 border-b border-slate-100 pb-2 md:border-none md:pb-0">
 				<!-- Username -->
-				<span class="inline-flex items-center">
-					<span class="font-medium leading-none text-gray-900" v-text="chirp.author?.display_name" />
-					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 text-blue-400" />
-					<span class="mb-0.5 ml-5 text-sm font-medium tracking-wide text-gray-500" v-text="'@' + chirp.author?.username" />
+				<span class="inline-flex items-center gap-2">
+					<span class="font-medium leading-none text-slate-800" v-text="chirp.author?.display_name" />
+					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 shrink-0 text-blue-400" />
+					<span class="mb-0.5 ml-3 text-xs font-medium tracking-wide text-slate-500" v-text="'@' + chirp.author?.username" />
 				</span>
 
 				<!-- Date posted -->
 				<span
-					class="mb-0.5 text-xs font-medium tracking-wide text-gray-500"
+					class="mb-0.5 text-xs font-medium tracking-wide text-slate-500"
 					:title="chirp.created_at"
 					v-text="dynamicCreatedAt"
 				/>
@@ -110,7 +110,7 @@ function deleteChirp() {
 				class="mb-6 grid grid-cols-3 gap-4"
 			>
 				<template v-for="(attachment, i) in chirp.attachments" :key="i">
-					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50 transition hover:border-blue-100 hover:shadow-md hover:shadow-blue-100">
+					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50 transition hover:shadow-lg hover:shadow-slate-200">
 						<!-- Preview -->
 						<a :href="attachment.url" target="_blank" @click.capture.stop>
 							<img
