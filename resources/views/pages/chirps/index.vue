@@ -48,7 +48,7 @@ function onDestroy(chirp: App.Data.ChirpData) {
 	<section>
 		<create-chirp @success="updateChirps" />
 
-		<h1 class="mt-16 mb-8 ml-8 text-lg font-semibold text-gray-700">
+		<h1 class="pt-16 pb-8 pl-1 text-2xl font-semibold text-gray-700">
 			Recent chirps
 		</h1>
 

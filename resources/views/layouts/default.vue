@@ -8,9 +8,9 @@ useHead({
 </script>
 
 <template>
-	<main class="container mx-auto grid h-full w-full grid-cols-6 gap-16 p-12">
-		<aside class="flex flex-col items-center">
-			<div class="fixed flex flex-col items-center py-10 text-blue-50">
+	<main class="relative flex items-start justify-center gap-10 p-5">
+		<aside class="sticky top-5 left-0 flex flex-col items-center">
+			<div class="flex flex-col items-center py-5 text-blue-50">
 				<RouterLink href="/" class="text-blue-500 transition hover:text-blue-600">
 					<logo class="h-12 w-12" />
 				</RouterLink>
@@ -38,7 +38,7 @@ useHead({
 		</aside>
 
 		<!-- Main content -->
-		<section class="col-span-5 flex max-w-2xl grow flex-col">
+		<section class="max-w-2xl">
 			<slot />
 		</section>
 	</main>

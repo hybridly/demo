@@ -7,7 +7,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-	<component :is="as" class="overflow-hidden rounded-2xl bg-white shadow">
+	<component :is="as" class="overflow-hidden rounded-2xl bg-white shadow shadow-slate-200">
 		<slot />
 	</component>
 </template>
