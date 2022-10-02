@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full flex flex-col">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full flex flex-col min-h-[110vh]">
 	<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
