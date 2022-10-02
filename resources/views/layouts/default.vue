@@ -5,8 +5,6 @@ import BaseButton from '@/views/components/base/button.vue'
 useHead({
 	titleTemplate: (title) => `${title} - Blue Bird`,
 })
-
-console.log(useContext().value?.url)
 </script>
 
 <template>
