@@ -42,6 +42,7 @@ useLayout([defaultLayout, profileLayout])
 			v-for="chirp in chirps"
 			:key="chirp.id"
 			:chirp="chirp"
+			show-parent-on-click
 			as="list-item"
 		/>
 	</div>

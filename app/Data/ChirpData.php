@@ -13,6 +13,7 @@ final class ChirpData extends DataResource
 
     public function __construct(
         public readonly string $id,
+        public readonly ?string $parent_id,
         public readonly ?string $body,
         #[DataCollectionOf(AttachmentData::class)]
         public readonly DataCollection $attachments,

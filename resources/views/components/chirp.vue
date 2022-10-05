@@ -7,6 +7,7 @@ const $props = defineProps<{
 	chirp: App.Data.ChirpData
 	as: 'list-item' | 'comment'
 	previous?: string
+	showParentOnClick?: boolean
 }>()
 
 const $emit = defineEmits<{
@@ -49,9 +50,17 @@ function showChirp(mode: 'normal' | 'new-tab', e: MouseEvent) {
 	}
 
 	if (mode === 'normal') {
-		router.get(route('chirp.show', { chirp: $props.chirp }))
+		if ($props.showParentOnClick && $props.chirp.parent_id) {
+			router.get(route('chirp.show', { chirp: $props.chirp.parent_id }))
+		} else {
+			router.get(route('chirp.show', { chirp: $props.chirp }))
+		}
 	} else {
-		window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
+		if ($props.showParentOnClick && $props.chirp.parent_id) {
+			window.open(route('chirp.show', { chirp: $props.chirp.parent_id }), '_blank')
+		} else {
+			window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
+		}
 	}
 }
 
