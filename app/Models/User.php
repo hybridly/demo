@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Support\Disk;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -32,6 +31,10 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $appends = [
+        'profile_picture_url',
     ];
 
     /*
@@ -89,7 +92,7 @@ class User extends Authenticatable
 
         return $chirp
             ->likes()
-            ->whereHas('user', fn (Builder $q) => $q->where('id', $this->id))
+            ->whereRelation('user', 'id', $this->id)
             ->exists();
     }
 }

@@ -4,6 +4,8 @@ import BaseButton from '@/views/components/base/button.vue'
 useHead({
 	titleTemplate: (title) => `${title} - Blue Bird`,
 })
+
+const userID = useProperty('security.user').value?.id
 </script>
 
 <template>
@@ -28,9 +30,13 @@ useHead({
 					<base-button class="h-12 w-12 rounded-xl hover:text-white">
 						<i-material-symbols-bookmark class="h-6 w-7" />
 					</base-button>
-					<base-button class="h-12 w-12 rounded-xl hover:text-white">
+					<router-link
+						:href="route('users.show', { user: userID })"
+						:as="BaseButton"
+						class="h-12 w-12 rounded-xl hover:text-white"
+					>
 						<i-fa6-solid-user class="text-lg" />
-					</base-button>
+					</router-link>
 					<router-link :href="route('logout')" method="POST" :as="BaseButton">
 						<div class="grid place-items-center transition duration-300 hover:text-white sm:pt-5">
 							<div class="grid h-12 w-12 place-items-center">
