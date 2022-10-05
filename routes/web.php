@@ -21,8 +21,10 @@ Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chi
 
 /*
 |--------------------------------------------------------------------------
-| User profiles
+| User profile
 |--------------------------------------------------------------------------
 */
 
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/{user}/comments', [UserController::class, 'showComments'])->name('users.show-comments');
+Route::get('/users/{user}/likes', [UserController::class, 'showLikes'])->name('users.show-likes');
