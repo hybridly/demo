@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { route } from 'monolikit/vue'
 import axios from 'axios'
 import { can } from 'monolikit'
 
@@ -54,6 +55,10 @@ function showChirp(mode: 'normal' | 'new-tab', e: MouseEvent) {
 	}
 }
 
+const showAuthorProfile = () => {
+	router.get(route('users.show', { user: $props.chirp.author }))
+}
+
 function deleteChirp() {
 	router.delete(route('chirp.destroy', { chirp: $props.chirp }), {
 		data: {
@@ -71,7 +76,7 @@ function deleteChirp() {
 <template>
 	<base-card
 		as="article"
-		class="flex gap-6 border border-gray-100 p-8 transition"
+		class="flex items-start gap-6 border border-gray-100 p-8 transition"
 		:class="{
 			'cursor-pointer': canShowChirp,
 			'hover:shadow-slate-300': canShowChirp,
@@ -81,7 +86,7 @@ function deleteChirp() {
 		@click.middle="(e) => showChirp('new-tab', e)"
 	>
 		<!-- Profile picture -->
-		<avatar :user="chirp.author" />
+		<avatar :user="chirp.author" @click.stop="showAuthorProfile()" />
 
 		<div class="w-full">
 			<!-- Header -->

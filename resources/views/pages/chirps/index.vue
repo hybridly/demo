@@ -48,7 +48,7 @@ function onDestroy(chirp: App.Data.ChirpData) {
 	<section class="relative">
 		<create-chirp @success="updateChirps" />
 
-		<h1 class="sticky top-0 left-0 z-10 mt-7 flex items-center gap-5 bg-gray-50 py-5 pl-3 backdrop-blur-xl">
+		<h1 class="sticky top-0 left-0 z-10 mt-7 flex items-center gap-5 bg-gray-50/50 py-5 pl-3 backdrop-blur-xl">
 			<div class="pl-2 text-blue-500 transition hover:text-blue-600 sm:hidden">
 				<i-bluebird-logo class="h-9 w-9" />
 			</div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\Like\LikeChirpController;
 use App\Http\Controllers\Like\UnlikeChirpController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,11 @@ Route::get('/chirps/{chirp}', [ChirpController::class, 'show'])->name('chirp.sho
 Route::post('/chirps/{chirp}/likes', LikeChirpController::class)->name('chirp.like');
 Route::delete('/chirps/{chirp}/likes', UnlikeChirpController::class)->name('chirp.unlike');
 Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chirp.destroy');
+
+/*
+|--------------------------------------------------------------------------
+| User profiles
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
