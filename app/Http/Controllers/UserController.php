@@ -14,7 +14,7 @@ class UserController
     public function show(User $user)
     {
         $user->loadCount(['chirps', 'likes']);
-        $chirps = $user->chirps()->paginate();
+        $chirps = $user->chirps()->forHomePage()->paginate();
 
         return hybridly('users.show', [
             'user' => UserProfileData::from($user),
