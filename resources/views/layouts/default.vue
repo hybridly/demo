@@ -10,7 +10,7 @@ const userID = useProperty('security.user').value?.id
 </script>
 
 <template>
-	<main class="relative flex items-start justify-center gap-10 p-5 lg:mt-24 lg:gap-x-20">
+	<main class="relative flex items-start justify-center gap-10 p-5 lg:gap-x-20">
 		<aside class="fixed bottom-0 left-0 z-20 w-full items-center sm:sticky sm:top-5 sm:bottom-auto sm:flex sm:w-auto sm:flex-col">
 			<div class="grid place-items-center text-blue-50 sm:py-5">
 				<RouterLink href="/" class="hidden text-blue-500 transition hover:text-blue-600 sm:block">
