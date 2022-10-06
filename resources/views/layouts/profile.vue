@@ -73,7 +73,7 @@ const formatLargeNumbers = (n: number): string => {
 				</div>
 			</div>
 		</div>
-		<div class="flex gap-14 px-5 pt-10 text-gray-700">
+		<div class="flex gap-14 border-b px-5 pt-10 text-gray-700">
 			<RouterLink
 				v-auto-animate
 				:href="route('users.show', { user: user.id })"
