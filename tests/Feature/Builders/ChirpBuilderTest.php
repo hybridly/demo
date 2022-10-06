@@ -71,6 +71,16 @@ test('the isMain method returns only tweets without parents', function () {
     assertDatabaseCount('chirps', 5);
 });
 
+test('the isComment method returns only tweets with parents', function () {
+    Chirp::factory()->withComment(4)->create();
+
+    expect(Chirp::isComment()->get())
+        ->toBeInstanceOf(Collection::class)
+        ->toHaveCount(4);
+
+    assertDatabaseCount('chirps', 5);
+});
+
 test('the isLikedBy methods returns only chirps liked by the given user', function () {
     $chirp = Chirp::factory()->create();
     $users = user(count: 2);
