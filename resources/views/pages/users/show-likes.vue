@@ -45,5 +45,8 @@ useLayout([defaultLayout, profileLayout])
 			show-parent-on-click
 			as="list-item"
 		/>
+		<div v-if="chirps.length === 0" class="text-center text-sm text-gray-400">
+			Nothing to see here!
+		</div>
 	</div>
 </template>
