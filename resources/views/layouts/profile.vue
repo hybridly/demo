@@ -9,6 +9,21 @@ const props = defineProps<{
 useHead({
 	title: props.user.display_name,
 })
+
+const formatLargeNumbers = (n: number): string => {
+	const value = n.toFixed().toString()
+	if (value.length >= 4 && value.length <= 6) {
+		return `${value.slice(0, -3)}K`
+	}
+	if (value.length >= 7 && value.length <= 9) {
+		return `${value.slice(0, -6)}M`
+	}
+	if (value.length >= 10 && value.length <= 12) {
+		return `${value.slice(0, -9)}B`
+	}
+
+	return value
+}
 </script>
 
 <template>
@@ -39,7 +54,7 @@ useHead({
 			<div class="flex flex-wrap gap-10 pt-5">
 				<div class="flex items-center gap-2">
 					<div class="text-xl font-bold">
-						{{ user.chirps_count }}
+						{{ formatLargeNumbers(user.chirps_count) }}
 					</div>
 					<div class="text-sm text-gray-400">
 						Chirps
@@ -47,7 +62,7 @@ useHead({
 				</div>
 				<div class="flex items-center gap-2">
 					<div class="text-xl font-bold">
-						{{ user.likes_count }}
+						{{ formatLargeNumbers(user.likes_count) }}
 					</div>
 					<div class="text-sm text-gray-400">
 						Likes
