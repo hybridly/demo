@@ -103,7 +103,7 @@ function deleteChirp() {
 				<!-- Username -->
 				<span class="inline-flex items-center gap-2">
 					<span class="font-medium leading-none text-slate-800" v-text="chirp.author?.display_name" />
-					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 shrink-0 text-blue-400" />
+					<verified-badge :verified="chirp.author?.identity_verified_at" />
 					<span class="mb-0.5 ml-3 text-xs font-medium tracking-wide text-slate-500" v-text="'@' + chirp.author?.username" />
 				</span>
 

@@ -36,14 +36,17 @@ const formatLargeNumbers = (n: number): string => {
 		<div class="px-4 pt-12">
 			<div class="flex items-start justify-between gap-5">
 				<div class="">
-					<div class="text-xl font-semibold text-blue-900">
-						{{ user.display_name }}
+					<div class="flex items-center gap-2">
+						<div class="text-xl font-semibold text-blue-900">
+							{{ user.display_name }}
+						</div>
+						<verified-badge :verified="user.identity_verified_at" size="md" />
 					</div>
 					<div class="text-sm text-slate-500">
 						@{{ user.username }}
 					</div>
 				</div>
-				<div class="relative -left-1 flex items-center gap-1 pt-5 text-gray-500">
+				<div class="flex items-center gap-1 text-gray-500">
 					<i-fluent-calendar-ltr-20-regular class="h-6 w-6" />
 					<div class="text-sm">
 						Joined
