@@ -30,7 +30,7 @@ const formatLargeNumbers = (n: number): string => {
 	<section class="w-full max-w-2xl">
 		<div class="relative grid h-40 w-full rounded-t-md bg-gradient-to-t from-gray-50 to-slate-200">
 			<div class="relative left-4 top-10 z-[1] self-end">
-				<avatar :user="user" size="2xl" />
+				<avatar :user="user" size="2xl" darker-background />
 			</div>
 		</div>
 		<div class="px-7 pt-14">
