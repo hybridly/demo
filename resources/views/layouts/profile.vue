@@ -27,13 +27,13 @@ const formatLargeNumbers = (n: number): string => {
 </script>
 
 <template>
-	<section class="w-full max-w-2xl rounded-lg">
-		<div class="grid h-40 w-full rounded-t-lg bg-slate-200">
-			<div class="relative left-3 top-10 self-end">
+	<section class="w-full max-w-2xl">
+		<div class="relative grid h-40 w-full rounded-t-md bg-gradient-to-t from-gray-50 to-slate-200">
+			<div class="relative left-4 top-10 z-[1] self-end">
 				<avatar :user="user" size="2xl" />
 			</div>
 		</div>
-		<div class="px-4 pt-12">
+		<div class="px-7 pt-14">
 			<div class="flex items-start justify-between gap-5">
 				<div class="">
 					<div class="flex items-center gap-2">
@@ -76,7 +76,7 @@ const formatLargeNumbers = (n: number): string => {
 				</div>
 			</div>
 		</div>
-		<div class="flex gap-14 border-b px-5 pt-10 text-gray-700">
+		<div class="flex gap-14 border-b px-7 pt-10 text-gray-700">
 			<RouterLink
 				v-auto-animate
 				:href="route('users.show', { user: user.id })"
