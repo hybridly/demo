@@ -51,7 +51,10 @@ const formatLargeNumbers = (n: number): string => {
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-wrap gap-10 pt-5">
+			<div class="pt-5 text-gray-800">
+				{{ user.bio }}
+			</div>
+			<div class="flex flex-wrap gap-10 pt-2">
 				<div class="flex items-center gap-2">
 					<div class="text-xl font-bold">
 						{{ formatLargeNumbers(user.chirps_count) }}
