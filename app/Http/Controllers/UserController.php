@@ -22,6 +22,7 @@ class UserController
 
         return hybridly('users.show', [
             'activeTab' => 'chirps',
+            'canEditProfile' => $user->id === auth()->user()->id,
             'user' => UserProfileData::from($user),
             'chirps' => ChirpData::collection($chirps),
         ]);
@@ -37,6 +38,7 @@ class UserController
 
         return hybridly('users.show-comments', [
             'activeTab' => 'comments',
+            'canEditProfile' => $user->id === auth()->user()->id,
             'user' => UserProfileData::from($user),
             'chirps' => ChirpData::collection($chirps),
         ]);
@@ -52,6 +54,7 @@ class UserController
 
         return hybridly('users.show-likes', [
             'activeTab' => 'likes',
+            'canEditProfile' => $user->id === auth()->user()->id,
             'user' => UserProfileData::from($user),
             'chirps' => ChirpData::collection($chirps),
         ]);

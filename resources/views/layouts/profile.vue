@@ -4,6 +4,7 @@ import { route } from 'hybridly/vue'
 const props = defineProps<{
 	user: App.Data.UserProfileData
 	activeTab: 'chirps' | 'comments' | 'likes'
+	canEditProfile: boolean
 }>()
 
 useHead({
@@ -28,9 +29,14 @@ const formatLargeNumbers = (n: number): string => {
 
 <template>
 	<section class="w-full max-w-2xl">
-		<div class="relative grid h-40 w-full rounded-t-md bg-gradient-to-t from-gray-50 to-slate-200">
+		<div class="relative grid h-40 w-full grid-cols-2 rounded-t-md bg-gradient-to-t from-gray-50 to-slate-200">
 			<div class="relative left-4 top-10 z-[1] self-end">
 				<avatar :user="user" size="2xl" darker-background />
+			</div>
+			<div v-if="canEditProfile" class="relative self-end justify-self-end px-5">
+				<base-button variant="primary" size="sm">
+					Edit Profile
+				</base-button>
 			</div>
 		</div>
 		<div class="px-7 pt-14">
