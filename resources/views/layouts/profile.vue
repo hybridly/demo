@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { route } from 'hybridly/vue'
 
-const props = defineProps<{
+const $props = defineProps<{
 	user: App.Data.UserProfileData
 	activeTab: 'chirps' | 'comments' | 'likes'
 	canEditProfile: boolean
 }>()
 
 useHead({
-	title: props.user.display_name,
+	title: $props.user.display_name,
 })
 
-const formatLargeNumbers = (n: number): string => {
+function formatLargeNumbers(n: number): string {
 	const value = n.toFixed().toString()
 	if (value.length >= 4 && value.length <= 6) {
 		return `${value.slice(0, -3)}K`
@@ -54,9 +54,9 @@ const formatLargeNumbers = (n: number): string => {
 				</div>
 				<div class="flex items-center gap-1 text-gray-500">
 					<i-fluent-calendar-ltr-20-regular class="h-6 w-6" />
-					<div class="text-sm">
+					<div class="text-sm" :title="formatDate(user.created_at, { dateStyle: 'long' })">
 						Joined
-						{{ user.created_at }}
+						{{ useTimeAgo(user.created_at).value }}
 					</div>
 				</div>
 			</div>

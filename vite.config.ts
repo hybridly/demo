@@ -40,6 +40,7 @@ export default defineConfig({
 			},
 		}),
 		autoimport({
+			vueTemplate: true,
 			dts: 'resources/types/auto-imports.d.ts',
 			imports: [
 				'vue',
@@ -47,7 +48,9 @@ export default defineConfig({
 				'@vueuse/head',
 				hybridlyImports,
 			],
-			vueTemplate: true,
+			dirs: [
+				'./resources/scripts',
+			],
 		}),
 		components({
 			dirs: [
