@@ -29,13 +29,21 @@ whenever(() => $props.canUnlike, () => animate.value = true)
 				}"
 			/>
 			<!-- Filled heart -->
-			<i-ant-design-heart-filled
-				class="absolute inset-0 z-[3] h-6 w-6 text-pink-500 transition"
-				:class="{
-					'opacity-100': canUnlike,
-					'opacity-0': canLike,
-				}"
-			/>
+			<div class="absolute inset-0 z-[3]">
+				<transition
+					enter-active-class="duration-300 transition"
+					enter-from-class="scale-50"
+					enter-to-class="scale-100"
+					leave-active-class="duration-150 transition"
+					leave-from-class="opacity-100"
+					leave-to-class="opacity-0"
+				>
+					<i-ant-design-heart-filled
+						v-show="canUnlike"
+						class="h-6 w-6 text-pink-500 will-change-transform"
+					/>
+				</transition>
+			</div>
 			<!-- Particles -->
 			<div class="absolute inset-0 flex items-center justify-center">
 				<!-- Top center -->
