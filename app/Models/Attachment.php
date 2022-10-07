@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Disk;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,7 +26,7 @@ class Attachment extends Model
     public static function booted(): void
     {
         static::deleting(function (self $attachment) {
-            Storage::disk('attachments')->delete($attachment->path);
+            Storage::disk(Disk::Attachments)->delete($attachment->path);
         });
     }
 
@@ -48,6 +49,6 @@ class Attachment extends Model
 
     public function getUrlAttribute(): string
     {
-        return Storage::disk('attachments')->url($this->path);
+        return Storage::disk(Disk::Attachments)->url($this->path);
     }
 }

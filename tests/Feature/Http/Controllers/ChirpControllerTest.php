@@ -2,6 +2,7 @@
 
 use App\Models\Attachment;
 use App\Models\Chirp;
+use App\Support\Disk;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -9,7 +10,7 @@ use function Pest\Laravel\delete;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
-beforeEach(fn () => Storage::fake('attachments'));
+beforeEach(fn () => Storage::fake(Disk::Attachments));
 
 test('users can see the index page', function () {
     Chirp::factory()->count(3)->create();
@@ -112,7 +113,7 @@ test('users can create a chirp with just an attachment', function () {
         ->body->toBeNull()
         ->attachments->count()->toBe(1);
 
-    Storage::disk('attachments')->assertExists($chirp->path);
+    Storage::disk(Disk::Attachments)->assertExists($chirp->path);
 });
 
 test('users can create a chirp with a body and an attachment', function () {
@@ -133,7 +134,7 @@ test('users can create a chirp with a body and an attachment', function () {
         ->author->id->toBe($user->id)
         ->attachments->count()->toBe(1);
 
-    Storage::disk('attachments')->assertExists($chirp->path);
+    Storage::disk(Disk::Attachments)->assertExists($chirp->path);
 });
 
 test('users cannot create a chirp with no body nor attachment', function () {
