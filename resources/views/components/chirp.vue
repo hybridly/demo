@@ -150,22 +150,12 @@ function deleteChirp() {
 				</chirp-button> -->
 
 				<!-- Like/unlike -->
-				<chirp-button
-					color="pink"
-					:class="{ 'text-pink-500': can({ authorization }, 'unlike') }"
+				<like-button
+					:likes="likes"
+					:can-like="can({ authorization }, 'like')"
+					:can-unlike="can({ authorization }, 'unlike')"
 					@click.stop="toggleLike"
-				>
-					<template #icon>
-						<i-ant-design-heart-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
-					</template>
-					<template #text>
-						<span class="ml-5 transition">
-							<template v-if="can({ authorization }, 'like')">Like</template>
-							<template v-if="can({ authorization }, 'unlike')">Unlike</template>
-							<template v-if="likes > 0"> ({{ likes }})</template>
-						</span>
-					</template>
-				</chirp-button>
+				/>
 
 				<!-- Delete -->
 				<chirp-button
