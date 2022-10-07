@@ -61,7 +61,7 @@ function formatLargeNumbers(n: number): string {
 				</div>
 			</div>
 			<div class="pt-5 text-gray-800">
-				{{ user.bio }}
+				{{ user.about }}
 			</div>
 			<div class="flex flex-wrap gap-10 pt-2">
 				<div class="flex items-center gap-2">
