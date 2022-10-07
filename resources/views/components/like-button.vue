@@ -14,7 +14,7 @@ whenever(() => $props.canUnlike, () => animate.value = true)
 
 <template>
 	<div
-		class="group flex cursor-pointer items-center gap-3 hover:text-pink-500"
+		class="group flex cursor-pointer items-center gap-2 hover:text-pink-500"
 		:class="{
 			'text-pink-500': canUnlike,
 		}"
