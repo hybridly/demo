@@ -117,12 +117,11 @@ const formatLargeNumbers = (n: number): string => {
 			<transition
 				mode="out-in"
 				enter-active-class="duration-200 transition"
-				enter-from-class="opacity-0"
-				enter-to-class="opacity-100"
-
+				enter-from-class="opacity-0 translate-y-1"
+				enter-to-class="opacity-100 translate-y-0"
 				leave-active-class="duration-200 transition"
-				leave-from-class="opacity-100"
-				leave-to-class="opacity-0"
+				leave-from-class="opacity-100 translate-y-0"
+				leave-to-class="opacity-0 translate-y-1"
 			>
 				<slot />
 			</transition>
