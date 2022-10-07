@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Disk;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,8 +18,6 @@ class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
-
-    public const PROFILE_PICTURE_PATH = 'profiles/';
 
     protected $fillable = [
         'name',
@@ -68,7 +67,7 @@ class User extends Authenticatable
     {
         return Attribute::make(
             get: fn () => $this->profile_picture_path
-                ? Storage::url(self::PROFILE_PICTURE_PATH . $this->profile_picture_path)
+                ? Storage::disk(Disk::ProfilePictures)->url($this->profile_picture_path)
                 : null,
         );
     }

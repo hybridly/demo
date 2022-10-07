@@ -6,6 +6,7 @@ use App\Data\CreateAttachmentData;
 use App\Data\CreateChirpData;
 use App\Models\Attachment;
 use App\Models\Chirp;
+use App\Support\Disk;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 /**
@@ -27,7 +28,7 @@ class CreateChirp
             Attachment::create([
                 'chirp_id' => $chirp->id,
                 'alt' => $attachment->alt,
-                'path' => $attachment->file->store('', ['disk' => 'attachments']),
+                'path' => $attachment->file->store('', ['disk' => Disk::Attachments]),
             ]);
         });
 

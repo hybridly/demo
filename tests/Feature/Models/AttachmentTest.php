@@ -2,10 +2,11 @@
 
 use App\Models\Attachment;
 use App\Models\Chirp;
+use App\Support\Disk;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-beforeEach(fn () => Storage::fake('attachments'));
+beforeEach(fn () => Storage::fake(Disk::Attachments));
 
 it('has a chirp relationship', function () {
     $chirp = Chirp::factory()->create();
@@ -27,12 +28,12 @@ it('has a url attribute', function () {
 
 it('deletes attached file after deletion', function () {
     $attachment = Attachment::factory()->create([
-        'path' => $file = UploadedFile::fake()->image('fake.jpg')->store('', ['disk' => 'attachments']),
+        'path' => $file = UploadedFile::fake()->image('fake.jpg')->store('', ['disk' => Disk::Attachments]),
     ]);
 
-    Storage::disk('attachments')->assertExists($file);
+    Storage::disk(Disk::Attachments)->assertExists($file);
 
     $attachment->delete();
 
-    Storage::disk('attachments')->assertMissing($file);
+    Storage::disk(Disk::Attachments)->assertMissing($file);
 });

@@ -20,6 +20,7 @@
 		"laravel/framework": "^9.31",
 		"laravel/sanctum": "^2.15.1",
 		"laravel/tinker": "^2.7.2",
+		"league/flysystem-path-prefixing": "^3.5",
 		"lorisleiva/laravel-actions": "^2.4",
 		"hybridly/laravel": "@dev",
 		"pestphp/pest": "^1.22.1",
