@@ -9,7 +9,7 @@ withDefaults(defineProps<{
 
 <template>
 	<div v-if="verified" class="shrink-0">
-		<i-ic-baseline-verified
+		<i-material-symbols:verified-rounded
 			class="text-blue-400"
 			:class="{
 				'h-5 w-5': size === 'sm',
