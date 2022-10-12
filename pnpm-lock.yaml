@@ -23,7 +23,7 @@ specifiers:
   autoprefixer: ^10.4.12
   axios: ^1.1.2
   eslint: ^8.24.0
-  hybridly: link:/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/hybridly
+  hybridly: 0.0.1-alpha.1
   postcss: ^8.4.17
   tailwindcss: ^3.1.8
   typescript: ^4.8.4
@@ -37,7 +37,6 @@ specifiers:
 
 dependencies:
   axios: 1.1.2
-  hybridly: link:../hybridly/packages/hybridly
 
 devDependencies:
   '@fontsource/poppins': 4.5.10
@@ -61,8 +60,9 @@ devDependencies:
   '@vueuse/head': 0.9.7_vue@3.2.40
   autoprefixer: 10.4.12_postcss@8.4.17
   eslint: 8.24.0
+  hybridly: 0.0.1-alpha.1_axios@1.1.2+vue@3.2.40
   postcss: 8.4.17
-  tailwindcss: 3.1.8
+  tailwindcss: 3.1.8_postcss@8.4.17
   typescript: 4.8.4
   unplugin-auto-import: 0.11.2_2ly2276emb3jimtemj25uhqski
   unplugin-icons: 0.14.11
@@ -187,6 +187,70 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@hybridly/core/0.0.1-alpha.1_axios@1.1.2:
+    resolution: {integrity: sha512-VOH1WWzSyKQ3h+zKPGMoALjPtSGDjII8xjxVe8bRfhbukhyfYpesGBwFDtmAotgIwkQ3wMveH+B6UfbbhlJbEQ==}
+    peerDependencies:
+      axios: ^1
+    dependencies:
+      '@hybridly/utils': 0.0.1-alpha.1
+      axios: 1.1.2
+      qs: 6.11.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@hybridly/progress-plugin/0.0.1-alpha.1_axios@1.1.2:
+    resolution: {integrity: sha512-Kq+9K/1TJjioRfS4sSvpKHfqpfEujtSdeg2938LxjDtgNfKB0nNen5h2FrdBdeP7bYV/7t1h+KnKndcJP0YDqg==}
+    dependencies:
+      '@hybridly/core': 0.0.1-alpha.1_axios@1.1.2
+      nprogress: 0.2.0
+    transitivePeerDependencies:
+      - axios
+      - supports-color
+    dev: true
+
+  /@hybridly/utils/0.0.1-alpha.1:
+    resolution: {integrity: sha512-2IoDcS54cfY2ryRK7hrICInwkA0wuu1D4XsiD7aXl1OwfBu8PQCJrCOIeiIVPT9wk+7ms8vqX5+Q5Ui+W0SrAQ==}
+    dependencies:
+      debug: 4.3.4
+      deepmerge: 4.2.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@hybridly/vite/0.0.1-alpha.1_axios@1.1.2+vue@3.2.40:
+    resolution: {integrity: sha512-5O9QVEiGZP7LZnjgBgyJR4AlWtgz7y1aqfrPhGlx5Rf/PCg6PcViag8ErUt0L7LdP16Q46wufUspNsviwea/0g==}
+    peerDependencies:
+      vue: ^3.2.33
+    dependencies:
+      '@hybridly/core': 0.0.1-alpha.1_axios@1.1.2
+      throttle-debounce: 5.0.0
+      vue: 3.2.40
+    transitivePeerDependencies:
+      - axios
+      - supports-color
+    dev: true
+
+  /@hybridly/vue/0.0.1-alpha.1_axios@1.1.2+vue@3.2.40:
+    resolution: {integrity: sha512-MlG2lVHngVDhNZryg7EHCe+MLheMIkcoix/ZRIoabBlLSz9zBkSHV2QvCZSFEKPevef7Ob/LwO3+lCA3XGHliQ==}
+    peerDependencies:
+      vue: ^3.2.37
+    dependencies:
+      '@hybridly/core': 0.0.1-alpha.1_axios@1.1.2
+      '@hybridly/progress-plugin': 0.0.1-alpha.1_axios@1.1.2
+      '@hybridly/utils': 0.0.1-alpha.1
+      '@vue/devtools-api': 6.4.4
+      defu: 6.1.0
+      lodash.clonedeep: 4.5.0
+      lodash.isequal: 4.5.0
+      nprogress: 0.2.0
+      qs: 6.11.0
+      vue: 3.2.40
+    transitivePeerDependencies:
+      - axios
+      - supports-color
     dev: true
 
   /@iconify-json/ant-design/1.1.3:
@@ -343,7 +407,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.1.8
+      tailwindcss: 3.1.8_postcss@8.4.17
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -535,6 +599,10 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.2.40
       '@vue/shared': 3.2.40
+    dev: true
+
+  /@vue/devtools-api/6.4.4:
+    resolution: {integrity: sha512-Ku31WzpOV/8cruFaXaEZKF81WkNnvCSlBY4eOGtz5WMSdJvX1v1WWlSMGZeqUwPtQ27ZZz7B62erEMq8JDjcXw==}
     dev: true
 
   /@vue/reactivity-transform/3.2.40:
@@ -762,7 +830,6 @@ packages:
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: false
 
   /autoprefixer/10.4.12_postcss@8.4.17:
     resolution: {integrity: sha512-WrCGV9/b97Pa+jtwf5UGaRjgQIg7OK3D06GnoYoZNcG1Xb8Gt3EfuKjlhh9i/VtT16g6PYjZ69jdJ2g8FxSC4Q==}
@@ -788,7 +855,6 @@ packages:
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
-    dev: false
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -935,7 +1001,6 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
-    dev: false
 
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
@@ -998,6 +1063,11 @@ packages:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
 
+  /deepmerge/4.2.2:
+    resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
   /define-properties/1.1.4:
     resolution: {integrity: sha512-uckOqKcfaVvtBdsVkdPv3XjveQJsNQqmhXgRi8uhvWWuPYZCNlzT8qAyblUgNoXdHdjMTzAqeGjAoli8f+bzPA==}
     engines: {node: '>= 0.4'}
@@ -1014,10 +1084,13 @@ packages:
     resolution: {integrity: sha512-t2MZGLf1V2rV4VBZbWIaXKdX/mUcYW0n2znQZoADBkGGxYL8EWqCuCZBmJPJ/Yy9fofJkyuuSuo5GSwo0XdEgw==}
     dev: true
 
+  /defu/6.1.0:
+    resolution: {integrity: sha512-pOFYRTIhoKujrmbTRhcW5lYQLBXw/dlTwfI8IguF1QCDJOcJzNH1w+YFjxqy6BAuJrClTy6MUE8q+oKJ2FLsIw==}
+    dev: true
+
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
-    dev: false
 
   /detective/5.2.1:
     resolution: {integrity: sha512-v9XE1zRnz1wRtgurGu0Bs8uHKFSTdteYZNbIPFVhUZ39L/S79ppMpdmVOZAnoz1jfEFodc48n6MX483Xo3t1yw==}
@@ -1556,7 +1629,7 @@ packages:
     dependencies:
       fast-glob: 3.2.11
       postcss: 8.4.17
-      tailwindcss: 3.1.8
+      tailwindcss: 3.1.8_postcss@8.4.17
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -1896,7 +1969,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: false
 
   /form-data/4.0.0:
     resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
@@ -1905,7 +1977,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
-    dev: false
 
   /fraction.js/4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
@@ -2069,6 +2140,18 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+    dev: true
+
+  /hybridly/0.0.1-alpha.1_axios@1.1.2+vue@3.2.40:
+    resolution: {integrity: sha512-tM7AUbk9HCD/PcadNp6DNrBmJBvW8Au63jOvMPAFas2g1ebpws0Y3FNcNH9FU704VsJW4iRR38v5O5zXCl6H2w==}
+    dependencies:
+      '@hybridly/core': 0.0.1-alpha.1_axios@1.1.2
+      '@hybridly/vite': 0.0.1-alpha.1_axios@1.1.2+vue@3.2.40
+      '@hybridly/vue': 0.0.1-alpha.1_axios@1.1.2+vue@3.2.40
+    transitivePeerDependencies:
+      - axios
+      - supports-color
+      - vue
     dev: true
 
   /ignore/5.2.0:
@@ -2332,6 +2415,14 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash.clonedeep/4.5.0:
+    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
+    dev: true
+
+  /lodash.isequal/4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: true
+
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -2394,14 +2485,12 @@ packages:
   /mime-db/1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
-    dev: false
 
   /mime-types/2.1.35:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
-    dev: false
 
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
@@ -2494,6 +2583,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-key: 3.1.1
+    dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: true
 
   /nth-check/2.1.1:
@@ -2766,11 +2859,17 @@ packages:
 
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-    dev: false
 
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
+    dev: true
+
+  /qs/6.11.0:
+    resolution: {integrity: sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
     dev: true
 
   /queue-microtask/1.2.3:
@@ -3036,10 +3135,12 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /tailwindcss/3.1.8:
+  /tailwindcss/3.1.8_postcss@8.4.17:
     resolution: {integrity: sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
@@ -3069,6 +3170,11 @@ packages:
 
   /text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
+    dev: true
+
+  /throttle-debounce/5.0.0:
+    resolution: {integrity: sha512-2iQTSgkkc1Zyk0MeVrt/3BvuOXYPl/R8Z0U2xxo9rjwNciaHDG3R+Lm6dh4EeUci49DanvBnuqI6jshoQQRGEg==}
+    engines: {node: '>=12.22'}
     dev: true
 
   /to-fast-properties/2.0.0:

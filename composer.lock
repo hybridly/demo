@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92519f9852103bd06812f616dd2697d5",
+    "content-hash": "e24463e8f32b49712e16b0ef320cf028",
     "packages": [
         {
             "name": "brick/math",
@@ -1039,6 +1039,70 @@
             "time": "2022-08-28T14:45:39+00:00"
         },
         {
+            "name": "hybridly/laravel",
+            "version": "v0.0.1-alpha.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hybridly/laravel.git",
+                "reference": "594c9851fbac26e434642019aa91e2a7277f1bfc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hybridly/laravel/zipball/594c9851fbac26e434642019aa91e2a7277f1bfc",
+                "reference": "594c9851fbac26e434642019aa91e2a7277f1bfc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hybridly\\HybridlyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Hybridly": "Hybridly\\Facades\\Hybridly"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Hybridly\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Enzo Innocenzi",
+                    "email": "enzo@innocenzi.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Server-driven, client-rendered application.",
+            "homepage": "https://github.com/hybridly/hybridly",
+            "keywords": [
+                "hybridly",
+                "inertiajs",
+                "laravel",
+                "vite",
+                "vuejs"
+            ],
+            "support": {
+                "issues": "https://github.com/hybridly/hybridly/issues",
+                "source": "https://github.com/hybridly/hybridly"
+            },
+            "time": "2022-10-11T18:55:36+00:00"
+        },
+        {
             "name": "innocenzi/laravel-vite",
             "version": "v0.2.2",
             "source": {
@@ -2037,94 +2101,6 @@
                 }
             ],
             "time": "2022-01-25T15:50:27+00:00"
-        },
-        {
-            "name": "hybridly/laravel",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "/Users/enzoinnocenzi/Code/projects/hybridly/hybridly",
-                "reference": "82fea093b963364289053d8bdc8485fa75f8d3c6"
-            },
-            "require": {
-                "illuminate/contracts": "^9.0",
-                "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.9.2"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.6",
-                "guzzlehttp/promises": "^1.5",
-                "nunomaduro/collision": "^6.0",
-                "nunomaduro/larastan": "^2.0.1",
-                "orchestra/testbench": "^7.0",
-                "pestphp/pest": "^1.21",
-                "pestphp/pest-plugin-laravel": "^1.1",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "spatie/laravel-data": "^2.0",
-                "spatie/laravel-ray": "^1.29",
-                "spatie/laravel-typescript-transformer": "^2.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Hybridly\\HybridlyServiceProvider"
-                    ],
-                    "aliases": {
-                        "Hybridly": "Hybridly\\Facades\\Hybridly"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Hybridly\\": "packages/laravel/src"
-                },
-                "files": [
-                    "packages/laravel/src/helpers.php"
-                ]
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Hybridly\\Tests\\": "packages/laravel/tests"
-                }
-            },
-            "scripts": {
-                "analyze": [
-                    "vendor/bin/phpstan analyse"
-                ],
-                "style": [
-                    "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes"
-                ],
-                "test": [
-                    "vendor/bin/pest --test-directory=packages/laravel/tests"
-                ],
-                "test:coverage": [
-                    "vendor/bin/pest --test-directory=packages/laravel/tests --coverage"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Enzo Innocenzi",
-                    "email": "enzo@innocenzi.dev",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Server-driven, client-rendered view layer.",
-            "homepage": "https://github.com/hybridly/hybridly",
-            "keywords": [
-                "inertiajs",
-                "laravel",
-                "hybridly"
-            ],
-            "transport-options": {
-                "relative": false
-            }
         },
         {
             "name": "monolog/monolog",
@@ -10483,7 +10459,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "hybridly/laravel": 20
+        "hybridly/laravel": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
