@@ -7,7 +7,7 @@
 			<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 			<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 			<link rel="manifest" href="/site.webmanifest">
-			@vite
+			@vite('resources/application/main.ts')
 	</head>
 	<body class="h-full bg-gray-50 antialiased">
 			@hybridly(class: 'h-full')

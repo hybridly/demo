@@ -1,7 +1,8 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
-import laravel from 'vite-plugin-laravel'
+import laravel from 'laravel-vite-plugin'
 import hybridly from 'hybridly/vite'
 import hybridlyImports from 'hybridly/auto-imports'
 import hybridlyResolver from 'hybridly/resolver'
@@ -16,7 +17,8 @@ import run from 'vite-plugin-run'
 export default defineConfig({
 	plugins: [
 		laravel({
-			postcss: [tailwindcss(), autoprefixer()],
+			input: 'resources/application/main.ts',
+			valetTls: true,
 		}),
 		run({
 			name: 'generate typescript',
@@ -56,4 +58,17 @@ export default defineConfig({
 			dts: 'resources/types/components.d.ts',
 		}),
 	],
+	resolve: {
+		alias: {
+			'@': path.join(process.cwd(), 'resources'),
+		},
+	},
+	css: {
+		postcss: {
+			plugins: [
+				tailwindcss(),
+				autoprefixer(),
+			],
+		},
+	},
 })
