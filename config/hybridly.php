@@ -12,6 +12,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Route filters
+    |--------------------------------------------------------------------------
+    | By default, the router does not pick vendor routes. You may change
+    | that by specifying a vendor name in `router.allowed_vendors`.
+    | You may also exclude routes by adding rules in `exclude`.
+    */
+    'router' => [
+        'allowed_vendors' => [],
+        'exclude' => [],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Force case
     |--------------------------------------------------------------------------
     | The convention for array properties in PHP is usually `snake_case`.
