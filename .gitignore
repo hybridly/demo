@@ -19,3 +19,4 @@ _ide_helper*
 .phpstorm.meta.php
 resources/types/*.d.ts
 !resources/types/hybridly.d.ts
+!resources/types/shims-*.d.ts
