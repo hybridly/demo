@@ -12,10 +12,10 @@ useHead({
 
 <template layout>
 	<div class="mt-12">
-		<RouterLink :href="previous" class="mb-8 flex items-center text-xl text-blue-600 transition duration-300 hover:-translate-x-1 hover:text-blue-500">
+		<router-link :href="previous" class="mb-8 flex items-center text-xl text-blue-600 transition duration-300 hover:-translate-x-1 hover:text-blue-500">
 			<i-fluent-arrow-left-16-regular class="mr-3.5 h-7 w-7" />
 			Go back
-		</RouterLink>
+		</router-link>
 
 		<div class="mb-24">
 			<chirp

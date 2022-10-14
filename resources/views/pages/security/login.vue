@@ -78,12 +78,12 @@ const login = useForm({
 			<!-- Bypass login -->
 			<div class="mt-7 text-sm">
 				<span class="text-slate-400">Wanna login quickly?</span>
-				<RouterLink
+				<router-link
 					:href="route('login.bypass')"
 					class="font-bold text-blue-500 transition duration-300 hover:text-blue-400"
 				>
 					Click here.
-				</RouterLink>
+				</router-link>
 			</div>
 		</div>
 	</section>
