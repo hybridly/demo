@@ -41,6 +41,7 @@ export default defineConfig({
 				'@vueuse/head',
 				hybridlyImports,
 			],
+			vueTemplate: true,
 		}),
 		components({
 			dirs: [

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import axios from 'axios'
-import { can } from 'hybridly'
 
 const $props = defineProps<{
 	chirp: App.Data.ChirpData

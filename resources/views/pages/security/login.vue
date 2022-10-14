@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { route } from 'hybridly/vue'
-
 useHead({
 	title: 'Sign in to Blue Bird',
 })

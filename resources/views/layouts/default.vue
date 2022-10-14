@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { route, useContext } from 'hybridly/vue'
-import BaseButton from '@/views/components/base/button.vue'
-
 useHead({
 	titleTemplate: (title) => `${title} - Blue Bird`,
 })
