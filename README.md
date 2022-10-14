@@ -17,8 +17,16 @@
 <p align="center">
   <br />
   <br />
-  ·
   <br />
   <br />
-  <sub>Built with ❤︎ by <a href="https://twitter.com/enzoinnocenzi">Enzo Innocenzi</a>
+  <img src='https://cdn.jsdelivr.net/gh/innocenzi/static@latest/sponsorkit/sponsors.svg'/>
+  <br />
+  <br />
+  <sub>·</sub>
+  <br />
+  <br />
+  <br />
+  <sub>
+    Built with ❤︎ by <a href="https://github.com/enzoinnocenzi">Enzo Innocenzi</a>
+  </sub>
 </p>
