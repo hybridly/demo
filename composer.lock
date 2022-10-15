@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c8e65e2cf13787ec7e07647780afbad",
+    "content-hash": "28e72fe6faf457d90f786ed354eba03e",
     "packages": [
         {
             "name": "brick/math",
@@ -1040,16 +1040,16 @@
         },
         {
             "name": "hybridly/laravel",
-            "version": "v0.0.1-alpha.3",
+            "version": "v0.0.1-alpha.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridly/laravel.git",
-                "reference": "61d00b384172b583ef89dcd1f1f8d6752d60e61b"
+                "reference": "7439dc8b83fbbc5d748cd7cd4e1c6de1ef928cd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridly/laravel/zipball/61d00b384172b583ef89dcd1f1f8d6752d60e61b",
-                "reference": "61d00b384172b583ef89dcd1f1f8d6752d60e61b",
+                "url": "https://api.github.com/repos/hybridly/laravel/zipball/7439dc8b83fbbc5d748cd7cd4e1c6de1ef928cd1",
+                "reference": "7439dc8b83fbbc5d748cd7cd4e1c6de1ef928cd1",
                 "shasum": ""
             },
             "require": {
@@ -1100,7 +1100,7 @@
                 "issues": "https://github.com/hybridly/hybridly/issues",
                 "source": "https://github.com/hybridly/hybridly"
             },
-            "time": "2022-10-13T17:56:05+00:00"
+            "time": "2022-10-15T01:31:18+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1671,16 +1671,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.5.2",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "c73c4eb31f2e883b3897ab5591aa2dbc48112433"
+                "reference": "8eded334b9894dc90ebdcb7be81e3a1c9413f709"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c73c4eb31f2e883b3897ab5591aa2dbc48112433",
-                "reference": "c73c4eb31f2e883b3897ab5591aa2dbc48112433",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8eded334b9894dc90ebdcb7be81e3a1c9413f709",
+                "reference": "8eded334b9894dc90ebdcb7be81e3a1c9413f709",
                 "shasum": ""
             },
             "require": {
@@ -1742,7 +1742,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.5.2"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.6.0"
             },
             "funding": [
                 {
@@ -1758,25 +1758,24 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-23T18:59:16+00:00"
+            "time": "2022-10-13T20:05:14+00:00"
         },
         {
             "name": "league/flysystem-path-prefixing",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-path-prefixing.git",
-                "reference": "a9207e1fec26c575f203828150bc1be034cad935"
+                "reference": "3a6d1a6256cf65e6b8ff7d026fab141e0a623e3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-path-prefixing/zipball/a9207e1fec26c575f203828150bc1be034cad935",
-                "reference": "a9207e1fec26c575f203828150bc1be034cad935",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-path-prefixing/zipball/3a6d1a6256cf65e6b8ff7d026fab141e0a623e3a",
+                "reference": "3a6d1a6256cf65e6b8ff7d026fab141e0a623e3a",
                 "shasum": ""
             },
             "require": {
-                "ext-fileinfo": "*",
-                "league/flysystem": "^2.0.0 || ^3.0.0",
+                "league/flysystem": "^3.6.0",
                 "php": "^8.0.2"
             },
             "type": "library",
@@ -1804,7 +1803,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem-path-prefixing/issues",
-                "source": "https://github.com/thephpleague/flysystem-path-prefixing/tree/3.5.0"
+                "source": "https://github.com/thephpleague/flysystem-path-prefixing/tree/3.6.0"
             },
             "funding": [
                 {
@@ -1820,7 +1819,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-12T21:13:35+00:00"
+            "time": "2022-10-04T21:13:29+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -3086,25 +3085,30 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "77a32518733312af16a44300404e945338981de3"
+                "reference": "48f445a408c131e38cab1c235aa6d2bb7a0bb20d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/77a32518733312af16a44300404e945338981de3",
-                "reference": "77a32518733312af16a44300404e945338981de3",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/48f445a408c131e38cab1c235aa6d2bb7a0bb20d",
+                "reference": "48f445a408c131e38cab1c235aa6d2bb7a0bb20d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0",
+                "php": "^7.4 || ^8.0",
                 "phpdocumentor/reflection-common": "^2.0"
             },
             "require-dev": {
                 "ext-tokenizer": "*",
-                "psalm/phar": "^4.8"
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.8",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpunit/phpunit": "^9.5",
+                "rector/rector": "^0.13.9",
+                "vimeo/psalm": "^4.25"
             },
             "type": "library",
             "extra": {
@@ -3130,9 +3134,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.1"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.2"
             },
-            "time": "2022-03-15T21:29:03+00:00"
+            "time": "2022-10-14T12:47:21+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -5252,16 +5256,16 @@
         },
         {
             "name": "spatie/laravel-data",
-            "version": "2.0.12",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-data.git",
-                "reference": "df8aad411e344069a2626653e2c1549c0aede707"
+                "reference": "016b5530a5171c7b06a3943a80aa55c9b45583e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/df8aad411e344069a2626653e2c1549c0aede707",
-                "reference": "df8aad411e344069a2626653e2c1549c0aede707",
+                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/016b5530a5171c7b06a3943a80aa55c9b45583e5",
+                "reference": "016b5530a5171c7b06a3943a80aa55c9b45583e5",
                 "shasum": ""
             },
             "require": {
@@ -5317,7 +5321,8 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-data/tree/2.0.12"
+                "issues": "https://github.com/spatie/laravel-data/issues",
+                "source": "https://github.com/spatie/laravel-data/tree/2.0.13"
             },
             "funding": [
                 {
@@ -5325,7 +5330,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-29T08:32:10+00:00"
+            "time": "2022-10-14T10:24:23+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -9457,16 +9462,16 @@
         },
         {
             "name": "spatie/laravel-ignition",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ignition.git",
-                "reference": "75d465ec577abb432af1ca9b33683d5a6e921eb9"
+                "reference": "f2336fc79d99aab5cf27fa4aebe5e9c9ecf3808a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/75d465ec577abb432af1ca9b33683d5a6e921eb9",
-                "reference": "75d465ec577abb432af1ca9b33683d5a6e921eb9",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/f2336fc79d99aab5cf27fa4aebe5e9c9ecf3808a",
+                "reference": "f2336fc79d99aab5cf27fa4aebe5e9c9ecf3808a",
                 "shasum": ""
             },
             "require": {
@@ -9543,7 +9548,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-10-04T10:14:31+00:00"
+            "time": "2022-10-14T12:24:21+00:00"
         },
         {
             "name": "spatie/laravel-ray",
