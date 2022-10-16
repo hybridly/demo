@@ -19,7 +19,7 @@ const login = useForm({
 			<i-bluebird-logo class="h-12 w-12 text-blue-500" />
 			<form
 				class="mt-5 w-full bg-white p-8 shadow shadow-slate-200 md:rounded-xl"
-				@submit.prevent="login.submit()"
+				@submit.prevent="login.submit"
 			>
 				<!-- Greeting -->
 				<div class="text-center">
