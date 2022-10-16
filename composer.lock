@@ -1040,16 +1040,16 @@
         },
         {
             "name": "hybridly/laravel",
-            "version": "v0.0.1-alpha.4",
+            "version": "v0.0.1-alpha.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridly/laravel.git",
-                "reference": "7439dc8b83fbbc5d748cd7cd4e1c6de1ef928cd1"
+                "reference": "cf78dcfc867508becf75a566e839ffe77c53a30d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridly/laravel/zipball/7439dc8b83fbbc5d748cd7cd4e1c6de1ef928cd1",
-                "reference": "7439dc8b83fbbc5d748cd7cd4e1c6de1ef928cd1",
+                "url": "https://api.github.com/repos/hybridly/laravel/zipball/cf78dcfc867508becf75a566e839ffe77c53a30d",
+                "reference": "cf78dcfc867508becf75a566e839ffe77c53a30d",
                 "shasum": ""
             },
             "require": {
@@ -1100,7 +1100,7 @@
                 "issues": "https://github.com/hybridly/hybridly/issues",
                 "source": "https://github.com/hybridly/hybridly"
             },
-            "time": "2022-10-15T01:31:18+00:00"
+            "time": "2022-10-16T23:37:51+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7757,16 +7757,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v5.4.1",
+            "version": "v5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "264dce589e7ce37a7ba99cb901eed8249fbec92f"
+                "reference": "1a7ea2afc49c3ee6d87061f5a233e3a035d0eae7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/264dce589e7ce37a7ba99cb901eed8249fbec92f",
-                "reference": "264dce589e7ce37a7ba99cb901eed8249fbec92f",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/1a7ea2afc49c3ee6d87061f5a233e3a035d0eae7",
+                "reference": "1a7ea2afc49c3ee6d87061f5a233e3a035d0eae7",
                 "shasum": ""
             },
             "require": {
@@ -7781,15 +7781,19 @@
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-filter": "*",
-                "phpunit/phpunit": "^7.5.20 || ^8.5.21 || ^9.5.10"
+                "phpunit/phpunit": "^7.5.20 || ^8.5.30 || ^9.5.25"
             },
             "suggest": {
                 "ext-filter": "Required to use the boolean validator."
             },
             "type": "library",
             "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": true
+                },
                 "branch-alias": {
-                    "dev-master": "5.4-dev"
+                    "dev-master": "5.5-dev"
                 }
             },
             "autoload": {
@@ -7821,7 +7825,7 @@
             ],
             "support": {
                 "issues": "https://github.com/vlucas/phpdotenv/issues",
-                "source": "https://github.com/vlucas/phpdotenv/tree/v5.4.1"
+                "source": "https://github.com/vlucas/phpdotenv/tree/v5.5.0"
             },
             "funding": [
                 {
@@ -7833,7 +7837,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-12T23:22:04+00:00"
+            "time": "2022-10-16T01:01:54+00:00"
         },
         {
             "name": "voku/portable-ascii",

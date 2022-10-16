@@ -22,22 +22,22 @@ specifiers:
   '@vueuse/core': ^9.3.0
   '@vueuse/head': ^0.9.8
   autoprefixer: ^10.4.12
-  axios: ^1.1.2
+  axios: ^1.1.3
   eslint: ^8.25.0
-  hybridly: ^0.0.1-alpha.4
+  hybridly: ^0.0.1-alpha.5
   laravel-vite-plugin: ^0.6.1
   postcss: ^8.4.18
   tailwindcss: ^3.1.8
   typescript: ^4.8.4
   unplugin-auto-import: ^0.11.2
-  unplugin-icons: ^0.14.11
+  unplugin-icons: ^0.14.12
   unplugin-vue-components: ^0.22.8
   vite: ^3.1.8
   vite-plugin-run: ^0.2.0
   vue: ^3.2.41
 
 dependencies:
-  axios: 1.1.2
+  axios: 1.1.3
 
 devDependencies:
   '@fontsource/poppins': 4.5.10
@@ -62,13 +62,13 @@ devDependencies:
   '@vueuse/head': 0.9.8_vue@3.2.41
   autoprefixer: 10.4.12_postcss@8.4.18
   eslint: 8.25.0
-  hybridly: 0.0.1-alpha.4_axios@1.1.2+vue@3.2.41
+  hybridly: 0.0.1-alpha.5_axios@1.1.3+vue@3.2.41
   laravel-vite-plugin: 0.6.1_vite@3.1.8
   postcss: 8.4.18
   tailwindcss: 3.1.8_postcss@8.4.18
   typescript: 4.8.4
   unplugin-auto-import: 0.11.2_xprgaq42dappzfhggpxgvdf43y
-  unplugin-icons: 0.14.11
+  unplugin-icons: 0.14.12
   unplugin-vue-components: 0.22.8_vue@3.2.41
   vite: 3.1.8
   vite-plugin-run: 0.2.0
@@ -187,30 +187,30 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@hybridly/core/0.0.1-alpha.4_axios@1.1.2:
-    resolution: {integrity: sha512-4hiBgb+vQj+eORYCq1iM3x8ulY1wtcRU3tyo0vxM6EYYZ2k1jh9URYwpDfKfn3sjIcfNvcMtRwKNEJTdf8Gjvg==}
+  /@hybridly/core/0.0.1-alpha.5_axios@1.1.3:
+    resolution: {integrity: sha512-JY2HR0MBUk6mAd9JC/0ulokkMPV2bcYR7UrNKwQDndjij2GBHNgKHpSX3zrfwtZi/U9MlCGCFgm3q9QQGrsBbQ==}
     peerDependencies:
       axios: ^1
     dependencies:
-      '@hybridly/utils': 0.0.1-alpha.4
-      axios: 1.1.2
+      '@hybridly/utils': 0.0.1-alpha.5
+      axios: 1.1.3
       qs: 6.11.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@hybridly/progress-plugin/0.0.1-alpha.4_axios@1.1.2:
-    resolution: {integrity: sha512-xkGTKj/NJaKHNLRugsEeMbpWt71kQaWHa1h346/m5t+95vX1ourL29Vk0/AXw1NKBQrS8VRvEGqwVERXSezEUQ==}
+  /@hybridly/progress-plugin/0.0.1-alpha.5_axios@1.1.3:
+    resolution: {integrity: sha512-D4pA9P1Nv0fWFMLIr/55sUMke1ReOWKhMLiY3SyLPKKDh4AOxkUdFeVBOShIp79T3xWzHXsdZfVp8QOXVPcVtQ==}
     dependencies:
-      '@hybridly/core': 0.0.1-alpha.4_axios@1.1.2
+      '@hybridly/core': 0.0.1-alpha.5_axios@1.1.3
       nprogress: 0.2.0
     transitivePeerDependencies:
       - axios
       - supports-color
     dev: true
 
-  /@hybridly/utils/0.0.1-alpha.4:
-    resolution: {integrity: sha512-70hEUApWGfBAR4K4v9asd2CjjNBOi4u69N1AOOugmaM0qGsE7wPA49jp8ZxoM1HerQIXhBx5UEYVu5iRmYDTbQ==}
+  /@hybridly/utils/0.0.1-alpha.5:
+    resolution: {integrity: sha512-B8rkCHu1gLl1/GZSJ3PAq4SjEedLsD4Z+qbZ7qkVFLo3xGFgmoJW2md7sTOe487VF79GD6IqqrmkQ4OjsiLD4Q==}
     dependencies:
       debug: 4.3.4
       deepmerge: 4.2.2
@@ -218,12 +218,12 @@ packages:
       - supports-color
     dev: true
 
-  /@hybridly/vite/0.0.1-alpha.4_axios@1.1.2+vue@3.2.41:
-    resolution: {integrity: sha512-SMmdr+bE5PtvuWWkuiLpYmunhgqlzxCE/pWI8GMEGkFkyrpwbXGWmoL3cQ9qamW4lQDfYl5bYJJqmcag0TIUKA==}
+  /@hybridly/vite/0.0.1-alpha.5_axios@1.1.3+vue@3.2.41:
+    resolution: {integrity: sha512-CW0MqNziQ0gVSkb37aUnIUNXURX83aI8UZgW2UEd3TytUqFslUnCCQfwDIFAxH5oLuqogyaczDMYDCxO3+LF1g==}
     peerDependencies:
       vue: ^3.2.33
     dependencies:
-      '@hybridly/core': 0.0.1-alpha.4_axios@1.1.2
+      '@hybridly/core': 0.0.1-alpha.5_axios@1.1.3
       throttle-debounce: 5.0.0
       vue: 3.2.41
     transitivePeerDependencies:
@@ -231,14 +231,14 @@ packages:
       - supports-color
     dev: true
 
-  /@hybridly/vue/0.0.1-alpha.4_axios@1.1.2+vue@3.2.41:
-    resolution: {integrity: sha512-U9pGu8vBF1OuvTEOeZPIN0NpeuMA2+fVc3L8Sn0mU/f4Z1RkoAZO6QxUApklz4a2eDVA2HZUAvyYavjRMhL6YQ==}
+  /@hybridly/vue/0.0.1-alpha.5_axios@1.1.3+vue@3.2.41:
+    resolution: {integrity: sha512-QzT3qG8KDRz8Ve4hCgg8+QkJmu6ym9wE11y1D0o4EBQSXzlCY052g9FWOdQSZVbpO5DPI1tdP2ycUVgAHGoPoA==}
     peerDependencies:
       vue: ^3.2.37
     dependencies:
-      '@hybridly/core': 0.0.1-alpha.4_axios@1.1.2
-      '@hybridly/progress-plugin': 0.0.1-alpha.4_axios@1.1.2
-      '@hybridly/utils': 0.0.1-alpha.4
+      '@hybridly/core': 0.0.1-alpha.5_axios@1.1.3
+      '@hybridly/progress-plugin': 0.0.1-alpha.5_axios@1.1.3
+      '@hybridly/utils': 0.0.1-alpha.5
       '@vue/devtools-api': 6.4.4
       defu: 6.1.0
       lodash.clonedeep: 4.5.0
@@ -325,8 +325,8 @@ packages:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
-  /@iconify/utils/2.0.0:
-    resolution: {integrity: sha512-thvwZ6m3frWJiOYwRdHPSPGC25rmyvDl0vXdQ8ocRJZx31m8Pn4y7V1mTc5UReR6MiAj+hrV2UPZQjx7zI960g==}
+  /@iconify/utils/2.0.1:
+    resolution: {integrity: sha512-t8IyICk25wgZL4YKn/2kYfjG5MGA6EWZlaUJZ1OEIku4V+kX9V900T5E4HIqS3hLyD6/RJET0zY4vxO9pHLHHw==}
     dependencies:
       '@antfu/install-pkg': 0.1.1
       '@antfu/utils': 0.5.2
@@ -849,8 +849,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /axios/1.1.2:
-    resolution: {integrity: sha512-bznQyETwElsXl2RK7HLLwb5GPpOLlycxHCtrpDR/4RqqBzjARaOTo3jz4IgtntWUYee7Ne4S8UHd92VCuzPaWA==}
+  /axios/1.1.3:
+    resolution: {integrity: sha512-00tXVRwKx/FZr/IDVFt4C+f9FYairX517WoGCL6dpOntqLkZofjhu43F/Xl44UOpqa+9sLFDrG/XAnFsUYgkDA==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -2139,12 +2139,12 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /hybridly/0.0.1-alpha.4_axios@1.1.2+vue@3.2.41:
-    resolution: {integrity: sha512-cDu94vBQywXdX1SxX3lbQiftAog6yD2fNxJL+BopdmV0NT8XtRVIC19dcYoy5+LjVdZKWZzeqya76I0IXeyujQ==}
+  /hybridly/0.0.1-alpha.5_axios@1.1.3+vue@3.2.41:
+    resolution: {integrity: sha512-jy7nvkPVJxKK2cpIjaye2e9+I34QHq8EwBRgQFvBusZwRwFIUlGIdtLXrV1hfOu/Akt/yRTm2WNGoNN317SClw==}
     dependencies:
-      '@hybridly/core': 0.0.1-alpha.4_axios@1.1.2
-      '@hybridly/vite': 0.0.1-alpha.4_axios@1.1.2+vue@3.2.41
-      '@hybridly/vue': 0.0.1-alpha.4_axios@1.1.2+vue@3.2.41
+      '@hybridly/core': 0.0.1-alpha.5_axios@1.1.3
+      '@hybridly/vite': 0.0.1-alpha.5_axios@1.1.3+vue@3.2.41
+      '@hybridly/vue': 0.0.1-alpha.5_axios@1.1.3+vue@3.2.41
     transitivePeerDependencies:
       - axios
       - supports-color
@@ -3303,8 +3303,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-icons/0.14.11:
-    resolution: {integrity: sha512-szr6QA1ILT4RrJCmtvW41m2KPwUCCIx8QNgwEmTehvzEkSLDrdEaBhKGMWb/qTe5/zwnfwrDGcFT/6pGOSHJcA==}
+  /unplugin-icons/0.14.12:
+    resolution: {integrity: sha512-FdkjDnUnc8/75OT8Ywwm8iDyG6kO8w1uHfFbnO2Jh7JhpE0odKhCqaAOmEE/UlvYDYSm5D4X1DKdWMwpAxj07Q==}
     peerDependencies:
       '@svgr/core': '>=5.5.0'
       '@vue/compiler-sfc': ^3.0.2
@@ -3322,7 +3322,7 @@ packages:
     dependencies:
       '@antfu/install-pkg': 0.1.1
       '@antfu/utils': 0.5.2
-      '@iconify/utils': 2.0.0
+      '@iconify/utils': 2.0.1
       debug: 4.3.4
       kolorist: 1.6.0
       local-pkg: 0.4.2
