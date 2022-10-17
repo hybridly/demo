@@ -137,6 +137,22 @@ test('users can create a chirp with a body and an attachment', function () {
     Storage::disk(Disk::Attachments)->assertExists($chirp->attachments->first()->path);
 });
 
+test('users cannot create a chirp with more than 3 attachments', function () {
+    actingAsUser()
+        ->post('/chirps', [
+            'body' => 'random-body-content',
+            'attachments' => array_fill(start_index: 0, count: 4, value: [
+                'file' => UploadedFile::fake()->image('image.jpg', 100, 100)->size(100),
+            ]),
+        ])
+        ->assertSessionHasErrors(['attachments']);
+
+    expect(Chirp::count())->toBe(0);
+    expect(Attachment::count())->toBe(0);
+
+    Storage::disk(Disk::Attachments)->assertDirectoryEmpty('');
+});
+
 test('users cannot create a chirp with no body nor attachment', function () {
     actingAsUser(user())
         ->post('/chirps')
