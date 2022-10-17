@@ -113,7 +113,7 @@ test('users can create a chirp with just an attachment', function () {
         ->body->toBeNull()
         ->attachments->count()->toBe(1);
 
-    Storage::disk(Disk::Attachments)->assertExists($chirp->path);
+    Storage::disk(Disk::Attachments)->assertExists($chirp->attachments->first()->path);
 });
 
 test('users can create a chirp with a body and an attachment', function () {
@@ -134,7 +134,7 @@ test('users can create a chirp with a body and an attachment', function () {
         ->author->id->toBe($user->id)
         ->attachments->count()->toBe(1);
 
-    Storage::disk(Disk::Attachments)->assertExists($chirp->path);
+    Storage::disk(Disk::Attachments)->assertExists($chirp->attachments->first()->path);
 });
 
 test('users cannot create a chirp with no body nor attachment', function () {
