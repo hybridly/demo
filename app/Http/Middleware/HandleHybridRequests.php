@@ -6,7 +6,7 @@ use App\Data\Hybridly\SharedData;
 use App\Data\UserData;
 use Hybridly\Http\Middleware;
 
-class HandleHybridlyRequests extends Middleware
+class HandleHybridRequests extends Middleware
 {
     /**
      * Defines the properties that are shared to all requests.
