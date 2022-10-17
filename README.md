@@ -1,7 +1,7 @@
 <br>
 
 <p align="center">
-  <img src="https://github.com/hybridly/hybridly/raw/0.x/.github/assets/logo-round.svg" style="width:125px;" />
+  <img src="https://github.com/hybridly/hybridly/raw/0.x/.github/assets/logo-shadow.svg" style="width:125px;" />
 </p>
 
 <h1 align="center">Hybridly</h1>
