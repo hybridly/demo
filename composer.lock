@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28e72fe6faf457d90f786ed354eba03e",
+    "content-hash": "2dd0b1dc10274a65578d37b4ebe32cfb",
     "packages": [
         {
             "name": "brick/math",
@@ -1040,16 +1040,16 @@
         },
         {
             "name": "hybridly/laravel",
-            "version": "v0.0.1-alpha.5",
+            "version": "v0.0.1-alpha.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridly/laravel.git",
-                "reference": "cf78dcfc867508becf75a566e839ffe77c53a30d"
+                "reference": "5df084b379d52eff6f22adb9cff23775f32b8ea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridly/laravel/zipball/cf78dcfc867508becf75a566e839ffe77c53a30d",
-                "reference": "cf78dcfc867508becf75a566e839ffe77c53a30d",
+                "url": "https://api.github.com/repos/hybridly/laravel/zipball/5df084b379d52eff6f22adb9cff23775f32b8ea6",
+                "reference": "5df084b379d52eff6f22adb9cff23775f32b8ea6",
                 "shasum": ""
             },
             "require": {
@@ -1100,20 +1100,20 @@
                 "issues": "https://github.com/hybridly/hybridly/issues",
                 "source": "https://github.com/hybridly/hybridly"
             },
-            "time": "2022-10-16T23:37:51+00:00"
+            "time": "2022-10-18T17:27:26+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v9.35.1",
+            "version": "v9.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "79aed20f54b6ab75f926bf7d0dd7a5043ceb774a"
+                "reference": "584f7bbde1bc24c69c84afe44f16b4ec294f92ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/79aed20f54b6ab75f926bf7d0dd7a5043ceb774a",
-                "reference": "79aed20f54b6ab75f926bf7d0dd7a5043ceb774a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/584f7bbde1bc24c69c84afe44f16b4ec294f92ef",
+                "reference": "584f7bbde1bc24c69c84afe44f16b4ec294f92ef",
                 "shasum": ""
             },
             "require": {
@@ -1286,7 +1286,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-10-11T17:30:47+00:00"
+            "time": "2022-10-18T16:04:13+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1671,16 +1671,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.6.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "8eded334b9894dc90ebdcb7be81e3a1c9413f709"
+                "reference": "3d2ed6215e096e900662bd8f993fc5ad81cc4135"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8eded334b9894dc90ebdcb7be81e3a1c9413f709",
-                "reference": "8eded334b9894dc90ebdcb7be81e3a1c9413f709",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3d2ed6215e096e900662bd8f993fc5ad81cc4135",
+                "reference": "3d2ed6215e096e900662bd8f993fc5ad81cc4135",
                 "shasum": ""
             },
             "require": {
@@ -1742,7 +1742,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.6.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.8.0"
             },
             "funding": [
                 {
@@ -1758,24 +1758,24 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-13T20:05:14+00:00"
+            "time": "2022-10-18T06:54:34+00:00"
         },
         {
             "name": "league/flysystem-path-prefixing",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-path-prefixing.git",
-                "reference": "3a6d1a6256cf65e6b8ff7d026fab141e0a623e3a"
+                "reference": "8087b4361916c3327e5699d33ebaf6da02e139a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-path-prefixing/zipball/3a6d1a6256cf65e6b8ff7d026fab141e0a623e3a",
-                "reference": "3a6d1a6256cf65e6b8ff7d026fab141e0a623e3a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-path-prefixing/zipball/8087b4361916c3327e5699d33ebaf6da02e139a1",
+                "reference": "8087b4361916c3327e5699d33ebaf6da02e139a1",
                 "shasum": ""
             },
             "require": {
-                "league/flysystem": "^3.6.0",
+                "league/flysystem": "^3.7.0",
                 "php": "^8.0.2"
             },
             "type": "library",
@@ -1803,7 +1803,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem-path-prefixing/issues",
-                "source": "https://github.com/thephpleague/flysystem-path-prefixing/tree/3.6.0"
+                "source": "https://github.com/thephpleague/flysystem-path-prefixing/tree/3.7.0"
             },
             "funding": [
                 {
@@ -1819,7 +1819,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-04T21:13:29+00:00"
+            "time": "2022-10-16T21:21:26+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -2580,16 +2580,16 @@
         },
         {
             "name": "nunomaduro/termwind",
-            "version": "v1.14.0",
+            "version": "v1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/termwind.git",
-                "reference": "10065367baccf13b6e30f5e9246fa4f63a79eb1d"
+                "reference": "86fc30eace93b9b6d4c844ba6de76db84184e01b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/10065367baccf13b6e30f5e9246fa4f63a79eb1d",
-                "reference": "10065367baccf13b6e30f5e9246fa4f63a79eb1d",
+                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/86fc30eace93b9b6d4c844ba6de76db84184e01b",
+                "reference": "86fc30eace93b9b6d4c844ba6de76db84184e01b",
                 "shasum": ""
             },
             "require": {
@@ -2646,7 +2646,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/termwind/issues",
-                "source": "https://github.com/nunomaduro/termwind/tree/v1.14.0"
+                "source": "https://github.com/nunomaduro/termwind/tree/v1.14.1"
             },
             "funding": [
                 {
@@ -2662,7 +2662,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-01T11:03:24+00:00"
+            "time": "2022-10-17T15:20:29+00:00"
         },
         {
             "name": "pestphp/pest",
