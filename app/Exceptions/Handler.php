@@ -2,25 +2,16 @@
 
 namespace App\Exceptions;
 
+use Hybridly\Concerns\HandlesHybridExceptions;
+use Hybridly\Contracts\HybridResponse;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class Handler extends ExceptionHandler
 {
-    /**
-     * A list of the exception types that are not reported.
-     *
-     * @var array<int, class-string<Throwable>>
-     */
-    protected $dontReport = [
-        //
-    ];
+    use HandlesHybridExceptions;
 
-    /**
-     * A list of the inputs that are never flashed for validation exceptions.
-     *
-     * @var array<int, string>
-     */
     protected $dontFlash = [
         'current_password',
         'password',
@@ -28,14 +19,12 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Register the exception handling callbacks for the application.
-     *
-     * @return void
+     * Returns a hybrid page that renders the exception.
      */
-    public function register()
+    protected function renderHybridResponse(Response $response, Request $request, \Throwable $e): HybridResponse
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        return hybridly('security.error', [
+            'status' => $response->getStatusCode(),
+        ]);
     }
 }
