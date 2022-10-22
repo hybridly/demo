@@ -6,7 +6,9 @@ const $props = defineProps<{
 }>()
 
 useHead({
-	title: `${$props.chirp.author.display_name} on Blue Bird: ${$props.chirp.body}`,
+	title: () => $props.chirp.body
+		? `${$props.chirp.author.display_name} on Blue Bird: ${$props.chirp.body}`
+		: `${$props.chirp.author.display_name} on Blue Bird`,
 })
 </script>
 
