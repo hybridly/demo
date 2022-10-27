@@ -1,4 +1,3 @@
-import { createApp } from 'vue'
 import { initializeHybridly } from 'hybridly/vue'
 import { createHead } from '@vueuse/head'
 import { autoAnimatePlugin as autoAnimate } from '@formkit/auto-animate/vue'
@@ -9,9 +8,7 @@ import './fonts'
 initializeHybridly({
 	cleanup: !import.meta.env.DEV,
 	pages: import.meta.glob('@/views/pages/**/*.vue', { eager: true }),
-	setup: ({ render, element, hybridly }) => createApp({ render })
+	enhanceVue: (vue) => vue
 		.use(createHead())
-		.use(autoAnimate)
-		.use(hybridly)
-		.mount(element),
+		.use(autoAnimate),
 })
