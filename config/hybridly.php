@@ -46,5 +46,32 @@ return [
     | will be written to using this option. To generate that file,
     | you may use the `i18n:generate` artisan command.
     */
-    'i18n_path' => resource_path('application/i18n.json'),
+    'i18n' => [
+        'lang_path' => base_path('lang'),
+        'write_path' => resource_path('application/i18n.json'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Testing
+    |--------------------------------------------------------------------------
+    | The values described here are used to locate hybrid views on the
+    | filesystem. For instance, when using `assertHybrid`, the assertion
+    | attempts to locate the view as a file relative to any of the
+    | paths AND with any of the extensions specified here.
+    */
+    'testing' => [
+        'ensure_pages_exist' => true,
+        'view_finder' => null,
+        'page_paths' => [
+            resource_path('views/pages'),
+        ],
+        'page_extensions' => [
+            'js',
+            'jsx',
+            'ts',
+            'tsx',
+            'vue',
+        ],
+    ],
 ];
