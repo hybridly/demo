@@ -20,11 +20,18 @@ export default defineConfig({
 			input: 'resources/application/main.ts',
 			valetTls: true,
 		}),
-		run({
-			name: 'generate typescript',
-			run: ['php', 'artisan', 'typescript:transform'],
-			condition: (file) => ['Data.php', 'Enums'].some((kw) => file.includes(kw)),
-		}),
+		run([
+			{
+				name: 'generate typescript',
+				run: ['php', 'artisan', 'typescript:transform'],
+				condition: (file) => ['Data.php', 'Enums'].some((kw) => file.includes(kw)),
+			},
+			{
+				name: 'generate i18n',
+				run: ['php', 'artisan', 'hybridly:i18n'],
+				condition: (file) => ['lang/'].some((kw) => file.includes(kw)),
+			},
+		]),
 		hybridly(),
 		vue(),
 		icons({

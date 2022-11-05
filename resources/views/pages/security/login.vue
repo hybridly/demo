@@ -23,12 +23,8 @@ const login = useForm({
 			>
 				<!-- Greeting -->
 				<div class="text-center">
-					<div class="text-xl font-semibold text-blue-800">
-						Welcome back!
-					</div>
-					<p class="pt-1 text-sm text-slate-400">
-						Enter your credentials to access the app.
-					</p>
+					<div class="text-xl font-semibold text-blue-800" v-text="$t('login.welcome_text')" />
+					<p class="pt-1 text-sm text-slate-400" v-text="$t('login.welcome_help_text')" />
 				</div>
 
 				<!-- Inputs -->
@@ -36,7 +32,7 @@ const login = useForm({
 					<div class="relative mt-4">
 						<input
 							v-model="login.fields.email"
-							placeholder="Enter your email"
+							:placeholder="$t('login.email_field_placeholder')"
 							class="w-full appearance-none rounded-lg border-slate-300 pl-10 outline-none transition duration-300 placeholder:text-sm
 							placeholder:text-slate-400 focus:ring-2 focus:ring-blue-400"
 							type="email"
@@ -46,7 +42,7 @@ const login = useForm({
 					<div class="relative mt-4">
 						<input
 							v-model="login.fields.password"
-							placeholder="Enter your password"
+							:placeholder="$t('login.password_field_placeholder')"
 							class="w-full appearance-none rounded-lg border-slate-300 pl-10 outline-none transition duration-300 placeholder:text-sm
 							placeholder:text-slate-400 focus:ring-2 focus:ring-blue-400"
 							type="password"
@@ -70,19 +66,19 @@ const login = useForm({
 						:disabled="login.processing"
 						class="mx-auto mt-6 w-32"
 					>
-						Sign in
+						{{ $t('login.sign_in_button_text') }}
 					</base-button>
 				</div>
 			</form>
 
 			<!-- Bypass login -->
 			<div class="mt-7 text-sm">
-				<span class="text-slate-400">Wanna login quickly?</span>
+				<span class="text-slate-400 mr-1" v-text="$t('login.quick_login_cta_text')" />
 				<router-link
 					:href="route('login.bypass')"
 					class="font-bold text-blue-500 transition duration-300 hover:text-blue-400"
 				>
-					Click here.
+					{{ $t('login.quick_login_link_text') }}
 				</router-link>
 			</div>
 		</div>
