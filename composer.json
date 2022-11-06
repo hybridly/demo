@@ -12,7 +12,7 @@
 		"guzzlehttp/guzzle": "^7.5",
 		"hybridly/laravel": "^0.0.1@alpha",
 		"laravel/framework": "^9.38",
-		"laravel/sanctum": "^3.0",
+		"laravel/sanctum": "^3.0.1",
 		"laravel/tinker": "^2.7.2",
 		"league/flysystem-path-prefixing": "^3.10",
 		"lorisleiva/laravel-actions": "^2.4.1",
