@@ -13,6 +13,7 @@ import autoimport from 'unplugin-auto-import/vite'
 import components from 'unplugin-vue-components/vite'
 import icons from 'unplugin-icons/vite'
 import run from 'vite-plugin-run'
+import i18n from '@intlify/vite-plugin-vue-i18n'
 
 export default defineConfig({
 	plugins: [
@@ -64,6 +65,9 @@ export default defineConfig({
 			],
 			directoryAsNamespace: true,
 			dts: 'resources/types/components.d.ts',
+		}),
+		i18n({
+			include: path.resolve(__dirname, './resources/i18n/locales.json'),
 		}),
 	],
 	resolve: {
