@@ -1,7 +1,5 @@
 import path from 'node:path'
 import { defineConfig } from 'vite'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
 import laravel from 'laravel-vite-plugin'
 import hybridly from 'hybridly/vite'
 import hybridlyImports from 'hybridly/auto-imports'
@@ -73,14 +71,6 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.join(process.cwd(), 'resources'),
-		},
-	},
-	css: {
-		postcss: {
-			plugins: [
-				tailwindcss(),
-				autoprefixer(),
-			],
 		},
 	},
 })
