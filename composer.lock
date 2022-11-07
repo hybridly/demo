@@ -1040,16 +1040,16 @@
         },
         {
             "name": "hybridly/laravel",
-            "version": "v0.0.1-alpha.9",
+            "version": "v0.0.1-alpha.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridly/laravel.git",
-                "reference": "ea24268900a85a2d7d3d24b0ec3df6ade8040045"
+                "reference": "61d1ca6316ce1093689e33c62a30eae70c3c1362"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridly/laravel/zipball/ea24268900a85a2d7d3d24b0ec3df6ade8040045",
-                "reference": "ea24268900a85a2d7d3d24b0ec3df6ade8040045",
+                "url": "https://api.github.com/repos/hybridly/laravel/zipball/61d1ca6316ce1093689e33c62a30eae70c3c1362",
+                "reference": "61d1ca6316ce1093689e33c62a30eae70c3c1362",
                 "shasum": ""
             },
             "require": {
@@ -1100,7 +1100,7 @@
                 "issues": "https://github.com/hybridly/hybridly/issues",
                 "source": "https://github.com/hybridly/hybridly"
             },
-            "time": "2022-11-06T16:08:22+00:00"
+            "time": "2022-11-07T19:13:55+00:00"
         },
         {
             "name": "laravel/framework",
