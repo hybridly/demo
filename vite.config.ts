@@ -71,6 +71,9 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.join(process.cwd(), 'resources'),
+			// Fix for local development, not useful in real apps. When symlinking Hybridly,
+			// different Vue instances are used and it crashes the application
+			'vue': path.join(process.cwd(), '/node_modules/vue/dist/vue.esm-bundler.js'),
 		},
 	},
 })
