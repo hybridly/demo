@@ -31,15 +31,26 @@ test('guests cannot see the index page', function () {
 test('users can see a specific chirp', function () {
     $chirp = Chirp::factory()->create();
 
-    actingAsUser()
-        ->get("/chirps/{$chirp->id}")
+    actingAsUser();
+
+    $response = get("/chirps/{$chirp->id}");
+
+    $response
         ->assertOk()
         ->assertHybridView('chirps.show')
         ->assertHybridProperties([
             'chirp',
             'comments',
-            'previous',
+            'previous' => url()->route('index'),
         ]);
+
+    expect($response->getHybridProperty('chirp'))
+        ->toBeArray()
+        ->toHaveLength(8)
+        ->id->toBe((string) ($chirp->id));
+
+    expect($response->getHybridProperty('comments'))
+        ->data->toBeEmpty();
 });
 
 test('guests cannot see a specific chirp', function () {
