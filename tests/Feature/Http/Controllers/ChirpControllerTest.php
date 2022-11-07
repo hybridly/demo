@@ -17,7 +17,9 @@ test('users can see the index page', function () {
 
     actingAsUser()
         ->get('/')
-        ->assertOk();
+        ->assertOk()
+        ->assertHybridView('chirps.index')
+        ->assertHasHybridProperty('chirps', 3);
 });
 
 test('guests cannot see the index page', function () {
@@ -31,7 +33,13 @@ test('users can see a specific chirp', function () {
 
     actingAsUser()
         ->get("/chirps/{$chirp->id}")
-        ->assertOk();
+        ->assertOk()
+        ->assertHybridView('chirps.show')
+        ->assertHybridProperties([
+            'chirp',
+            'comments',
+            'previous',
+        ]);
 });
 
 test('guests cannot see a specific chirp', function () {
