@@ -13,13 +13,21 @@ use function Pest\Laravel\post;
 beforeEach(fn () => Storage::fake(Disk::Attachments));
 
 test('users can see the index page', function () {
-    Chirp::factory()->count(3)->create();
+    $chirps = Chirp::factory()->count(3)->create();
 
-    actingAsUser()
-        ->get('/')
+    actingAsUser();
+
+    $response = get('/');
+
+    $response
         ->assertOk()
         ->assertHybridView('chirps.index')
         ->assertHasHybridProperty('chirps', 3);
+
+    $responseChirpIds = collect($response->getHybridProperty('chirps')['data'])
+        ->pluck('id');
+    expect($responseChirpIds)
+        ->toMatchArray($chirps->pluck('id'));
 });
 
 test('guests cannot see the index page', function () {
@@ -45,9 +53,8 @@ test('users can see a specific chirp', function () {
         ]);
 
     expect($response->getHybridProperty('chirp'))
-        ->toBeArray()
-        ->toHaveLength(8)
-        ->id->toBe((string) ($chirp->id));
+        ->toHaveKey('id', $chirp->id)
+        ->toHaveKey('body', $chirp->body);
 
     expect($response->getHybridProperty('comments'))
         ->data->toBeEmpty();
