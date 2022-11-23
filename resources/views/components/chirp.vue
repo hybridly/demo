@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const $props = defineProps<{
 	chirp: App.Data.ChirpData
-	as: 'list-item' | 'comment'
+	as: 'list-item' | 'comment' | 'preview'
 	previous?: string
 }>()
 
@@ -51,6 +51,13 @@ function showChirp(mode: 'normal' | 'new-tab', e: MouseEvent) {
 	} else {
 		window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
 	}
+}
+
+function comment() {
+	router.get(route('chirp.comment', { chirp: $props.chirp }), {
+		preserveScroll: true,
+		preserveState: true,
+	})
 }
 
 function deleteChirp() {
@@ -101,12 +108,12 @@ function deleteChirp() {
 			</div>
 
 			<!-- Body -->
-			<p class="mb-4" v-text="chirp.body" />
+			<p v-text="chirp.body" />
 
 			<!-- Attachments -->
 			<div
 				v-if="chirp.attachments.length > 0"
-				class="mb-6 grid grid-cols-3 gap-4"
+				class="mt-4 grid grid-cols-3 gap-4"
 			>
 				<template v-for="(attachment, i) in chirp.attachments" :key="i">
 					<div class="relative aspect-square overflow-hidden rounded-3xl border border-blue-50 transition hover:shadow-lg hover:shadow-slate-200">
@@ -124,29 +131,21 @@ function deleteChirp() {
 			</div>
 
 			<!-- Actions -->
-			<div class="flex items-center gap-x-10 text-sm text-gray-600">
+			<div v-if="as !== 'preview'" class="mt-6 flex items-center gap-x-10 text-sm text-gray-600 cursor-default" @click.stop>
 				<!-- Comment -->
-				<chirp-button color="emerald">
+				<chirp-button color="emerald" @click.stop="comment">
 					<template #icon>
 						<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
 					</template>
 					<template #text>
 						<span class="ml-5 transition">
 							Comment
-							<template v-if="chirp.comments_count > 0">({{ chirp.comments_count }})</template>
+							<template v-if="chirp.comments_count > 0 && as !== 'comment'">
+								({{ chirp.comments_count }})
+							</template>
 						</span>
 					</template>
 				</chirp-button>
-
-				<!-- Re-chirp -->
-				<!-- <chirp-button color="blue">
-					<template #icon>
-						<i-ant-design-retweet-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
-					</template>
-					<template #text>
-						<span class="ml-5 transition">Re-chirp</span>
-					</template>
-				</chirp-button> -->
 
 				<!-- Like/unlike -->
 				<like-button

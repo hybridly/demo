@@ -21,6 +21,8 @@ const createChirpForm = useForm<CreateChirp>({
 	method: 'POST',
 	url: route('chirp.store'),
 	reset: true,
+	preserveScroll: true,
+	preserveState: true,
 	transform: (fields) => ({
 		...fields,
 		attachments: fields.attachments.map(({ file, alt }) => ({ file, alt })),
@@ -115,10 +117,12 @@ function onAttachmentSelected(event: Event) {
 		})
 	}
 }
+
+onMounted(() => nextTick(() => textarea.value.focus()))
 </script>
 
 <template>
-	<base-card class="group p-4">
+	<div class="group p-4">
 		<form v-auto-animate @submit.prevent="submit">
 			<!-- Attachment input -->
 			<input
@@ -136,7 +140,8 @@ function onAttachmentSelected(event: Event) {
 				v-model="createChirpForm.fields.body"
 				:row="1"
 				:max="200"
-				class="mb-2 w-full resize-none border-none font-medium tracking-wide text-zinc-700 placeholder:text-gray-400 focus:ring-0"
+				autofocus
+				class="mb-2 w-full resize-none border-none font-medium tracking-wide p-0 text-zinc-700 placeholder:text-gray-400 focus:ring-0"
 				:placeholder="placeholder ?? `What's on your mind?`"
 				@keydown.enter.prevent.exact="submit"
 				@keydown.shift.enter.stop.prevent="addNewLine"
@@ -173,7 +178,7 @@ function onAttachmentSelected(event: Event) {
 			<!-- Actions -->
 			<div class="flex items-end justify-between">
 				<!-- Attachment, stats, emoji... -->
-				<div class="flex min-w-0 items-center gap-x-5 px-3 text-gray-400">
+				<div class="flex min-w-0 items-center gap-x-5 -mx-0.5 text-gray-400">
 					<base-button
 						class="transition"
 						:class="{
@@ -217,5 +222,5 @@ function onAttachmentSelected(event: Event) {
 				</div>
 			</div>
 		</form>
-	</base-card>
+	</div>
 </template>

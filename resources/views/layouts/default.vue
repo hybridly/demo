@@ -50,10 +50,10 @@ useHead({
 			<transition
 				appear
 				mode="out-in"
-				enter-active-class="duration-200 transition"
+				enter-active-class="duration-100 transition"
 				enter-from-class="-translate-x-1 opacity-0"
 				enter-to-class="opacity-100"
-				leave-active-class="duration-200 transition"
+				leave-active-class="duration-100 transition"
 				leave-from-class="opacity-100"
 				leave-to-class="translate-x-0 opacity-0"
 			>

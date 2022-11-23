@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40c1b9493421266d50bc54d9e29cf7cc",
+    "content-hash": "eabb0246c8454569301a52a544410ad4",
     "packages": [
         {
             "name": "brick/math",
@@ -1040,17 +1040,11 @@
         },
         {
             "name": "hybridly/laravel",
-            "version": "v0.0.1-alpha.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hybridly/laravel.git",
-                "reference": "61d1ca6316ce1093689e33c62a30eae70c3c1362"
-            },
+            "version": "0.x-dev",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hybridly/laravel/zipball/61d1ca6316ce1093689e33c62a30eae70c3c1362",
-                "reference": "61d1ca6316ce1093689e33c62a30eae70c3c1362",
-                "shasum": ""
+                "type": "path",
+                "url": "/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/laravel",
+                "reference": "f6393bf6fb6e934039753926d8aa959c1539cf99"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -1069,14 +1063,13 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
                 "psr-4": {
                     "Hybridly\\": "src"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1100,7 +1093,9 @@
                 "issues": "https://github.com/hybridly/hybridly/issues",
                 "source": "https://github.com/hybridly/hybridly"
             },
-            "time": "2022-11-07T19:13:55+00:00"
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "laravel/framework",
@@ -10389,9 +10384,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "hybridly/laravel": 15
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

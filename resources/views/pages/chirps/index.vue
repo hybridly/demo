@@ -46,7 +46,9 @@ function onDestroy(chirp: App.Data.ChirpData) {
 
 <template layout>
 	<section class="relative">
-		<create-chirp @success="updateChirps" />
+		<base-card class="p-3">
+			<create-chirp @success="updateChirps" />
+		</base-card>
 
 		<h1 class="sticky top-0 left-0 z-10 -mx-8 mt-10 flex items-center gap-5 bg-gray-50 py-5 backdrop-blur-xl md:px-10 lg:px-12">
 			<div class="pl-2 text-blue-500 transition hover:text-blue-600 sm:hidden">

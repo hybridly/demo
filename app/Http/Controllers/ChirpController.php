@@ -48,7 +48,9 @@ class ChirpController
 
         CreateChirp::run($data);
 
-        return back();
+        return $data->parent_id
+            ? to_route('chirp.show', $data->parent_id)
+            : back();
     }
 
     public function destroy(Chirp $chirp, Request $request)
