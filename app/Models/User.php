@@ -70,7 +70,7 @@ class User extends Authenticatable
     public function profilePictureUrl(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->profile_picture_path
+            get: fn () => isset($this->profile_picture_path)
                 ? Storage::disk(Disk::ProfilePictures)->url($this->profile_picture_path)
                 : null,
         );
