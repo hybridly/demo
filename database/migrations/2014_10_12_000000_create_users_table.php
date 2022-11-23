@@ -16,6 +16,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('username')->unique();
             $table->string('display_name')->nullable();
+            $table->string('about', 160)->nullable();
             $table->string('email')->unique();
             $table->string('profile_picture_path')->nullable();
             $table->string('identity_verified_at')->nullable();

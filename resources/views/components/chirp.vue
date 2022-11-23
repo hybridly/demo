@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { route } from 'hybridly/vue'
 import axios from 'axios'
 
 const $props = defineProps<{
@@ -11,7 +12,6 @@ const $emit = defineEmits<{
 	(e: 'destroy'): void
 }>()
 
-const canShowChirp = computed(() => $props.as === 'list-item')
 const dynamicCreatedAt = useTimeAgo($props.chirp.created_at)
 const likes = ref($props.chirp.likes_count)
 const authorization = reactive<App.Data.ChirpData['authorization']>({
@@ -37,22 +37,6 @@ async function toggleLike() {
 	})
 }
 
-function showChirp(mode: 'normal' | 'new-tab', e: MouseEvent) {
-	if ((e?.target as HTMLElement)?.tagName === 'IMG') {
-		return
-	}
-
-	if (!canShowChirp.value) {
-		return
-	}
-
-	if (mode === 'normal') {
-		router.get(route('chirp.show', { chirp: $props.chirp }))
-	} else {
-		window.open(route('chirp.show', { chirp: $props.chirp }), '_blank')
-	}
-}
-
 function deleteChirp() {
 	router.delete(route('chirp.destroy', { chirp: $props.chirp }), {
 		data: {
@@ -70,26 +54,29 @@ function deleteChirp() {
 <template>
 	<base-card
 		as="article"
-		class="flex gap-6 border border-gray-100 p-8 transition"
-		:class="{
-			'cursor-pointer': canShowChirp,
-			'hover:shadow-slate-300': canShowChirp,
-			'shadow-blue-50': !canShowChirp
-		}"
-		@click="(e) => showChirp('normal', e)"
-		@click.middle="(e) => showChirp('new-tab', e)"
+		class="flex items-start gap-6 border border-gray-100 p-8 transition"
 	>
 		<!-- Profile picture -->
-		<avatar :user="chirp.author" />
+		<router-link class="block" :href="route('users.show', { user: chirp.author })">
+			<avatar :user="chirp.author" class="ring-offset-[3px] hover:ring-1 ring-slate-300 transition" />
+		</router-link>
 
 		<div class="w-full">
 			<!-- Header -->
 			<div class="mb-4 flex flex-wrap items-center justify-between gap-5 border-b border-slate-100 pb-2 md:border-none md:pb-0">
 				<!-- Username -->
 				<span class="inline-flex items-center gap-2">
-					<span class="font-medium leading-none text-slate-800" v-text="chirp.author?.display_name" />
-					<i-material-symbols-verified-outline-rounded v-if="chirp.author?.identity_verified_at" class="ml-1 shrink-0 text-blue-400" />
-					<span class="mb-0.5 ml-3 text-xs font-medium tracking-wide text-slate-500" v-text="'@' + chirp.author?.username" />
+					<router-link
+						:href="route('users.show', { user: chirp.author })"
+						class="font-medium leading-none text-slate-800 hover:underline underline-offset-4 decoration-slate-300"
+						v-text="chirp.author?.display_name"
+					/>
+					<verified-badge :verified="!!chirp.author?.identity_verified_at" />
+					<router-link
+						:href="route('users.show', { user: chirp.author })"
+						class="mb-0.5 ml-3 text-xs font-medium tracking-wide text-slate-500 hover:underline underline-offset-4 decoration-slate-300"
+						v-text="'@' + chirp.author?.username"
+					/>
 				</span>
 
 				<!-- Date posted -->
@@ -126,27 +113,19 @@ function deleteChirp() {
 			<!-- Actions -->
 			<div class="flex items-center gap-x-10 text-sm text-gray-600">
 				<!-- Comment -->
-				<chirp-button color="emerald">
-					<template #icon>
-						<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
-					</template>
-					<template #text>
-						<span class="ml-5 transition">
-							Comment
-							<template v-if="chirp.comments_count > 0">({{ chirp.comments_count }})</template>
-						</span>
-					</template>
-				</chirp-button>
-
-				<!-- Re-chirp -->
-				<!-- <chirp-button color="blue">
-					<template #icon>
-						<i-ant-design-retweet-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
-					</template>
-					<template #text>
-						<span class="ml-5 transition">Re-chirp</span>
-					</template>
-				</chirp-button> -->
+				<router-link :href="route('chirp.show', { chirp })">
+					<chirp-button color="emerald">
+						<template #icon>
+							<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
+						</template>
+						<template #text>
+							<span class="ml-5 transition">
+								Comment
+								<template v-if="chirp.comments_count > 0">({{ chirp.comments_count }})</template>
+							</span>
+						</template>
+					</chirp-button>
+				</router-link>
 
 				<!-- Like/unlike -->
 				<like-button

@@ -4,10 +4,12 @@ import BaseButton from '@/views/components/base/button.vue'
 useHead({
 	titleTemplate: (title) => `${title} - Blue Bird`,
 })
+
+const userID = useProperty('security.user').value?.id
 </script>
 
 <template>
-	<main class="relative flex items-start justify-center gap-10 p-5 lg:mt-24 lg:gap-x-20">
+	<main class="relative flex items-start justify-center gap-10 p-5 lg:gap-x-20">
 		<aside class="fixed bottom-0 left-0 z-20 w-full items-center sm:sticky sm:top-5 sm:bottom-auto sm:flex sm:w-auto sm:flex-col">
 			<div class="grid place-items-center text-blue-50 sm:py-5">
 				<router-link href="/" class="hidden text-blue-500 transition hover:text-blue-600 sm:block">
@@ -28,9 +30,13 @@ useHead({
 					<base-button class="h-12 w-12 rounded-xl hover:text-white">
 						<i-material-symbols-bookmark class="h-6 w-7" />
 					</base-button>
-					<base-button class="h-12 w-12 rounded-xl hover:text-white">
+					<router-link
+						:href="route('users.show', { user: userID })"
+						:as="BaseButton"
+						class="h-12 w-12 rounded-xl hover:text-white"
+					>
 						<i-fa6-solid-user class="text-lg" />
-					</base-button>
+					</router-link>
 					<router-link :href="route('logout')" method="POST" :as="BaseButton">
 						<div class="grid place-items-center transition duration-300 hover:text-white sm:pt-5">
 							<div class="grid h-12 w-12 place-items-center">

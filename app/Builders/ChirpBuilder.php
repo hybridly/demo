@@ -36,6 +36,11 @@ class ChirpBuilder extends Builder
         return $this->whereNull('parent_id');
     }
 
+    public function isComment(): static
+    {
+        return $this->whereNotNull('parent_id');
+    }
+
     public function isLikedBy(User $user): static
     {
         return $this->whereHas('likes', function (Builder $query) use ($user) {
