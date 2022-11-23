@@ -13,21 +13,16 @@ use function Pest\Laravel\post;
 beforeEach(fn () => Storage::fake(Disk::Attachments));
 
 test('users can see the index page', function () {
-    $chirps = Chirp::factory()->count(3)->create();
+    Chirp::factory()->count(3)->create();
 
-    actingAsUser();
-
-    $response = get('/');
-
-    $response
+    $response = actingAsUser()
+        ->get('/')
         ->assertOk()
         ->assertHybridView('chirps.index')
         ->assertHasHybridProperty('chirps', 3);
 
-    $responseChirpIds = collect($response->getHybridProperty('chirps')['data'])
-        ->pluck('id');
-    expect($responseChirpIds)
-        ->toMatchArray($chirps->pluck('id'));
+    expect($response->getHybridProperty('chirps.data'))
+        ->toHaveCount(3);
 });
 
 test('guests cannot see the index page', function () {
