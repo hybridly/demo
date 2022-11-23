@@ -34,11 +34,8 @@ test('guests cannot see the index page', function () {
 test('users can see a specific chirp', function () {
     $chirp = Chirp::factory()->create();
 
-    actingAsUser();
-
-    $response = get("/chirps/{$chirp->id}");
-
-    $response
+    $response = actingAsUser()
+        ->get("/chirps/{$chirp->id}")
         ->assertOk()
         ->assertHybridView('chirps.show')
         ->assertHybridProperties([
