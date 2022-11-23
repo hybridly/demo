@@ -2,11 +2,16 @@
 
 namespace App\Data;
 
+use App\Models\User;
 use Carbon\Carbon;
-use Spatie\LaravelData\Data;
+use Hybridly\Support\Data\DataResource;
+use Illuminate\Database\Eloquent\Model;
 
-final class UserProfileData extends Data
+final class UserProfileData extends DataResource
 {
+    protected Model|string|null $model = User::class;
+    protected static array $authorizations = ['update'];
+
     public function __construct(
         public readonly int $id,
         public readonly string $username,

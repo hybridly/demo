@@ -4,7 +4,6 @@ import { route } from 'hybridly/vue'
 const $props = defineProps<{
 	user: App.Data.UserProfileData
 	activeTab: 'chirps' | 'comments' | 'likes'
-	canEditProfile: boolean
 }>()
 
 useHead({
@@ -29,91 +28,96 @@ function formatLargeNumbers(n: number): string {
 
 <template>
 	<section class="w-full max-w-2xl">
-		<div class="relative grid h-40 w-full grid-cols-2 rounded-t-md bg-gradient-to-t from-gray-50 to-slate-200">
+		<!-- Banner -->
+		<div class="relative grid h-40 w-full grid-cols-2 rounded-md bg-gray-100">
+			<!-- Avatar -->
 			<div class="relative left-4 top-10 z-[1] self-end">
 				<avatar :user="user" size="2xl" darker-background />
 			</div>
-			<div v-if="canEditProfile" class="relative self-end justify-self-end px-5">
+
+			<!-- Edit profile -->
+			<div v-if="can(user, 'update')" class="relative self-end justify-self-end px-5 mb-4">
 				<base-button variant="primary" size="sm">
 					Edit Profile
 				</base-button>
 			</div>
 		</div>
+
 		<div class="px-7 pt-14">
+			<!-- Name and join date -->
 			<div class="flex items-start justify-between gap-5">
-				<div class="">
+				<!-- Name -->
+				<div>
 					<div class="flex items-center gap-2">
-						<div class="text-xl font-semibold text-blue-900">
-							{{ user.display_name }}
-						</div>
-						<verified-badge :verified="user.identity_verified_at" size="md" />
+						<div class="text-xl font-semibold text-blue-900" v-text="user.display_name" />
+						<verified-badge :verified="!!user.identity_verified_at" size="md" />
 					</div>
-					<div class="text-sm text-slate-500">
-						@{{ user.username }}
-					</div>
+					<span class="text-sm text-slate-500" v-text="`@${user.username}`" />
 				</div>
+
+				<!-- Join date -->
 				<div class="flex items-center gap-1 text-gray-500">
 					<i-fluent-calendar-ltr-20-regular class="h-6 w-6" />
 					<div class="text-sm" :title="formatDate(user.created_at, { dateStyle: 'long' })">
-						Joined
-						{{ useTimeAgo(user.created_at).value }}
+						Joined {{ useTimeAgo(user.created_at).value }}
 					</div>
 				</div>
 			</div>
-			<div class="pt-5 text-gray-800">
-				{{ user.about }}
-			</div>
+
+			<!-- Bio -->
+			<p class="pt-5 text-gray-800" v-text="user.about" />
+
+			<!-- Statistics -->
 			<div class="flex flex-wrap gap-10 pt-2">
 				<div class="flex items-center gap-2">
-					<div class="text-xl font-bold">
-						{{ formatLargeNumbers(user.chirps_count) }}
-					</div>
-					<div class="text-sm text-gray-400">
+					<div class="text-xl font-bold" v-text="formatLargeNumbers(user.chirps_count)" />
+					<div class="text-sm text-gray-600">
 						Chirps
 					</div>
 				</div>
 				<div class="flex items-center gap-2">
-					<div class="text-xl font-bold">
-						{{ formatLargeNumbers(user.likes_count) }}
-					</div>
-					<div class="text-sm text-gray-400">
+					<div class="text-xl font-bold" v-text="formatLargeNumbers(user.likes_count)" />
+					<div class="text-sm text-gray-600">
 						Likes
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="flex gap-14 border-b px-7 pt-10 text-gray-700">
+
+		<!-- Tabs -->
+		<nav class="flex mt-4 relative">
+			<div class="bottom-0 inset-x-0 h-1 border-b absolute" />
+			<div
+				class="inset-x-0 h-1 w-24 absolute bottom-0 border-b border-blue-500 transition"
+				:class="{
+					'translate-x-0': activeTab === 'chirps',
+					'translate-x-24': activeTab === 'comments',
+					'translate-x-48': activeTab === 'likes',
+				}"
+			/>
+
 			<RouterLink
-				v-auto-animate
 				:href="route('users.show', { user: user.id })"
-				:class="{
-					'font-bold text-black': activeTab === 'chirps'
-				}"
-			>
-				Chirps
-				<div v-if="activeTab === 'chirps'" class="mt-2 h-1 w-full rounded-full bg-blue-500" />
-			</RouterLink>
+				class="w-24 text-center py-3"
+				:class="{ 'text-gray-900': activeTab === 'chirps' }"
+				text="Chirps"
+			/>
 			<RouterLink
-				v-auto-animate
 				:href="route('users.show-comments', { user: user.id })"
-				:class="{
-					'font-bold text-black': activeTab === 'comments'
-				}"
-			>
-				Comments
-				<div v-if="activeTab === 'comments'" class="mt-2 h-1 w-full rounded-full bg-blue-500" />
-			</RouterLink>
+				class="w-24 text-center py-3"
+				:class="{ 'text-gray-900': activeTab === 'comments' }"
+				text="Comments"
+			/>
 			<RouterLink
 				:href="route('users.show-likes', { user: user.id })"
-				:class="{
-					'font-bold text-black': activeTab === 'likes'
-				}"
-			>
-				Likes
-				<div v-if="activeTab === 'likes'" class="mt-2 h-1 w-full rounded-full bg-blue-500" />
-			</RouterLink>
-		</div>
-		<div class="pt-5">
+				class="w-24 text-center py-3"
+				:class="{ 'text-gray-900': activeTab === 'likes' }"
+				text="Likes"
+			/>
+		</nav>
+
+		<!-- Page -->
+		<div class="mt-6">
 			<transition
 				mode="out-in"
 				enter-active-class="duration-200 transition"

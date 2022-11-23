@@ -18,12 +18,15 @@ export default defineConfig({
 		laravel({
 			input: 'resources/application/main.ts',
 			valetTls: true,
+			refresh: [
+				'app/Policies/**',
+			],
 		}),
 		run([
 			{
 				name: 'generate typescript',
 				run: ['php', 'artisan', 'typescript:transform'],
-				condition: (file) => ['Data.php', 'Enums'].some((kw) => file.includes(kw)),
+				condition: (file) => ['Data.php', 'Enums', 'Policy.php'].some((kw) => file.includes(kw)),
 			},
 			{
 				name: 'generate i18n',

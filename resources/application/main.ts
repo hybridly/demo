@@ -7,7 +7,6 @@ import './tailwind.css'
 import './fonts'
 
 initializeHybridly({
-	cleanup: !import.meta.env.DEV,
 	pages: import.meta.glob('@/views/pages/**/*.vue', { eager: true }),
 	enhanceVue: (vue) => vue
 		.use(createHead())

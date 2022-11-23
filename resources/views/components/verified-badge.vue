@@ -1,6 +1,6 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
-	verified: string | null
+	verified: boolean | null
 	size?: 'sm' | 'md'
 }>(), {
 	size: 'sm',
@@ -8,7 +8,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-	<div v-if="verified" class="shrink-0">
+	<div v-if="verified" class="shrink-0" title="This user is verified and did not pay $8 for it.">
 		<i-material-symbols:verified-rounded
 			class="text-blue-400"
 			:class="{
