@@ -15,9 +15,14 @@ beforeEach(fn () => Storage::fake(Disk::Attachments));
 test('users can see the index page', function () {
     Chirp::factory()->count(3)->create();
 
-    actingAsUser()
+    $response = actingAsUser()
         ->get('/')
-        ->assertOk();
+        ->assertOk()
+        ->assertHybridView('chirps.index')
+        ->assertHasHybridProperty('chirps', 3);
+
+    expect($response->getHybridProperty('chirps.data'))
+        ->toHaveCount(3);
 });
 
 test('guests cannot see the index page', function () {
@@ -29,9 +34,35 @@ test('guests cannot see the index page', function () {
 test('users can see a specific chirp', function () {
     $chirp = Chirp::factory()->create();
 
-    actingAsUser()
+    $response = actingAsUser()
         ->get("/chirps/{$chirp->id}")
-        ->assertOk();
+        ->assertOk()
+        ->assertHybridView('chirps.show')
+        ->assertHybridProperties([
+            'chirp',
+            'comments',
+            'previous' => url()->route('index'),
+        ]);
+
+    expect($response->getHybridProperty('chirp'))
+        ->toHaveKey('id', $chirp->id)
+        ->toHaveKey('body', $chirp->body);
+
+    expect($response->getHybridProperty('comments'))
+        ->data->toBeEmpty();
+});
+
+test('a chirp with a parent redirects to the parent when going back', function () {
+    $child = Chirp::factory()
+        ->withParent($parent = Chirp::factory()->create())
+        ->create();
+
+    actingAsUser()
+        ->get("/chirps/{$child->id}")
+        ->assertHybridView('chirps.show')
+        ->assertHybridProperties([
+            'previous' => url()->route('chirp.show', $parent->id),
+        ]);
 });
 
 test('guests cannot see a specific chirp', function () {

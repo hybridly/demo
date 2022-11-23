@@ -1,9 +1,12 @@
 <?php
 
-test('the login page can be rendered')
-    ->get('/login')
-    ->assertOk()
-    ->assertSee('login');
+use function Pest\Laravel\get;
+
+test('the login page can be rendered', function () {
+    get('/login')
+        ->assertOk()
+        ->assertHybridView('security.login');
+});
 
 test('logged in users cannot see the login page', function () {
     actingAsUser()
