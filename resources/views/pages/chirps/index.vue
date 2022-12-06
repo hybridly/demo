@@ -7,7 +7,7 @@ const $props = defineProps<{
 	chirps: Paginator<App.Data.ChirpData>
 }>()
 
-const { chirps } = useInfiniteChirpLoading($props.chirps)
+const { chirps, canLoad, loadMoreChirps } = useInfiniteChirpLoading($props.chirps)
 
 function updateChirps() {
 	chirps.value.unshift($props.chirps.data[0])
