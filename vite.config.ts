@@ -17,7 +17,7 @@ export default defineConfig({
 	plugins: [
 		laravel({
 			input: 'resources/application/main.ts',
-			valetTls: true,
+			valetTls: false,
 			refresh: [
 				'app/Policies/**',
 			],

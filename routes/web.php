@@ -27,3 +27,13 @@ Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chi
 Route::get('/users/{user}', Profile\ShowChirpsController::class)->name('users.show');
 Route::get('/users/{user}/comments', Profile\ShowCommentsController::class)->name('users.show-comments');
 Route::get('/users/{user}/likes', Profile\ShowLikesController::class)->name('users.show-likes');
+
+Route::get('/order-now', function () {
+    return hybridly('order.step1');
+})->name('order.step1');
+Route::get('/order-now/2', function () {
+    return hybridly('order.step2');
+})->name('order.step2');
+Route::get('/order-now/3', function () {
+    return hybridly('order.step3');
+})->name('order.step3');
