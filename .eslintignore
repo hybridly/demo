@@ -1,6 +1,4 @@
 node_modules
-public
-vendor
+./vendor
+./public
 **/dist
-!**/public
-!**/vendor
