@@ -11,7 +11,7 @@ import autoimport from 'unplugin-auto-import/vite'
 import components from 'unplugin-vue-components/vite'
 import icons from 'unplugin-icons/vite'
 import run from 'vite-plugin-run'
-import i18n from '@intlify/vite-plugin-vue-i18n'
+import i18n from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineConfig({
 	plugins: [
