@@ -27,7 +27,7 @@ class ChirpController
         ]);
     }
 
-    public function show(Chirp $chirp)
+    public function show(Chirp $chirp, Request $request)
     {
         $this->authorize('view', $chirp);
 
@@ -36,9 +36,7 @@ class ChirpController
         return hybridly('chirps.show', [
             'chirp' => ChirpData::from($chirp),
             'comments' => ChirpData::collection($comments),
-            'previous' => $chirp->parent_id
-                ? url()->route('chirp.show', $chirp->parent_id)
-                : url()->route('index'),
+            'highlight' => (string) $request->session()->get('chirp.highlight'),
         ]);
     }
 
@@ -46,9 +44,12 @@ class ChirpController
     {
         $this->authorize('create', Chirp::class);
 
-        CreateChirp::run($data);
+        $chirp = CreateChirp::run($data);
 
-        return back();
+        return redirect()->to(match (true) {
+            !!$chirp->parent_id => route('chirp.show', $chirp->parent_id),
+            default => route('index')
+        })->with('chirp.highlight', $chirp->id);
     }
 
     public function destroy(Chirp $chirp, Request $request)
@@ -57,8 +58,9 @@ class ChirpController
 
         DeleteChirp::run($chirp);
 
-        return $request->filled('redirect_to')
-            ? redirect($request->input('redirect_to'))
-            : back();
+        return redirect()->to(match (true) {
+            !!$chirp->parent_id => route('chirp.show', $chirp->parent_id),
+            default => route('index')
+        });
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\Like;
 use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,4 @@ Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chi
 Route::get('/users/{user}', Profile\ShowChirpsController::class)->name('users.show');
 Route::get('/users/{user}/comments', Profile\ShowCommentsController::class)->name('users.show-comments');
 Route::get('/users/{user}/likes', Profile\ShowLikesController::class)->name('users.show-likes');
+Route::get('/chirps/{chirp}/comment', [CommentsController::class, 'create'])->name('chirp.comment');

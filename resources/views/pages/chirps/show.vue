@@ -2,13 +2,19 @@
 const $props = defineProps<{
 	chirp: App.Data.ChirpData
 	comments: Paginator<App.Data.ChirpData>
-	previous: string
+	highlight?: string
 }>()
 
 useHead({
 	title: () => $props.chirp.body
 		? `${$props.chirp.author.display_name} on Blue Bird: ${$props.chirp.body}`
 		: `${$props.chirp.author.display_name} on Blue Bird`,
+})
+
+const previous = computed(() => {
+	return $props.chirp.parent_id
+		? route('chirp.show', { chirp: $props.chirp.parent_id })
+		: route('index')
 })
 </script>
 
@@ -22,7 +28,6 @@ useHead({
 		<div class="mb-24">
 			<chirp
 				:chirp="chirp"
-				:previous="previous"
 				as="comment"
 			/>
 		</div>
@@ -47,6 +52,7 @@ useHead({
 				v-for="comment in comments.data"
 				:key="comment.id"
 				:chirp="comment"
+				:highlight="comment.id === highlight"
 				as="list-item"
 			/>
 		</div>

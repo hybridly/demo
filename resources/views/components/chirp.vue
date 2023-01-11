@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { route } from 'hybridly/vue'
-import axios from 'axios'
 
 const $props = defineProps<{
 	chirp: App.Data.ChirpData
-	as: 'list-item' | 'comment'
-	previous?: string
+	as: 'list-item' | 'comment' | 'preview'
+	highlight?: boolean
 }>()
 
 const $emit = defineEmits<{
@@ -13,7 +12,6 @@ const $emit = defineEmits<{
 }>()
 
 const dynamicCreatedAt = useTimeAgo($props.chirp.created_at)
-const likes = ref($props.chirp.likes_count)
 const authorization = reactive<App.Data.ChirpData['authorization']>({
 	comment: $props.chirp.authorization.comment,
 	like: $props.chirp.authorization.like,
@@ -21,27 +19,21 @@ const authorization = reactive<App.Data.ChirpData['authorization']>({
 	delete: $props.chirp.authorization.delete,
 })
 
-// In the context of infinite scrolling, it is not convenient to use
-// hybridly, because we would lose the scroll position and loaded
-// pagination. This is a good opportunity to simply use AJAX.
-async function toggleLike() {
-	const [method, url] = authorization.like
-		? ['post', route('chirp.like', { chirp: $props.chirp }), likes.value++]
-		: ['delete', route('chirp.unlike', { chirp: $props.chirp }), likes.value--]
+const { likes, toggleLike } = useChirpLikes($props.chirp, authorization)
 
-	await axios.request({ url, method }).then(({ status }) => {
-		if (status === 204) {
-			authorization.like = !authorization.like
-			authorization.unlike = !authorization.unlike
-		}
+function show() {
+	router.get(route('chirp.show', { chirp: $props.chirp }))
+}
+
+function comment() {
+	router.get(route('chirp.comment', { chirp: $props.chirp }), {
+		preserveScroll: true,
+		preserveState: true,
 	})
 }
 
 function deleteChirp() {
 	router.delete(route('chirp.destroy', { chirp: $props.chirp }), {
-		data: {
-			redirect_to: $props.previous,
-		},
 		preserveState: false,
 		preserveScroll: true,
 		hooks: {
@@ -55,9 +47,11 @@ function deleteChirp() {
 	<base-card
 		as="article"
 		class="flex items-start gap-6 border border-gray-100 p-8 transition"
+		:class="{ highlight }"
+		@click="show"
 	>
 		<!-- Profile picture -->
-		<router-link class="block" :href="route('users.show', { user: chirp.author })">
+		<router-link class="block" :href="route('users.show', { user: chirp.author })" @click.stop>
 			<avatar :user="chirp.author" class="ring-offset-[3px] hover:ring-1 ring-slate-300 transition" />
 		</router-link>
 
@@ -69,12 +63,14 @@ function deleteChirp() {
 					<router-link
 						:href="route('users.show', { user: chirp.author })"
 						class="font-medium leading-none text-slate-800 hover:underline underline-offset-4 decoration-slate-300"
+						@click.stop
 						v-text="chirp.author?.display_name"
 					/>
 					<verified-badge :verified="!!chirp.author?.identity_verified_at" />
 					<router-link
 						:href="route('users.show', { user: chirp.author })"
 						class="mb-0.5 ml-3 text-xs font-medium tracking-wide text-slate-500 hover:underline underline-offset-4 decoration-slate-300"
+						@click.stop
 						v-text="'@' + chirp.author?.username"
 					/>
 				</span>
@@ -88,7 +84,7 @@ function deleteChirp() {
 			</div>
 
 			<!-- Body -->
-			<p class="mb-4" v-text="chirp.body" />
+			<p class="mb-4" @click.stop v-text="chirp.body" />
 
 			<!-- Attachments -->
 			<div
@@ -111,21 +107,18 @@ function deleteChirp() {
 			</div>
 
 			<!-- Actions -->
-			<div class="flex items-center gap-x-10 text-sm text-gray-600">
+			<div class="flex items-center gap-x-6 text-sm text-gray-600">
 				<!-- Comment -->
-				<router-link :href="route('chirp.show', { chirp })">
-					<chirp-button color="emerald">
-						<template #icon>
-							<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
-						</template>
-						<template #text>
-							<span class="ml-5 transition">
-								Comment
-								<template v-if="chirp.comments_count > 0">({{ chirp.comments_count }})</template>
-							</span>
-						</template>
-					</chirp-button>
-				</router-link>
+				<chirp-button v-if="as !== 'preview'" color="emerald" @click.stop="comment">
+					<template #icon>
+						<i-ant-design-comment-outlined class="relative -m-3 h-9 w-9 p-1.5 transition" />
+					</template>
+					<template #text>
+						<span class="ml-5 transition">
+							{{ chirp.comments_count }}
+						</span>
+					</template>
+				</chirp-button>
 
 				<!-- Like/unlike -->
 				<like-button
@@ -149,3 +142,17 @@ function deleteChirp() {
 		</div>
 	</base-card>
 </template>
+
+<style scoped style="postcss">
+.highlight {
+	@apply ring ring-transparent;
+  animation: highlight-animation ease-out 10s;
+}
+
+@keyframes highlight-animation {
+  0% {
+		@apply ring ring-blue-200;
+	},
+  100% {}
+}
+</style>

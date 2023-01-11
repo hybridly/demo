@@ -9,7 +9,7 @@
 			<link rel="manifest" href="/site.webmanifest">
 			@vite('resources/application/main.ts')
 	</head>
-	<body class="h-full bg-gray-50 antialiased overflow-y-scroll">
+	<body class="h-full bg-gray-50 antialiased">
 			@hybridly(class: 'h-full')
 	</body>
 </html>
