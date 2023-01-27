@@ -30,6 +30,11 @@ class ChirpPolicy
         return $chirp->author->is($user);
     }
 
+    public function edit(User $user, Chirp $chirp)
+    {
+        return $chirp->author->is($user);
+    }
+
     public function like(User $user, Chirp $chirp): bool
     {
         return !$user->hasLiked($chirp);

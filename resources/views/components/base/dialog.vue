@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-const { show, close } = useDialog()
+const { show, hide, unmount } = useDialog()
 
 defineProps<{
 	title?: string
@@ -9,8 +9,8 @@ defineProps<{
 </script>
 
 <template>
-	<TransitionRoot appear as="template" :show="show">
-		<Dialog as="div" class="relative z-30" @close="close">
+	<TransitionRoot appear as="template" :show="show" @after-leave="unmount">
+		<Dialog as="div" class="relative z-30" @close="hide">
 			<TransitionChild
 				as="template"
 				enter="ease-out duration-300"
@@ -47,7 +47,7 @@ defineProps<{
 								<button
 									type="button"
 									class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-									@click="close"
+									@click="hide"
 								>
 									<span class="sr-only">Close</span>
 									<i-mdi:close class="h-6 w-6" aria-hidden="true" />

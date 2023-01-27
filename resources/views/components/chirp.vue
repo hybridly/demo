@@ -17,6 +17,7 @@ const authorization = reactive<App.Data.ChirpData['authorization']>({
 	like: $props.chirp.authorization.like,
 	unlike: $props.chirp.authorization.unlike,
 	delete: $props.chirp.authorization.delete,
+	edit: $props.chirp.authorization.edit,
 })
 
 const { likes, toggleLike } = useChirpLikes($props.chirp, authorization)
@@ -81,6 +82,10 @@ function deleteChirp() {
 					:title="chirp.created_at"
 					v-text="dynamicCreatedAt"
 				/>
+
+				<router-link v-if="can(chirp, 'edit')" :href="route('chirp.edit', { chirp })" @click.stop>
+					EDIT
+				</router-link>
 			</div>
 
 			<!-- Body -->

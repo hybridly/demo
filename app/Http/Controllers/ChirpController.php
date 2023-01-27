@@ -6,6 +6,7 @@ use App\Actions\CreateChirp;
 use App\Actions\DeleteChirp;
 use App\Data\ChirpData;
 use App\Data\CreateChirpData;
+use App\Data\UpdateChirpData;
 use App\Models\Chirp;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -25,6 +26,27 @@ class ChirpController
         return hybridly('chirps.index', [
             'chirps' => ChirpData::collection($chirps),
         ]);
+    }
+
+    public function edit(Chirp $chirp)
+    {
+        $this->authorize('edit', $chirp);
+
+        return hybridly('chirps.edit', [
+            'chirp' => ChirpData::from($chirp),
+        ])->base('chirp.show', $chirp);
+    }
+
+    public function update(Chirp $chirp, UpdateChirpData $data)
+    {
+        $this->authorize('edit', $chirp);
+
+        $chirp->update([
+            'body' => $data->body,
+        ]);
+
+        return back()->with('success', 'Chirp has been updated.');
+        // return to_route('chirp.show', $chirp)->with('success', 'Chirp has been updated.');
     }
 
     public function show(Chirp $chirp, Request $request)

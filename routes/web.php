@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ChirpController::class, 'index'])->name('index');
 Route::post('/chirps', [ChirpController::class, 'store'])->name('chirp.store');
 Route::get('/chirps/{chirp}', [ChirpController::class, 'show'])->name('chirp.show');
+Route::get('/chirps/{chirp}/edit', [ChirpController::class, 'edit'])->name('chirp.edit');
+Route::post('/chirps/{chirp}/update', [ChirpController::class, 'update'])->name('chirp.update');
 Route::post('/chirps/{chirp}/likes', Like\LikeChirpController::class)->name('chirp.like');
 Route::delete('/chirps/{chirp}/likes', Like\UnlikeChirpController::class)->name('chirp.unlike');
 Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chirp.destroy');

@@ -9,7 +9,7 @@ use Spatie\LaravelData\DataCollection;
 
 final class ChirpData extends DataResource
 {
-    public static array $authorizations = ['comment', 'like', 'unlike', 'delete'];
+    public static array $authorizations = ['comment', 'like', 'unlike', 'delete', 'edit'];
 
     public function __construct(
         public readonly string $id,
