@@ -48,7 +48,7 @@ return [
     */
     'i18n' => [
         'lang_path' => base_path('lang'),
-        'locales_path' => resource_path('i18n/locales'),
+        'locales_path' => base_path('.hybridly/i18n.json'),
         'file_name_template' => '{locale}.json',
         'file_name' => 'locales.json',
     ],

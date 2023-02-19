@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseButton from '@/views/components/base/button.vue'
+import BaseButton from '@/components/base/base-button.vue'
 
 useHead({
 	titleTemplate: (title) => `${title} - Blue Bird`,
