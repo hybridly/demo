@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { route } from 'hybridly/vue'
-
 const $props = defineProps<{
 	user: App.Data.UserProfileData
 	activeTab: 'chirps' | 'comments' | 'likes'

@@ -11,7 +11,7 @@ class HandleHybridRequests extends Middleware
     /**
      * Defines the properties that are shared to all requests.
      */
-    public function share()
+    public function share(): SharedData
     {
         return SharedData::from([
             'security' => [
