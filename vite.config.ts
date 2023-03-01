@@ -12,7 +12,7 @@ export default defineConfig({
 			customIcons: ['bluebird'],
 		}),
 		i18n({
-			include: path.resolve(__dirname, './hybridly/locales.json'),
+			include: path.resolve(__dirname, './.hybridly/locales.json'),
 		}),
 	],
 	resolve: {
