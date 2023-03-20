@@ -3,7 +3,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/vue'
 export function useInfiniteChirpLoading(initialChirps: Paginator<App.Data.ChirpData>) {
 	const [list, enableChirpAnimations] = useAutoAnimate()
 	const meta = ref(initialChirps.meta)
-	const chirps = ref(initialChirps.data)
+	const chirps = useHistoryState('chirps', initialChirps.data)
 	const canLoad = computed(() => !!meta.value.next_page_url)
 
 	function loadMoreChirps() {
