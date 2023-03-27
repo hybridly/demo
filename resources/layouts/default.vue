@@ -5,7 +5,7 @@ useHead({
 	titleTemplate: (title) => `${title} - Blue Bird`,
 })
 
-const userID = useProperty('security.user').value?.id
+const userId = useProperty('security.user.id')
 </script>
 
 <template>
@@ -31,7 +31,7 @@ const userID = useProperty('security.user').value?.id
 						<i-material-symbols-bookmark class="h-6 w-7" />
 					</base-button>
 					<router-link
-						:href="route('users.show', { user: userID })"
+						:href="route('users.show', { user: userId })"
 						:as="BaseButton"
 						class="h-12 w-12 rounded-xl hover:text-white"
 					>
