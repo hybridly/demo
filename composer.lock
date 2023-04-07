@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0de47fd825675aab51d73af051dc4116",
+    "content-hash": "88e25d43db1426212cba944e3175df92",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1577,16 +1577,16 @@
         },
         {
             "name": "hybridly/laravel",
-            "version": "v0.1.0",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridly/laravel.git",
-                "reference": "0202a567ee781a395d58eb6723df19455016eccb"
+                "reference": "addd5c5fb0c994fe1fc3c07910736e9716964bfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridly/laravel/zipball/0202a567ee781a395d58eb6723df19455016eccb",
-                "reference": "0202a567ee781a395d58eb6723df19455016eccb",
+                "url": "https://api.github.com/repos/hybridly/laravel/zipball/addd5c5fb0c994fe1fc3c07910736e9716964bfd",
+                "reference": "addd5c5fb0c994fe1fc3c07910736e9716964bfd",
                 "shasum": ""
             },
             "require": {
@@ -1608,6 +1608,7 @@
             },
             "autoload": {
                 "files": [
+                    "src/global_helpers.php",
                     "src/helpers.php"
                 ],
                 "psr-4": {
@@ -1638,7 +1639,7 @@
                 "issues": "https://github.com/hybridly/hybridly/issues",
                 "source": "https://github.com/hybridly/hybridly"
             },
-            "time": "2023-04-03T13:06:24+00:00"
+            "time": "2023-04-07T15:19:32+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3258,16 +3259,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.18.0",
+            "version": "1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "882eabc9b6a12e25c27091a261397f9c8792e722"
+                "reference": "22dcdfd725ddf99583bfe398fc624ad6c5004a0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/882eabc9b6a12e25c27091a261397f9c8792e722",
-                "reference": "882eabc9b6a12e25c27091a261397f9c8792e722",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/22dcdfd725ddf99583bfe398fc624ad6c5004a0f",
+                "reference": "22dcdfd725ddf99583bfe398fc624ad6c5004a0f",
                 "shasum": ""
             },
             "require": {
@@ -3297,9 +3298,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.18.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.18.1"
             },
-            "time": "2023-04-06T07:26:43+00:00"
+            "time": "2023-04-07T11:51:11+00:00"
         },
         {
             "name": "psr/container",
@@ -3968,16 +3969,16 @@
         },
         {
             "name": "spatie/laravel-data",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-data.git",
-                "reference": "557d4bffea1b6d3db6569a51658aa9b9f1bfa92f"
+                "reference": "d0e9e172bfa5baebffe7702865bd38150a6321f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/557d4bffea1b6d3db6569a51658aa9b9f1bfa92f",
-                "reference": "557d4bffea1b6d3db6569a51658aa9b9f1bfa92f",
+                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/d0e9e172bfa5baebffe7702865bd38150a6321f7",
+                "reference": "d0e9e172bfa5baebffe7702865bd38150a6321f7",
                 "shasum": ""
             },
             "require": {
@@ -4039,7 +4040,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-data/issues",
-                "source": "https://github.com/spatie/laravel-data/tree/3.4.0"
+                "source": "https://github.com/spatie/laravel-data/tree/3.4.1"
             },
             "funding": [
                 {
@@ -4047,7 +4048,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-07T09:59:31+00:00"
+            "time": "2023-04-07T13:28:19+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -11695,9 +11696,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "hybridly/laravel": 15
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -5,8 +5,8 @@ dependencies:
     specifier: ^1.3.5
     version: 1.3.5
   hybridly:
-    specifier: 0.1.0
-    version: 0.1.0(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47)
+    specifier: ^0.2.1
+    version: 0.2.1(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47)
 
 devDependencies:
   '@fontsource/poppins':
@@ -390,18 +390,18 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@hybridly/config@0.1.0:
-    resolution: {integrity: sha512-RUcooWPYOVTq2ggWmwXSDvwA6N02zZLbiYftuzwXf/9/MKj7xoiAl5vU2mex958Ba7LTXSsmCL0P6gsAoQqX4w==}
+  /@hybridly/config@0.2.1:
+    resolution: {integrity: sha512-WUmVS+rtdWS10A8B895Ji0dp6G6Mf5F5qKzIG/87yErWfmxRU1LmZ44E8Tdo5YLBtl4CjuwRZVHWEEz0l00wbQ==}
     dependencies:
       unconfig: 0.3.7
     dev: false
 
-  /@hybridly/core@0.1.0(axios@1.3.5):
-    resolution: {integrity: sha512-y2lHlyle91P74IZCkEZlCs8smo5l5wOG06wgLHGvkKnucbFGhN0l+amqGlHePTV4qsdbucQCrEggRB1lesN+xw==}
+  /@hybridly/core@0.2.1(axios@1.3.5):
+    resolution: {integrity: sha512-7q84A0Ue4c7PhhpJeBAWVxLsQAHjtNW/O3jtaiAYW34I6/wnKcYDWcXXZrm4V2cnU4UfZuvYbx3uJejHioWnpw==}
     peerDependencies:
       axios: ^1
     dependencies:
-      '@hybridly/utils': 0.1.0
+      '@hybridly/utils': 0.2.1
       axios: 1.3.5
       qs: 6.11.1
       superjson: 1.12.2
@@ -409,18 +409,18 @@ packages:
       - supports-color
     dev: false
 
-  /@hybridly/progress-plugin@0.1.0(axios@1.3.5):
-    resolution: {integrity: sha512-j3qCITqfgMVCHGr1YCIcUv3YZdo4BK0ab9AEBEGLdSJa4VCsvhoyQsbC8Thlslyz8qDO3KwqoA5B+wFmDrzUMw==}
+  /@hybridly/progress-plugin@0.2.1(axios@1.3.5):
+    resolution: {integrity: sha512-QmS0IhTGy7lyUI6Png8LtSSBDAyR/CbLgtZcd6zGfBnezXDtNTKf/3xcsIazQkieuRyyk9YvgAgE2Bzpzcqpkg==}
     dependencies:
-      '@hybridly/core': 0.1.0(axios@1.3.5)
+      '@hybridly/core': 0.2.1(axios@1.3.5)
       nprogress: 0.2.0
     transitivePeerDependencies:
       - axios
       - supports-color
     dev: false
 
-  /@hybridly/utils@0.1.0:
-    resolution: {integrity: sha512-LCczzwmnHExxxArqxCLCgepGB1g9cXsULKmXnqeEK44YdTFKEW7jojB4lmTNZX2cfUK4GiQIgiVVv6mBHJR3ng==}
+  /@hybridly/utils@0.2.1:
+    resolution: {integrity: sha512-IvxoPelvbMff7nKR1CzpThNQZ9t1cqyLf1aYnCiEd/fCwBcDwk4Q5aYsr4BivEuDKNERjxujPeQgwKJ1xsWhQQ==}
     dependencies:
       debug: 4.3.4
       deepmerge: 4.3.1
@@ -430,21 +430,21 @@ packages:
       - supports-color
     dev: false
 
-  /@hybridly/vite@0.1.0(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47):
-    resolution: {integrity: sha512-4j5Dme/sXoXJc2g3M5MiwTQpVX6DvV29ll+a6mgBVN4x9d26uzgpI0sSdM91W3xgbh6FDncI5nJ8rnrXf+Te9Q==}
+  /@hybridly/vite@0.2.1(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47):
+    resolution: {integrity: sha512-cenE7zOqxn44DNNQ2aHbqtIz0KZdSbPeXPwZ7qEoHHovK0WQj5KZLgBcvanVC8H++DF9NVXkTHhEl25h9V4geA==}
     peerDependencies:
       vue: ^3.2.45
     dependencies:
-      '@hybridly/core': 0.1.0(axios@1.3.5)
+      '@hybridly/core': 0.2.1(axios@1.3.5)
       '@vitejs/plugin-vue': 4.1.0(vite@4.2.1)(vue@3.2.47)
       fast-glob: 3.2.12
       laravel-vite-plugin: 0.7.4(vite@4.2.1)
       local-pkg: 0.4.3
       throttle-debounce: 5.0.0
       unplugin-auto-import: 0.15.2(@vueuse/core@9.13.0)
-      unplugin-icons: 0.15.3
+      unplugin-icons: 0.16.1
       unplugin-vue-components: 0.24.1(vue@3.2.47)
-      vite-plugin-run: 0.4.0
+      vite-plugin-run: 0.4.1
       vue: 3.2.47
     transitivePeerDependencies:
       - '@babel/parser'
@@ -460,16 +460,16 @@ packages:
       - vue-template-es2015-compiler
     dev: false
 
-  /@hybridly/vue@0.1.0(axios@1.3.5)(vue@3.2.47):
-    resolution: {integrity: sha512-hvKXBcmr8HmKZEap6AVOv5XwxU02//7b5PvEhLCFWhFkAikWFaxOe1fVpSOYmrl3sYUz7dD8JyXi48FuOhCG1A==}
+  /@hybridly/vue@0.2.1(axios@1.3.5)(vue@3.2.47):
+    resolution: {integrity: sha512-6f1XfJaKTwpR1n4zod8YnilQ2ELzFZTNXwRXcLGhCdZux5I8vq0o2WHzgffBz+AeNq48m6RPTr2PXpzPMOYvUw==}
     peerDependencies:
       vue: ^3.2.45
     dependencies:
       '@clickbar/dot-diver': 1.0.1
-      '@hybridly/config': 0.1.0
-      '@hybridly/core': 0.1.0(axios@1.3.5)
-      '@hybridly/progress-plugin': 0.1.0(axios@1.3.5)
-      '@hybridly/utils': 0.1.0
+      '@hybridly/config': 0.2.1
+      '@hybridly/core': 0.2.1(axios@1.3.5)
+      '@hybridly/progress-plugin': 0.2.1(axios@1.3.5)
+      '@hybridly/utils': 0.2.1
       '@vue/devtools-api': 6.5.0
       defu: 6.1.2
       lodash.isequal: 4.5.0
@@ -2349,14 +2349,14 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: false
 
-  /hybridly@0.1.0(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47):
-    resolution: {integrity: sha512-2kwQITKixNjtTz45PcAWLcMRh1MPJPuyXZzivXZazSylsA6DLvkgLCQPjRqKX031AcCmgu5WTZbaFmHDegv8Og==}
+  /hybridly@0.2.1(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47):
+    resolution: {integrity: sha512-EyiqV2T/l8oksrrJJegVgFFO81iR0fYn8jEjdiWuiTV0l+9dYpmKgZgdOZprkEn5RUv/Gy6i3yvw9Fn/2qAoOw==}
     dependencies:
-      '@hybridly/config': 0.1.0
-      '@hybridly/core': 0.1.0(axios@1.3.5)
-      '@hybridly/progress-plugin': 0.1.0(axios@1.3.5)
-      '@hybridly/vite': 0.1.0(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47)
-      '@hybridly/vue': 0.1.0(axios@1.3.5)(vue@3.2.47)
+      '@hybridly/config': 0.2.1
+      '@hybridly/core': 0.2.1(axios@1.3.5)
+      '@hybridly/progress-plugin': 0.2.1(axios@1.3.5)
+      '@hybridly/vite': 0.2.1(@vueuse/core@9.13.0)(axios@1.3.5)(vite@4.2.1)(vue@3.2.47)
+      '@hybridly/vue': 0.2.1(axios@1.3.5)(vue@3.2.47)
     transitivePeerDependencies:
       - '@babel/parser'
       - '@nuxt/kit'
@@ -2785,16 +2785,16 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimatch@6.2.0:
-    resolution: {integrity: sha512-sauLxniAmvnhhRjFwPNnJKaPFYyddAgbYdeUpHULtCT/GhzdCx/MDNy+Y40lBxTQUrMzDE8e0S43Z5uqfO0REg==}
+  /minimatch@7.4.3:
+    resolution: {integrity: sha512-5UB4yYusDtkRPbRiy1cqZ1IpGNcJCGlEMG17RKzPddpyiPKoCdwohbED8g4QXT0ewCt8LTkQXuljsUfQ3FKM4A==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
     dev: false
 
-  /minimatch@7.4.3:
-    resolution: {integrity: sha512-5UB4yYusDtkRPbRiy1cqZ1IpGNcJCGlEMG17RKzPddpyiPKoCdwohbED8g4QXT0ewCt8LTkQXuljsUfQ3FKM4A==}
-    engines: {node: '>=10'}
+  /minimatch@8.0.3:
+    resolution: {integrity: sha512-tEEvU9TkZgnFDCtpnrEYnPsjT7iUx42aXfs4bzmQ5sMA09/6hZY0jeZcGkXyDagiBOvkUjNo8Viom+Me6+2x7g==}
+    engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
     dev: false
@@ -3645,10 +3645,10 @@ packages:
       - rollup
     dev: false
 
-  /unplugin-icons@0.15.3:
-    resolution: {integrity: sha512-YWgJqv5AahrokeOnta8uX/m1damZA6Rf6zPClgHg2Fa/45iyOe3Lj+Wn/Ba+CSsq9yBffn17YfKfJNyWCNZPvw==}
+  /unplugin-icons@0.16.1:
+    resolution: {integrity: sha512-qTunFUkpAyDnwzwV7YV1ZgCWRYfLuURcCurhhXOWMy2ipY88qx1pADvral2hJu4Xymh0X0t3Zcll3BIru2AVLQ==}
     peerDependencies:
-      '@svgr/core': '>=5.5.0'
+      '@svgr/core': '>=7.0.0'
       '@vue/compiler-sfc': ^3.0.2 || ^2.7.0
       vue-template-compiler: ^2.6.12
       vue-template-es2015-compiler: ^1.9.0
@@ -3758,12 +3758,12 @@ packages:
       vite: 4.2.1(@types/node@18.15.11)
     dev: false
 
-  /vite-plugin-run@0.4.0:
-    resolution: {integrity: sha512-f59lC0Sr2kQ67U60Wn99idWF4iT9cQtM4BRPkpgr5zK03vX8LUYWWWZtkk8gkBoDJaxpRK2KF8qJ0bj4eWAOtg==}
+  /vite-plugin-run@0.4.1:
+    resolution: {integrity: sha512-gzHW2Bybme2jvxfjmeOOPk2j5FI3VGPzPL30pRCpyJkWGqu5fmyBOKBKYe+f44BlFkAeeHg79Zx97IfL6WvXUA==}
     dependencies:
-      '@antfu/utils': 0.5.2
+      '@antfu/utils': 0.7.2
       debug: 4.3.4
-      minimatch: 6.2.0
+      minimatch: 8.0.3
       picocolors: 1.0.0
     transitivePeerDependencies:
       - supports-color
