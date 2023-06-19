@@ -1,10 +1,4 @@
 {
-    "repositories": [
-        {
-            "type": "path",
-            "url": "/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/laravel"
-        }
-    ],
     "name": "hybridly/demo",
     "type": "project",
     "description": "A demo application for the Hybridly project.",

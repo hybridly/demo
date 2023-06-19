@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "866f5575fb8fd0aa12f9c92bfc96215b",
+    "content-hash": "d0c03a886037e35a7a5b31b79fabaa5d",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1575,10 +1575,16 @@
         {
             "name": "hybridly/laravel",
             "version": "0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hybridly/laravel.git",
+                "reference": "68d08bb42c13c7a5d653f04c5ee1a15871a7e60d"
+            },
             "dist": {
-                "type": "path",
-                "url": "/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/laravel",
-                "reference": "ec23686d660f7f537579420f141c88443c36de24"
+                "type": "zip",
+                "url": "https://api.github.com/repos/hybridly/laravel/zipball/68d08bb42c13c7a5d653f04c5ee1a15871a7e60d",
+                "reference": "68d08bb42c13c7a5d653f04c5ee1a15871a7e60d",
+                "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^9.0|^10.0",
@@ -1586,6 +1592,7 @@
                 "spatie/laravel-package-tools": "^1.15.0",
                 "spatie/php-structure-discoverer": "^1.1.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1598,19 +1605,15 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Hybridly\\": "src"
-                },
                 "files": [
                     "src/Support/global_helpers.php",
                     "src/Support/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Hybridly\\": "src"
+                }
             },
-            "autoload-dev": {
-                "files": [
-                    "src/Testing/helpers.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1634,9 +1637,7 @@
                 "issues": "https://github.com/hybridly/hybridly/issues",
                 "source": "https://github.com/hybridly/hybridly"
             },
-            "transport-options": {
-                "relative": false
-            }
+            "time": "2023-06-10T21:49:43+00:00"
         },
         {
             "name": "laravel/framework",
