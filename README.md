@@ -11,8 +11,9 @@
   <br />
   This is the repository hosting the demonstration application of Hybdrily.
   <br />
-  Check out the <a href="https://github.com/hybridly/hybridly">main repository</a> for more information.
+  Check out the <a href="https://github.com/hybridly/demo/blob/main/CONTRIBUTING.md">installation guide</a> to get started, or the <a href="https://github.com/hybridly/hybridly">main repository</a> for more information.
 </div>
+
 
 <p align="center">
   <br />
