@@ -70,4 +70,18 @@ return [
      * which will only enable the caster locally.
      */
     'var_dumper_caster_mode' => 'development',
+
+    'structure_caching' => [
+        'enabled' => env('DATA_STRUCTURE_CACHE_ENABLED', true),
+        'directories' => [base_path('src')],
+        'cache' => [
+            'store' => env('CACHE_DRIVER', 'file'),
+            'prefix' => 'laravel-data',
+        ],
+        'reflection_discovery' => [
+            'enabled' => false,
+            'base_path' => base_path('src'),
+            'root_namespace' => null,
+        ],
+    ],
 ];

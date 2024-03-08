@@ -6,12 +6,12 @@
         "hybridly",
         "demo"
     ],
-		"repositories": [
-				{
-						"type": "path",
-						"url": "/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/laravel"
-				}
-		],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/laravel"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
@@ -41,6 +41,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Foo\\": "src/Foo/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
