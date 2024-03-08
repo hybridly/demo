@@ -4,49 +4,45 @@
         "dev": "vite",
         "build": "vite build"
     },
+    "type": "module",
     "dependencies": {
-        "axios": "^1.4.0",
-        "hybridly": "^0.4.2"
+        "axios": "^1.6.7",
+        "hybridly": "link:/Users/enzoinnocenzi/Code/projects/hybridly/hybridly/packages/hybridly"
     },
     "devDependencies": {
-        "@fontsource/poppins": "^5.0.5",
+        "@fontsource/poppins": "^5.0.8",
         "@formkit/auto-animate": "1.0.0-beta.6",
-        "@iconify-json/ant-design": "^1.1.6",
-        "@iconify-json/fa6-solid": "^1.1.13",
-        "@iconify-json/fluent": "^1.1.29",
-        "@iconify-json/gg": "^1.1.5",
-        "@iconify-json/heroicons-solid": "^1.1.7",
-        "@iconify-json/ic": "^1.1.13",
-        "@iconify-json/icon-park-outline": "^1.1.11",
-        "@iconify-json/ion": "^1.1.11",
-        "@iconify-json/material-symbols": "^1.1.53",
-        "@iconify-json/mdi": "^1.1.53",
-        "@iconify-json/ph": "^1.1.5",
-        "@innocenzi/eslint-config": "^0.20.0",
-        "@intlify/unplugin-vue-i18n": "^0.12.2",
-        "@tailwindcss/forms": "^0.5.4",
-        "@types/node": "^18.17.1",
-        "@vue/runtime-core": "^3.3.4",
-        "@vueuse/core": "^10.3.0",
-        "@vueuse/head": "^1.1.26",
-        "autoprefixer": "^10.4.14",
-        "eslint": "^8.46.0",
-        "postcss": "^8.4.27",
-        "tailwindcss": "^3.3.3",
-        "typescript": "^5.1.6",
-        "vite": "^4.4.8",
-        "vue": "^3.3.4",
-        "vue-i18n": "^9.2.2"
+        "@iconify-json/ant-design": "^1.1.15",
+        "@iconify-json/fa6-solid": "^1.1.20",
+        "@iconify-json/fluent": "^1.1.49",
+        "@iconify-json/gg": "^1.1.9",
+        "@iconify-json/heroicons-solid": "^1.1.11",
+        "@iconify-json/ic": "^1.1.17",
+        "@iconify-json/icon-park-outline": "^1.1.15",
+        "@iconify-json/ion": "^1.1.15",
+        "@iconify-json/material-symbols": "^1.1.73",
+        "@iconify-json/mdi": "^1.1.64",
+        "@iconify-json/ph": "^1.1.11",
+        "@innocenzi/eslint-config": "^0.21.2",
+        "@intlify/unplugin-vue-i18n": "^2.0.0",
+        "@tailwindcss/forms": "^0.5.7",
+        "@types/node": "^18.19.18",
+        "@vue/runtime-core": "^3.4.20",
+        "@vueuse/core": "^10.8.0",
+        "@vueuse/head": "^2.0.0",
+        "autoprefixer": "^10.4.17",
+        "eslint": "^8.57.0",
+        "postcss": "^8.4.35",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5.3.3",
+        "vite": "^5.1.4",
+        "vue": "^3.4.20",
+        "vue-i18n": "^9.9.1"
     },
     "postcss": {
         "plugins": {
             "autoprefixer": {},
             "tailwindcss": {}
-        }
-    },
-    "pnpm": {
-        "overrides": {
-            "@vueuse/core": "^9.13.0"
         }
     }
 }

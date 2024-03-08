@@ -1,6 +1,7 @@
 <?php
 
 use Hybridly\Hybridly;
+use Hybridly\Support\Configuration\Architecture;
 
 return [
     /*
@@ -8,7 +9,7 @@ return [
     | Default root view
     |--------------------------------------------------------------------------
     */
-    'root_view' => Hybridly::DEFAULT_ROOT_VIEW,
+    'root_view' => Architecture::ROOT_VIEW,
 
     /*
     |--------------------------------------------------------------------------
@@ -21,6 +22,23 @@ return [
     'router' => [
         'allowed_vendors' => [],
         'exclude' => [],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Architecture
+    |--------------------------------------------------------------------------
+    | Hybridly has presets for a default, one-level architecture, as well
+    | as a module-based architecture. Optionally, you may disable the
+    | presets altogether and define your own architecture.
+    |
+    | See: https://hybridly.dev/guide/architecture.html
+    */
+    'architecture' => [
+        'preset' => 'default',
+        'root' => 'resources',
+        'application' => 'resources/application/main.ts',
+        'eager_load_views' => true,
     ],
 
     /*

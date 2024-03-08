@@ -9,6 +9,8 @@ use App\Data\CreateChirpData;
 use App\Models\Chirp;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Spatie\LaravelData\DataCollection;
+use Spatie\LaravelData\PaginatedDataCollection;
 
 class ChirpController
 {
@@ -23,7 +25,7 @@ class ChirpController
             ->paginate();
 
         return hybridly('chirps.index', [
-            'chirps' => ChirpData::collection($chirps),
+            'chirps' => ChirpData::collect($chirps, PaginatedDataCollection::class),
         ]);
     }
 

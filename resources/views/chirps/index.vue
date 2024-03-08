@@ -7,6 +7,8 @@ const $props = defineProps<{
 	chirps: Paginator<App.Data.ChirpData>
 }>()
 
+console.log($props.chirps)
+
 const { chirps, canLoad, loadMoreChirps } = useInfiniteChirpLoading($props.chirps)
 
 function updateChirps() {
@@ -32,7 +34,7 @@ function onDestroy(chirp: App.Data.ChirpData) {
 		</h1>
 
 		<div ref="list" class="flex flex-1 flex-col gap-8 pt-3">
-			<chirp
+			<chirp-display
 				v-for="chirp in chirps"
 				:key="chirp.id"
 				:chirp="chirp"
