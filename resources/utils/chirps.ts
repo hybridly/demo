@@ -28,7 +28,7 @@ export function useInfiniteChirpLoading(initialChirps: Paginator<App.Data.ChirpD
 		})
 	}
 
-	useInfiniteScroll(window, loadMoreChirps, {
+	useInfiniteScroll(document, loadMoreChirps, {
 		offset: { bottom: 300 },
 	})
 

@@ -5,6 +5,7 @@ namespace App\Data;
 use Carbon\Carbon;
 use Hybridly\Support\Data\DataResource;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
+use Spatie\LaravelData\Concerns\WithDeprecatedCollectionMethod;
 use Spatie\LaravelData\DataCollection;
 
 final class ChirpData extends DataResource

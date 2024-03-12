@@ -9,7 +9,7 @@ const { chirps } = useInfiniteChirpLoading($props.chirps)
 
 <template layout="default,profile">
 	<div ref="list" class="flex flex-1 flex-col gap-8">
-		<chirp
+		<chirp-display
 			v-for="chirp in chirps"
 			:key="chirp.id"
 			:chirp="chirp"

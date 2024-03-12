@@ -85,7 +85,8 @@ test('the isLikedBy methods returns only chirps liked by the given user', functi
     $chirp = Chirp::factory()->create();
     $users = user(count: 2);
 
-    LikeChirp::run($users->get(1), $chirp);
+    $likeChirp = resolve(LikeChirp::class);
+    $likeChirp($users->get(1), $chirp);
 
     expect(Chirp::isLikedBy($users->get(0))->get())->toHaveCount(0);
     expect(Chirp::isLikedBy($users->get(1))->get())->toHaveCount(1);

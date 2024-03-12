@@ -7,16 +7,13 @@ use App\Data\CreateChirpData;
 use App\Models\Attachment;
 use App\Models\Chirp;
 use App\Support\Disk;
-use Lorisleiva\Actions\Concerns\AsAction;
 
 /**
  * Creates a new chirp.
  */
 class CreateChirp
 {
-    use AsAction;
-
-    public function handle(CreateChirpData $data): Chirp
+    public function __invoke(CreateChirpData $data): Chirp
     {
         $chirp = Chirp::create([
             'body' => $data->body,

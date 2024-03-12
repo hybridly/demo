@@ -9,14 +9,14 @@ const { chirps } = useInfiniteChirpLoading($props.chirps)
 
 <template layout="default,profile">
 	<div ref="list" class="flex flex-1 flex-col gap-8">
-		<chirp
+		<chirp-display
 			v-for="chirp in chirps"
 			:key="chirp.id"
 			:chirp="chirp"
 			as="list-item"
 		/>
 		<div v-if="chirps.length === 0" class="text-center text-sm text-gray-400">
-			<span class="font-medium">@{{ user.display_name }}</span> has not chirped anything yet.
+			<span class="font-medium">@{{ user.display_name }}</span> has not commented on anything yet.
 		</div>
 	</div>
 </template>

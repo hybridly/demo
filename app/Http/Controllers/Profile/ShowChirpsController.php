@@ -6,6 +6,7 @@ use App\Data\ChirpData;
 use App\Data\UserProfileData;
 use App\Models\User;
 use Hybridly\Contracts\HybridResponse;
+use Spatie\LaravelData\PaginatedDataCollection;
 
 class ShowChirpsController
 {
@@ -20,7 +21,7 @@ class ShowChirpsController
         return hybridly('users.show', [
             'active_tab' => 'chirps',
             'user' => UserProfileData::from($user),
-            'chirps' => ChirpData::collection($chirps),
+            'chirps' => ChirpData::collect($chirps, PaginatedDataCollection::class)->transform()
         ]);
     }
 }

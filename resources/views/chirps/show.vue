@@ -20,7 +20,7 @@ useHead({
 		</router-link>
 
 		<div class="mb-24">
-			<chirp
+			<chirp-display
 				:chirp="chirp"
 				:previous="previous"
 				as="comment"
@@ -43,7 +43,7 @@ useHead({
 		/>
 
 		<div ref="list" v-auto-animate class="flex flex-1 flex-col gap-6 will-change-contents">
-			<chirp
+			<chirp-display
 				v-for="comment in comments.data"
 				:key="comment.id"
 				:chirp="comment"

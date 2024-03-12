@@ -10,11 +10,11 @@ class UnlikeChirpController
 {
     use AuthorizesRequests;
 
-    public function __invoke(Chirp $chirp)
+    public function __invoke(Chirp $chirp, UnlikeChirp $unlikeChirp)
     {
         $this->authorize('unlike', $chirp);
 
-        UnlikeChirp::run(auth()->user(), $chirp);
+        $unlikeChirp(auth()->user(), $chirp);
 
         return response()->noContent();
     }
