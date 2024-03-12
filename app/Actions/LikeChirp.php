@@ -5,13 +5,10 @@ namespace App\Actions;
 use App\Models\Chirp;
 use App\Models\Like;
 use App\Models\User;
-use Lorisleiva\Actions\Concerns\AsAction;
 
 class LikeChirp
 {
-    use AsAction;
-
-    public function handle(User $user, Chirp $chirp): void
+    public function __invoke(User $user, Chirp $chirp): void
     {
         if ($user->hasLiked($chirp)) {
             return;

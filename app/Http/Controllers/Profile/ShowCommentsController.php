@@ -6,6 +6,7 @@ use App\Data\ChirpData;
 use App\Data\UserProfileData;
 use App\Models\User;
 use Hybridly\Contracts\HybridResponse;
+use Spatie\LaravelData\PaginatedDataCollection;
 
 class ShowCommentsController
 {
@@ -20,7 +21,7 @@ class ShowCommentsController
         return hybridly('users.show-comments', [
             'active_tab' => 'comments',
             'user' => UserProfileData::from($user),
-            'chirps' => ChirpData::collection($chirps),
+            'chirps' => ChirpData::collect($chirps, PaginatedDataCollection::class)->transform()
         ]);
     }
 }

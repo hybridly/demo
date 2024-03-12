@@ -10,11 +10,11 @@ class LikeChirpController
 {
     use AuthorizesRequests;
 
-    public function __invoke(Chirp $chirp)
+    public function __invoke(Chirp $chirp, LikeChirp $likeChirp)
     {
         $this->authorize('like', $chirp);
 
-        LikeChirp::run(auth()->user(), $chirp);
+        $likeChirp(auth()->user(), $chirp);
 
         return response()->noContent();
     }
